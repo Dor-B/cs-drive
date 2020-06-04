@@ -12,7 +12,7 @@
       ></v-text-field>
     </v-card-title>
     <v-data-table
-    v-model="value"
+    v-model="selected"
     :headers="headers"
     :items="filteredItems"
     :search="search"
@@ -55,8 +55,9 @@
     },
     data() {
         return {
+            selected : [],
             search: '',
-            filters:  this.headers.filter((header) => header['shouldFilter'] === true)
+            filters:  this.headers.filter((header) => header['filterType'] == 'multiple')
                         .reduce((ac,a) => ({...ac,[a.value]:[]}),{})
         }
     },
