@@ -29,7 +29,7 @@
             v-for="(header, i) in headers"
             :key="header.text"
         >
-            <template v-if="filters.hasOwnProperty(header.value)">
+            <template v-if="filterAble.hasOwnProperty(header.value)">
             <v-select style="max-width: 200px;" multiple clearable :items="columnValueList(header.value)" v-model="filters[header.value]">
                 
             </v-select>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { DefaultDict } from '../misc.js'
   export default {
     name: 'FilesDataTable',
     props: {
@@ -57,8 +58,7 @@
         return {
             selected : [],
             search: '',
-            filters:  this.headers.filter((header) => header['filterType'] == 'multiple')
-                        .reduce((ac,a) => ({...ac,[a.value]:[]}),{})
+            filters: {...(new DefaultDict(Array))}
         }
     },
     computed: {
@@ -68,6 +68,10 @@
                     return this.filters[f].length < 1 || this.filters[f].includes(d[f])
                 })
             })
+        },
+        filterAble(){
+            return this.headers.filter((header) => header['filterType'] == 'multiple')
+                        .reduce((ac,a) => ({...ac,[a.value]:''}),{})
         }
     },
     methods: {
