@@ -54,37 +54,31 @@
           <v-card elevation="4">
             <v-tabs
               v-model="tab"
-              
+              hide-slider
             >
               <v-tab
-                v-for="item in itemsTabs"
+                v-for="item in tabs"
                 :key="item.tab"
               >
-                {{ item.tab }}
+                {{ item.text }}
               </v-tab>
             </v-tabs>
-
-            <v-tabs-items v-model="tab">
-              <v-tab-item
-                v-for="item in items"
-                :key="item.tab"
-              >
                 <v-card flat>
                   <!-- <v-card-text>{{ item.content }}</v-card-text> -->
-                      <FilesDataTable 
+                      <FilesDataTable
+                      id="table"
                       :headers="headers"
                       :items="items"
-                      :title="tmpTitle"
+                      :title="tableTitle"
                       >
                     </FilesDataTable>
                 </v-card>
-              </v-tab-item>
-            </v-tabs-items>
           </v-card>
         <!-- </v-col> -->
       </v-row>
     </v-container>
-    <!-- {{headers}} -->
+    {{coursesNames}}
+    {{currentCourseDir}}
   </v-content>
   </v-app>
 </template>
@@ -92,7 +86,10 @@
 <script>
 // import HelloWorld from './components/HelloWorld';
 import FilesDataTable from './components/FilesDataTable'
+import { isEmpty } from './misc'
 import { db } from './db'
+// import { firebase } from 'firebase';
+// import { ResizeObserver } from 'resize-observer';
 
 export default {
   name: 'App',
@@ -101,30 +98,38 @@ export default {
     FilesDataTable
   },
 
- data () {
-      return {
-        headers : [],
-        items: [],
-        currentCourseId : '234114',
-        currentCourseDir : 'lectures',
-        tab: null,
-        itemsTabs: [
-          { tab: 'הרצאות', content: 'Tab 1 Content' },
-          { tab: 'תרגילי בית', content: 'Tab 2 Content' },
-          { tab: 'סיכומים', content: 'Tab 3 Content' },
-        ],
-        selected: [],
-        tmpTitle: 'מדעי המחשב \\ הרצאות',
-        search: '',
-      }
-    },
+  data () {
+    return {
+      coursesNames : [],
+      headers : [],
+      items: [],
+      currentCourseId : '104031',
+      currentCourseInfo: {},
+      namesMap : {},
+      tab: 0,
+      selected: [],
+      tmpTitle: 'מדעי המחשב \\ הרצאות',
+      search: '',
+    }
+  },
+
   computed: {
-    filteredDesserts() {
-      return this.desserts.filter(d => {
-        return Object.keys(this.filters).every(f => {
-          return this.filters[f].length < 1 || this.filters[f].includes(d[f])
-        })
-      })
+    tableTitle: function(){
+      return ((!isEmpty(this.currentCourseInfo)) && (!isEmpty(this.namesMap))) ? 
+              this.currentCourseInfo.name + ' - ' + this.currentCourseId + ' \\ ' + this.namesMap[this.currentCourseDir] : ''
+    },
+    tabs : function(){
+      return isEmpty(this.currentCourseInfo) ? [] : this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
+    },
+    currentCourseDir : function(){
+      // return 'lectures'
+      let res
+      try{
+        res = this.tabs[this.tab]['name']
+      }catch(err){
+        return 'lectures'
+      }
+      return res;
     }
   },
 
@@ -138,11 +143,48 @@ export default {
     }
   },
   firebase() {
-    return{
-      headers: db.ref('headers/' + this.currentCourseDir),
-      items: db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+    return {
+      namesMap: db.ref('headers/namesMap'),
     }
-  }
+  },
+  watch: {
+    currentCourseDir: {
+      immediate: true,
+      handler(currentCourseDir) {
+        this.$rtdbBind('headers', db.ref('headers/' + this.currentCourseDir))
+        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
+      },
+    },
+    currentCourseId: {
+      immediate: true,
+      handler(currentCourseDir) {
+        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + this.currentCourseId + '/info'))
+        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
+      },
+    },
+  },
+  created : function(){
+    // new ResizeObserver(function(){ 
+    //   if (document.createEvent) { // W3C
+    //     const ev = document.createEvent('Event');
+    //     ev.initEvent('resize', true, true);
+    //     window.dispatchEvent(ev);
+    //   } else { // IE
+    //     document.fireEvent('onresize');
+    //   }
+    // }).observe(document.getElementById('table'));
+  //   firebase.database().ref('/courses').once('value').then(function(snapshot) {
+  //       let coursesNames = [];
+  //       snapshot.forEach(function(childSnapshot) {
+  //         // key will be "ada" the first time and "alan" the second time
+  //         coursesNames.push(childSnapshot.key);
+  //         // childData will be the actual contents of the child
+  //         // var childData = childSnapshot.val();
+  //         console.log(childSnapshot.key)
+  //       });
+  //       this.coursesNames = coursesNames;
+  //   });
+  } 
+}
 
-};
 </script>

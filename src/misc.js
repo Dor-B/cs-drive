@@ -9,3 +9,7 @@ export class DefaultDict {
       })
     }
   }
+
+  export function isEmpty(obj){
+    return obj != null && obj != undefined && Object.keys(obj).length === 0 && obj.constructor === Object
+  }
