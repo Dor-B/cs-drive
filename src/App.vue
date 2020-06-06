@@ -36,7 +36,8 @@
           <v-row justify="center" align="center" style="height:100px">
             <v-col cols="12" sm="4">
               <v-autocomplete
-              :items="[1,2,3]"
+              v-model="currentCourseId"
+              :items="coursesIDs"
               label="בחר קורס"
               solo
               light
@@ -77,8 +78,8 @@
         <!-- </v-col> -->
       </v-row>
     </v-container>
-    {{coursesNames}}
-    {{currentCourseDir}}
+    <!-- {{coursesIDs}} -->
+    <!-- {{currentCourseDir}} -->
   </v-content>
   </v-app>
 </template>
@@ -100,10 +101,10 @@ export default {
 
   data () {
     return {
-      coursesNames : [],
+      coursesIDs : [],
       headers : [],
       items: [],
-      currentCourseId : '104031',
+      currentCourseId : '234114',
       currentCourseInfo: {},
       namesMap : {},
       tab: 0,
@@ -119,7 +120,8 @@ export default {
               this.currentCourseInfo.name + ' - ' + this.currentCourseId + ' \\ ' + this.namesMap[this.currentCourseDir] : ''
     },
     tabs : function(){
-      return isEmpty(this.currentCourseInfo) ? [] : this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
+        // return this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
+      return (isEmpty(this.currentCourseInfo) || !('directories' in this.currentCourseInfo))  ? [] : this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
     },
     currentCourseDir : function(){
       // return 'lectures'
@@ -151,15 +153,15 @@ export default {
     currentCourseDir: {
       immediate: true,
       handler(currentCourseDir) {
-        this.$rtdbBind('headers', db.ref('headers/' + this.currentCourseDir))
-        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
+        this.$rtdbBind('headers', db.ref('headers/' + currentCourseDir))
+        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + currentCourseDir))
       },
     },
     currentCourseId: {
       immediate: true,
-      handler(currentCourseDir) {
-        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + this.currentCourseId + '/info'))
-        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
+      handler(currentCourseId) {
+        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + currentCourseId + '/info'))
+        this.$rtdbBind('items', db.ref('courses/' + currentCourseId + '/directories/' + this.currentCourseDir))
       },
     },
   },
@@ -173,17 +175,18 @@ export default {
     //     document.fireEvent('onresize');
     //   }
     // }).observe(document.getElementById('table'));
-  //   firebase.database().ref('/courses').once('value').then(function(snapshot) {
-  //       let coursesNames = [];
-  //       snapshot.forEach(function(childSnapshot) {
-  //         // key will be "ada" the first time and "alan" the second time
-  //         coursesNames.push(childSnapshot.key);
-  //         // childData will be the actual contents of the child
-  //         // var childData = childSnapshot.val();
-  //         console.log(childSnapshot.key)
-  //       });
-  //       this.coursesNames = coursesNames;
-  //   });
+    const that = this;
+    db.ref('/courses').once('value').then(function(snapshot) {
+        let coursesIDs = [];
+        snapshot.forEach(function(childSnapshot) {
+          // key will be "ada" the first time and "alan" the second time
+          coursesIDs.push(childSnapshot.key);
+          // childData will be the actual contents of the child
+          // var childData = childSnapshot.val();
+          console.log(childSnapshot.key)
+        });
+        that.coursesIDs = coursesIDs;
+    });
   } 
 }
 
