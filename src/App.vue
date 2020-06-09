@@ -37,7 +37,7 @@
             <v-col cols="12" sm="4">
               <v-autocomplete
               v-model="currentCourseId"
-              :items="coursesIDs"
+              :items="coursesItems"
               label="בחר קורס"
               solo
               light
@@ -79,6 +79,8 @@
       </v-row>
     </v-container>
     <!-- {{coursesIDs}} -->
+    <!-- {{items}} -->
+    <!-- {{currentCourseId}} -->
     <!-- {{currentCourseDir}} -->
   </v-content>
   </v-app>
@@ -102,6 +104,7 @@ export default {
   data () {
     return {
       coursesIDs : [],
+      coursesItems : [],
       headers : [],
       items: [],
       currentCourseId : '234114',
@@ -132,7 +135,7 @@ export default {
         return 'lectures'
       }
       return res;
-    }
+    },
   },
 
   methods: {
@@ -147,6 +150,7 @@ export default {
   firebase() {
     return {
       namesMap: db.ref('headers/namesMap'),
+      // items: db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
     }
   },
   watch: {
@@ -154,6 +158,7 @@ export default {
       immediate: true,
       handler(currentCourseDir) {
         this.$rtdbBind('headers', db.ref('headers/' + currentCourseDir))
+        // console.log('courses/' + this.currentCourseId + '/directories/' + currentCourseDir)
         this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + currentCourseDir))
       },
     },
@@ -166,26 +171,17 @@ export default {
     },
   },
   created : function(){
-    // new ResizeObserver(function(){ 
-    //   if (document.createEvent) { // W3C
-    //     const ev = document.createEvent('Event');
-    //     ev.initEvent('resize', true, true);
-    //     window.dispatchEvent(ev);
-    //   } else { // IE
-    //     document.fireEvent('onresize');
-    //   }
-    // }).observe(document.getElementById('table'));
+    // console.log('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+    // this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
     const that = this;
     db.ref('/courses').once('value').then(function(snapshot) {
-        let coursesIDs = [];
+        let coursesItems = [];
         snapshot.forEach(function(childSnapshot) {
-          // key will be "ada" the first time and "alan" the second time
-          coursesIDs.push(childSnapshot.key);
-          // childData will be the actual contents of the child
-          // var childData = childSnapshot.val();
+          let text = childSnapshot.child('info').child('name').val() + " - " + childSnapshot.key
+          coursesItems.push({value: childSnapshot.key, text:text});
           console.log(childSnapshot.key)
         });
-        that.coursesIDs = coursesIDs;
+        that.coursesItems = coursesItems;
     });
   } 
 }

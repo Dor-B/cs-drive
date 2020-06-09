@@ -40,6 +40,12 @@
         </td>
         </tr>
     </template>
+    <template v-slot:item.fileName="data">
+        <a target="_blank" rel="noopener noreferrer" :href="data.item.fileUrl">
+            {{data.item.fileName}}
+        </a>
+    
+    </template>
 
     </v-data-table>
     </v-card>
