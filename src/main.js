@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'
 import { rtdbPlugin } from 'vuefire'
+import AsyncComputed from 'vue-async-computed'
 
 Vue.use(rtdbPlugin, {wait: true})
+Vue.use(AsyncComputed)
 
 Vue.config.productionTip = false
 

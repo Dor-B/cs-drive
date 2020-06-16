@@ -65,7 +65,7 @@
               </v-tab>
             </v-tabs>
                 <v-card flat>
-                  <!-- <v-card-text>{{ item.content }}</v-card-text> -->
+                  <!-- <v-card-text>{{ item.content }}</v-card-textgdr gdrgrdg esd>  --> 
                       <FilesDataTable
                       id="table"
                       :headers="headers"
@@ -78,6 +78,7 @@
         <!-- </v-col> -->
       </v-row>
     </v-container>
+    {{atest}}
     <!-- {{coursesIDs}} -->
     <!-- {{items}} -->
     <!-- {{currentCourseId}} -->
@@ -89,7 +90,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld';
 import FilesDataTable from './components/FilesDataTable'
-import { isEmpty } from './misc'
+import { isEmpty, fbValue } from './misc'
 import { db } from './db'
 // import { firebase } from 'firebase';
 // import { ResizeObserver } from 'resize-observer';
@@ -147,6 +148,14 @@ export default {
       return this.desserts.map(d => d[val])
     }
   },
+  asyncComputed: {
+    atest :{
+        get(){
+          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+        },
+        default:[]
+    }
+  },
   firebase() {
     return {
       namesMap: db.ref('headers/namesMap'),
@@ -157,22 +166,33 @@ export default {
     currentCourseDir: {
       immediate: true,
       handler(currentCourseDir) {
-        this.$rtdbBind('headers', db.ref('headers/' + currentCourseDir))
-        // console.log('courses/' + this.currentCourseId + '/directories/' + currentCourseDir)
+
+        // const that = this;
         this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + currentCourseDir))
+        // .then((items) =>{
+        //   that.items = Object.values(items)
+        // })
+        this.$rtdbBind('headers', db.ref('headers/' + currentCourseDir))
       },
     },
     currentCourseId: {
       immediate: true,
       handler(currentCourseId) {
-        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + currentCourseId + '/info'))
+        // console.log('currentCourseId HANDLER: '+'courses/' + currentCourseId + '/directories/' + this.currentCourseDir) 
+        // const that = this;
         this.$rtdbBind('items', db.ref('courses/' + currentCourseId + '/directories/' + this.currentCourseDir))
+        // .then((items) =>{
+        //   console.log(`${JSON.stringify(Object.keys(items), null, 2)}`)
+        //   that.items = Object.values(items)
+        // })
+        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + currentCourseId + '/info'))
       },
     },
   },
   created : function(){
     // console.log('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
     // this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
+    // setInterval(()=> {this.x++}, 1000);
     const that = this;
     db.ref('/courses').once('value').then(function(snapshot) {
         let coursesItems = [];

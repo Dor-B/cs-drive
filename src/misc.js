@@ -1,3 +1,5 @@
+import { db } from "./db"
+
 export class DefaultDict {
     constructor(defaultInit) {
       return new Proxy({}, {
@@ -12,4 +14,8 @@ export class DefaultDict {
 
   export function isEmpty(obj){
     return obj && Object.keys(obj).length === 0 && obj.constructor === Object
+  }
+
+  export function fbValue(path){
+    return db.ref(path).once('value').then(snap => snap.val())
   }
