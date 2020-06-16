@@ -16,6 +16,7 @@
     :headers="headers"
     :items="filteredItems"
     :search="search"
+    :loading="loading"
     item-key="name"
     show-select
     class="elevation-1"
@@ -58,7 +59,8 @@ import { DefaultDict } from '../misc.js'
     props: {
         headers: Array,
         items: Array,
-        title: String
+        title: String,
+        loading: Boolean
     },
     data() {
         return {

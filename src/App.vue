@@ -51,7 +51,7 @@
   <v-content>
     <v-container fluid class="grey lighten-4">
       <v-row justify="center" align="center" style="margin-top:20px;">
-        <!-- <v-col cols="120" sm="4"> -->
+        <v-expand-transition>
           <v-card elevation="4">
             <v-tabs
               v-model="tab"
@@ -65,35 +65,30 @@
               </v-tab>
             </v-tabs>
                 <v-card flat>
-                  <!-- <v-card-text>{{ item.content }}</v-card-textgdr gdrgrdg esd>  --> 
                       <FilesDataTable
                       id="table"
                       :headers="headers"
                       :items="items"
                       :title="tableTitle"
+                      :loading="$asyncComputed.items.updating"
                       >
                     </FilesDataTable>
                 </v-card>
           </v-card>
-        <!-- </v-col> -->
+        </v-expand-transition>
       </v-row>
     </v-container>
-    {{atest}}
-    <!-- {{coursesIDs}} -->
-    <!-- {{items}} -->
-    <!-- {{currentCourseId}} -->
-    <!-- {{currentCourseDir}} -->
+
   </v-content>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
+
 import FilesDataTable from './components/FilesDataTable'
 import { isEmpty, fbValue } from './misc'
 import { db } from './db'
-// import { firebase } from 'firebase';
-// import { ResizeObserver } from 'resize-observer';
+
 
 export default {
   name: 'App',
@@ -106,11 +101,7 @@ export default {
     return {
       coursesIDs : [],
       coursesItems : [],
-      headers : [],
-      items: [],
       currentCourseId : '234114',
-      currentCourseInfo: {},
-      namesMap : {},
       tab: 0,
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
@@ -149,46 +140,32 @@ export default {
     }
   },
   asyncComputed: {
-    atest :{
+    items :{
         get(){
           return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
         },
         default:[]
-    }
-  },
-  firebase() {
-    return {
-      namesMap: db.ref('headers/namesMap'),
-      // items: db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
-    }
-  },
-  watch: {
-    currentCourseDir: {
-      immediate: true,
-      handler(currentCourseDir) {
-
-        // const that = this;
-        this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + currentCourseDir))
-        // .then((items) =>{
-        //   that.items = Object.values(items)
-        // })
-        this.$rtdbBind('headers', db.ref('headers/' + currentCourseDir))
-      },
     },
-    currentCourseId: {
-      immediate: true,
-      handler(currentCourseId) {
-        // console.log('currentCourseId HANDLER: '+'courses/' + currentCourseId + '/directories/' + this.currentCourseDir) 
-        // const that = this;
-        this.$rtdbBind('items', db.ref('courses/' + currentCourseId + '/directories/' + this.currentCourseDir))
-        // .then((items) =>{
-        //   console.log(`${JSON.stringify(Object.keys(items), null, 2)}`)
-        //   that.items = Object.values(items)
-        // })
-        this.$rtdbBind('currentCourseInfo', db.ref('courses/' + currentCourseId + '/info'))
+    namesMap:{
+      get(){
+        return fbValue('headers/namesMap')
       },
+      default:{}
+    },
+    headers:{
+        get(){
+          return fbValue('headers/' + this.currentCourseDir)
+        },
+        default:[]
+    },
+    currentCourseInfo: {
+        get(){
+          return fbValue('courses/' + this.currentCourseId + '/info')
+        },
+        default: {}
     },
   },
+  
   created : function(){
     // console.log('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
     // this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
