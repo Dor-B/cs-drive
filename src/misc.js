@@ -16,6 +16,11 @@ export class DefaultDict {
     return obj && Object.keys(obj).length === 0 && obj.constructor === Object
   }
 
+  export function isCourseId(str){
+    return str.length > 1 // works for now
+  }
+
   export function fbValue(path){
     return db.ref(path).once('value').then(snap => snap.val())
   }
+

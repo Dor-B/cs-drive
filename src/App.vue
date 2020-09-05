@@ -23,14 +23,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <UploadForm
+       :coursesItems="coursesItems"
+       :headerNames="namesMap"
       >
-        <span class="mr-2">העלה חומרים חדשים</span>
-        <v-icon>mdi-upload</v-icon>
-      </v-btn>
+      </UploadForm>
       <template v-slot:extension>
         <v-container fluid>
           <v-row justify="center" align="center" style="height:100px">
@@ -78,7 +75,6 @@
         </v-expand-transition>
       </v-row>
     </v-container>
-
   </v-content>
   </v-app>
 </template>
@@ -86,6 +82,7 @@
 <script>
 
 import FilesDataTable from './components/FilesDataTable'
+import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue } from './misc'
 import { db } from './db'
 
@@ -94,7 +91,8 @@ export default {
   name: 'App',
 
   components: {
-    FilesDataTable
+    FilesDataTable,
+    UploadForm
   },
 
   data () {
