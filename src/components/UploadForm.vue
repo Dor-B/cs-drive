@@ -9,8 +9,8 @@
           v-bind="attrs"
           v-on="on"
         >
-          העלה חומרים חדשים
-          <v-icon left color="white">mdi-upload</v-icon>
+          העלאת חומרים חדשים
+          <v-icon right color="white">mdi-upload</v-icon>
         </v-btn>
       </template>
 
@@ -20,31 +20,39 @@
             תחילה מלאו כמה פרטים על הקובץ
             <v-form v-model="isFormValid">
                 <v-autocomplete
-                    v-model="courseId"
-                    :items="coursesItems"
-                    label="קורס"
-                    light
-                    required
+                        v-model="courseId"
+                        :items="coursesItems"
+                        label="קורס"
+                        light
+                        required
                 ></v-autocomplete>
                 <v-autocomplete v-if="isCourseChosen"
-                v-model="directory"
-                :items="directories"
-                label="סוג החומר"
-                light
-                required
+                        v-model="directory"
+                        :items="directories"
+                        label="סוג החומר"
+                        light
+                        required
                 >
                 </v-autocomplete>
+                <UploadInput v-for="header in headers" :key="header.value"
+                        :formInputHelper="formDirHelper.getInputHelper(header.value)"
+                        :header="header.value"
+                        :helperText="header.text"
+                >
+                </UploadInput>
+                <v-file-input show-size label="בחר קובץ"></v-file-input>
             </v-form>
+        *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-text>
+
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
             text
             @click="dialog = false"
-            :disabled="!isFormValid"
           >
-            I accept
+            סיימתי
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -53,9 +61,14 @@
 
 <script>
 import {fbValue, isCourseId} from '../misc'
-// import { db } from '../db'
+import {FormDirHelper} from '../upload-form-helper'
+import UploadInput from './UploadInput'
+
   export default {
     name: 'UploadForm',
+    components: {
+        UploadInput
+    },
     props: {
         coursesItems : Array,
         headerNames : Object,
@@ -69,7 +82,10 @@ import {fbValue, isCourseId} from '../misc'
         }
     },
     computed: {
-        isCourseChosen(){return isCourseId(this.courseId)}
+        isCourseChosen(){return isCourseId(this.courseId)},
+        formDirHelper(){
+            return new FormDirHelper(this.courseId, this.directory)
+        }
     },
     methods: {
 
@@ -87,7 +103,15 @@ import {fbValue, isCourseId} from '../misc'
                 return fbValue('courses/' + this.courseId + '/info/directories')
                        .then((dirs) => dirs.map(dir => ({value:dir, text:that.headerNames[dir]})))
             },
-            default:[]
+            default: []
+        },
+        headers: {
+            get(){
+                if(this.directory == '')
+                    return Promise.resolve([])
+                return fbValue('headers/' + this.directory).then((headers) => headers.filter(h => h.value != 'fileName'))
+            },
+            default: []
         }
     }
   }

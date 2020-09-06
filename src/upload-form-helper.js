@@ -1,6 +1,7 @@
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
+let date = new Date()
 const MIN_YEAR = 1970
 const currentYear = date.getFullYear()
 const MAX_MATERIAL_NUMBER = 50
@@ -11,32 +12,31 @@ const startOfSpring = new Date(someYear, monthNames.indexOf('March'), 18)
 const startOfSummer = new Date(someYear, monthNames.indexOf('August'), 1)
 
 
-class FormDirHelper{
+export class FormDirHelper{
     constructor(courseId, directory){
         this.courseId = courseId
         this.directory = directory
     }
     getInputHelper(inputHeader){
-        return new FormInputHelper(this.courseId, this.directory, inputHeader);
+        return new FormInputHelper(this.courseId, this.directory, inputHeader)
     }
 }
 
-class FormInputHelper{
+export class FormInputHelper{
     constructor(courseId, directory, inputHeader){
         this.courseId = courseId
         this.directory = directory
         this.inputHeader = inputHeader
     }
     /**
-     * Returns a string placeholder which is a guess for the input
+     * Returns a default string which is a guess for the input
      */
-    get placeholder(){
-        let date = new Date()
+    get defaultString(){
         const month = date.getMonth()
         const monthName = monthNames[month]
         const dayOfMonth = date.getDate()
         switch(this.inputHeader){
-            case 'year':
+            case 'year': {
                 // return the year of current semester
 
                 // check if its the beginning of the winter semester, than choose next year
@@ -44,8 +44,9 @@ class FormInputHelper{
                     return `${currentYear + 1}`
                 }
                 return `${currentYear}`
+            }
 
-            case 'semester':
+            case 'semester': {
                 // return current semester
                 let now = new Date(someYear, month, dayOfMonth)
                 if(now >= startOfWinter && now < startOfSpring)
@@ -53,10 +54,12 @@ class FormInputHelper{
                 if(now >= startOfSpring && now < startOfSummer)
                     return 'אביב'
                 return 'קיץ'
+            }
                 
-            case 'number':
+            case 'number': {
                 // TODO 
                 return ''
+            }
         }
         // default
         return ''
@@ -68,15 +71,17 @@ class FormInputHelper{
 
     get autocompleteList(){
         switch(this.inputHeader){
-            case 'semester':
+            case 'semester': {
                 return ['קיץ', 'אביב', 'חורף']
-            case 'year':
+            }
+            case 'year': {
                 let years = []
-                for(let year = MIN_YEAR; year<=currentYear+1; year++)
+                for(let year = currentYear+1; year>=MIN_YEAR; year--)
                     years.push(`${year}`)
                 return years
+            }
         }
-        // TODO: change null to [] in production
+        // TODO: change null to [] in production.
         return null
     }
 
@@ -88,7 +93,7 @@ class FormInputHelper{
             ]
         }
         // default is no rule
-        return [input => true]
+        return []
     }
 
     get inputType(){

@@ -24,7 +24,7 @@
     <template v-slot:body.prepend>
         <tr class="grey lighten-3">
         <td>
-            <v-icon>filter_list</v-icon>
+            <v-icon>mdi-filter-variant</v-icon>
         </td>
         <td
             v-for="(header, i) in headers"
