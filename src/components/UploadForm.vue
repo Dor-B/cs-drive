@@ -25,6 +25,7 @@
                         label="קורס"
                         light
                         required
+                        :rules="courseRules"
                 ></v-autocomplete>
                 <v-autocomplete v-if="isCourseChosen"
                         v-model="directory"
@@ -32,17 +33,24 @@
                         label="סוג החומר"
                         light
                         required
+                        :rules="directoryRules"
                 >
                 </v-autocomplete>
                 <UploadInput v-for="header in headers" :key="header.value"
+                        v-model="outputData[header.value]"
                         :formInputHelper="formDirHelper.getInputHelper(header.value)"
                         :header="header.value"
                         :helperText="header.text"
                 >
                 </UploadInput>
-                <v-file-input show-size label="בחר קובץ"></v-file-input>
+                <v-file-input show-size label="בחר קובץ" required
+                :rules="fileRules"
+                ></v-file-input>
             </v-form>
+            <v-btn depressed large color="primary" :disabled="!isFormValid">העלה</v-btn>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
+        <br>
+        {{outputData}}
         </v-card-text>
 
         <v-card-actions>
@@ -60,7 +68,7 @@
 </template>
 
 <script>
-import {fbValue, isCourseId} from '../misc'
+import {fbValue, isNonEmptyStr} from '../misc'
 import {FormDirHelper} from '../upload-form-helper'
 import UploadInput from './UploadInput'
 
@@ -78,17 +86,46 @@ import UploadInput from './UploadInput'
             dialog: false,
             courseId: '',
             directory: '',
-            isFormValid: false
+            isFormValid: false,
+            outputData : {},
+            fileRules: [
+                v => !!v || 'חובה לבחור קובץ',
+            ],
+            courseRules: [
+                v => !!v || 'חובה לבחור קורס',
+            ],
+            directoryRules: [
+                v => !!v || 'חובה לבחור סוג חומר',
+            ]
         }
     },
     computed: {
-        isCourseChosen(){return isCourseId(this.courseId)},
+        isCourseChosen(){return isNonEmptyStr(this.courseId)},
         formDirHelper(){
             return new FormDirHelper(this.courseId, this.directory)
         }
     },
     methods: {
 
+    },
+    watch: {
+        headers: function(newHeaders){
+            // clean up items that are not in the new headers
+            let resOutputData = {}
+            const that = this
+            newHeaders.forEach(header => {
+                resOutputData[header.value] = that.outputData[header.value]
+            });
+            this.outputData = resOutputData
+        },
+        courseId: function(val){
+            // that's shit but it's too late in the evening
+            this.outputData.courseId = val
+        },
+        directory: function(val){
+            // that's shit but it's too late in the evening
+            this.outputData.directory = val
+        }
     },
     asyncComputed: {
         /**
@@ -98,7 +135,7 @@ import UploadInput from './UploadInput'
         directories: {
             get(){
                 const that = this
-                if(!isCourseId(this.courseId))
+                if(!isNonEmptyStr(this.courseId))
                     return Promise.resolve([])
                 return fbValue('courses/' + this.courseId + '/info/directories')
                        .then((dirs) => dirs.map(dir => ({value:dir, text:that.headerNames[dir]})))
@@ -107,7 +144,7 @@ import UploadInput from './UploadInput'
         },
         headers: {
             get(){
-                if(this.directory == '')
+                if(!isNonEmptyStr(this.directory))
                     return Promise.resolve([])
                 return fbValue('headers/' + this.directory).then((headers) => headers.filter(h => h.value != 'fileName'))
             },

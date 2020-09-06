@@ -22,6 +22,7 @@ import {FormInputHelper} from '../upload-form-helper'
   export default {
     name: 'UploadInput',
     props: {
+        value: String,
         formInputHelper : FormInputHelper,
         header : String,
         helperText: String
@@ -37,6 +38,13 @@ import {FormInputHelper} from '../upload-form-helper'
     methods: {
 
     },
-    
+    watch: {
+        output: function(val){
+            this.$emit('input', val)
+        }
+    },
+    created: function(){
+        this.$emit('input', this.output)
+    }
   }
 </script>
