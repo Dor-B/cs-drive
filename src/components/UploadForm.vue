@@ -18,19 +18,23 @@
         <v-card-title>העלאת חומרים פומביים לדרייב</v-card-title>
         <v-card-text>
             תחילה מלאו כמה פרטים על הקובץ
-            <v-autocomplete
-              v-model="courseId"
-              :items="coursesItems"
-              label="קורס"
-              light
-        ></v-autocomplete>
-        <v-autocomplete v-if="isCourseChosen"
-          v-model="directory"
-          :items="directories"
-          label="סוג החומר"
-          light
-        >
-        </v-autocomplete>
+            <v-form v-model="isFormValid">
+                <v-autocomplete
+                    v-model="courseId"
+                    :items="coursesItems"
+                    label="קורס"
+                    light
+                    required
+                ></v-autocomplete>
+                <v-autocomplete v-if="isCourseChosen"
+                v-model="directory"
+                :items="directories"
+                label="סוג החומר"
+                light
+                required
+                >
+                </v-autocomplete>
+            </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -38,6 +42,7 @@
             color="primary"
             text
             @click="dialog = false"
+            :disabled="!isFormValid"
           >
             I accept
           </v-btn>
@@ -53,13 +58,14 @@ import {fbValue, isCourseId} from '../misc'
     name: 'UploadForm',
     props: {
         coursesItems : Array,
-        headerNames : Object
+        headerNames : Object,
     },
     data() {
         return {
             dialog: false,
-            courseId: String,
-            directory: String
+            courseId: '',
+            directory: '',
+            isFormValid: false
         }
     },
     computed: {
@@ -69,6 +75,10 @@ import {fbValue, isCourseId} from '../misc'
 
     },
     asyncComputed: {
+        /**
+         * A list of the directories and their names, e.g [{value:'lectures', text:'הרצאות'}, {...}, ...]
+         * Used for the type of material autocomplete input
+         */
         directories: {
             get(){
                 const that = this
