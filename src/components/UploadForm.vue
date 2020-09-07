@@ -113,8 +113,8 @@ import UploadInput from './UploadInput'
             // clean up items that are not in the new headers
             let resOutputData = {}
             const that = this
-            newHeaders.forEach(header => {
-                resOutputData[header.value] = that.outputData[header.value]
+            newHeaders.map(h => h.value).concat(['courseId', 'directory']).forEach(header => {
+                resOutputData[header] = that.outputData[header]
             });
             this.outputData = resOutputData
         },
