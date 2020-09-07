@@ -13,20 +13,22 @@ const startOfSummer = new Date(someYear, monthNames.indexOf('August'), 1)
 
 
 export class FormDirHelper{
-    constructor(courseId, directory){
+    constructor(courseId, directory, outputData){
         this.courseId = courseId
         this.directory = directory
+        this.outputData = outputData
     }
     getInputHelper(inputHeader){
-        return new FormInputHelper(this.courseId, this.directory, inputHeader)
+        return new FormInputHelper(this.courseId, this.directory, inputHeader, this.outputData)
     }
 }
 
 export class FormInputHelper{
-    constructor(courseId, directory, inputHeader){
+    constructor(courseId, directory, inputHeader, allData){
         this.courseId = courseId
         this.directory = directory
         this.inputHeader = inputHeader
+        this.allData = allData
     }
     /**
      * Returns a default string which is a guess for the input

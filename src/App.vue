@@ -7,16 +7,17 @@
       dark
       flat
       extended
+      class="toolbar"
     >
       <div class="d-flex align-center">
-        <v-img
+        <!-- <v-img
           alt="logo"
           class="shrink mr-2"
           contain
           src="https://scontent.ftlv1-2.fna.fbcdn.net/v/t1.0-9/12140574_882821621786141_2765003736024839187_n.png?_nc_cat=102&_nc_sid=09cbfe&_nc_ohc=lXQfc4kRfKgAX_RTmeD&_nc_ht=scontent.ftlv1-2.fna&oh=b3add9aa4ef99e6afe72357a0e6a3a47&oe=5EF36AA9"
           transition="scale-transition"
           width="40"
-        />
+        /> -->
 
         <v-toolbar-title>CS Drive</v-toolbar-title>
       </div>

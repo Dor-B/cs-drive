@@ -31,8 +31,13 @@
             :key="header.text"
         >
             <template v-if="filterAble.hasOwnProperty(header.value)">
-            <v-select style="max-width: 200px;" multiple clearable :items="columnValueList(header.value)" v-model="filters[header.value]">
-                
+            <v-select
+              style="max-width: 200px;"
+              multiple clearable
+              :items="columnValueList(header.value)"
+              v-model="filters[header.value]"
+              :menu-props="{ top: true, offsetY: true }"
+            >   
             </v-select>
             </template>
             <template v-if="i == 0">

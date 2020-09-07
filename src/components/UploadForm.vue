@@ -3,22 +3,28 @@
       v-model="dialog"
       width="500"
     >
+    <!-- <link href="upload-form.css" rel="stylesheet"> -->
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           text
           v-bind="attrs"
           v-on="on"
+          id="upload-btn"
         >
+        <v-icon left color="white">mdi-upload</v-icon>
           העלאת חומרים חדשים
-          <v-icon right color="white">mdi-upload</v-icon>
         </v-btn>
       </template>
 
       <v-card>
         <v-card-title>העלאת חומרים פומביים לדרייב</v-card-title>
         <v-card-text>
-            תחילה מלאו כמה פרטים על הקובץ
+            <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
+                <v-file-input outlined dense show-size label="קובץ להעלאה" required
+                :rules="fileRules"
+                class="file-input"
+                ></v-file-input>
                 <v-autocomplete
                         v-model="courseId"
                         :items="coursesItems"
@@ -43,14 +49,15 @@
                         :helperText="header.text"
                 >
                 </UploadInput>
-                <v-file-input show-size label="בחר קובץ" required
-                :rules="fileRules"
-                ></v-file-input>
             </v-form>
-            <v-btn depressed large color="primary" :disabled="!isFormValid">העלה</v-btn>
+            <v-btn depressed large color="primary" :disabled="!isFormValid">
+               <v-icon left>mdi-upload</v-icon>
+                העלה
+            </v-btn>
+        <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
-        <br>
-        {{outputData}}
+        </v-card-subtitle>
+        <!-- {{outputData}} -->
         </v-card-text>
 
         <v-card-actions>
@@ -102,7 +109,7 @@ import UploadInput from './UploadInput'
     computed: {
         isCourseChosen(){return isNonEmptyStr(this.courseId)},
         formDirHelper(){
-            return new FormDirHelper(this.courseId, this.directory)
+            return new FormDirHelper(this.courseId, this.directory, this.outputData)
         }
     },
     methods: {
@@ -153,3 +160,15 @@ import UploadInput from './UploadInput'
     }
   }
 </script>
+
+<style>
+/* remove that odd space under the file input */
+.file-input .v-text-field__details{
+    display: none !important;
+}
+
+.v-toolbar__content{
+    z-index: 100 !important;
+    position: relative;
+}
+</style>
