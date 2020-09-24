@@ -1,14 +1,14 @@
 <template>
-    <v-autocomplete v-if="formInputHelper.isAutocomplete"
+    <v-autocomplete v-if="formInputHelper.isAutocomplete(header)"
                     v-model="output"
-                    :items="formInputHelper.autocompleteList"
+                    :items="formInputHelper.getAutocompleteList(header)"
                     :label="helperText"
                     light
                     required
     ></v-autocomplete>
     <v-text-field v-else
                     v-model="output"
-                    :rules="formInputHelper.rulesList"
+                    :rules="formInputHelper.getRulesList(header)"
                     :label="helperText"
                     light
                     required
@@ -29,7 +29,7 @@ import {FormInputHelper} from '../upload-form-helper'
     },
     data() {
         return {
-            output: this.formInputHelper.defaultString
+            output: this.formInputHelper.getDefaultString(this.header)
         }
     },
     watch: {

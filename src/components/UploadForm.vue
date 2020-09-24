@@ -44,7 +44,7 @@
                 </v-autocomplete>
                 <UploadInput v-for="header in headers" :key="header.value"
                         v-model="outputData[header.value]"
-                        :formInputHelper="formDirHelper.getInputHelper(header.value)"
+                        :formInputHelper="formDirHelper"
                         :header="header.value"
                         :helperText="header.text"
                 >

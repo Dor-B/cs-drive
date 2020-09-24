@@ -18,26 +18,14 @@ export class FormDirHelper{
         this.directory = directory
         this.outputData = outputData
     }
-    getInputHelper(inputHeader){
-        return new FormInputHelper(this.courseId, this.directory, inputHeader, this.outputData)
-    }
-}
-
-export class FormInputHelper{
-    constructor(courseId, directory, inputHeader, allData){
-        this.courseId = courseId
-        this.directory = directory
-        this.inputHeader = inputHeader
-        this.allData = allData
-    }
     /**
      * Returns a default string which is a guess for the input
      */
-    get defaultString(){
+    getDefaultString(inputHeader){
         const month = date.getMonth()
         const monthName = monthNames[month]
         const dayOfMonth = date.getDate()
-        switch(this.inputHeader){
+        switch(inputHeader){
             case 'year': {
                 // return the year of current semester
 
@@ -67,12 +55,12 @@ export class FormInputHelper{
         return ''
     }
 
-    get isAutocomplete(){
-        return ['semester', 'year'].includes(this.inputHeader)
+    isAutocomplete(inputHeader){
+        return ['semester', 'year'].includes(inputHeader)
     }
 
-    get autocompleteList(){
-        switch(this.inputHeader){
+    getAutocompleteList(inputHeader){
+        switch(inputHeader){
             case 'semester': {
                 return ['קיץ', 'אביב', 'חורף']
             }
@@ -87,8 +75,8 @@ export class FormInputHelper{
         return null
     }
 
-    get rulesList(){
-        if(this.inputHeader == 'number'){
+    getRulesList(inputHeader){
+        if(inputHeader == 'number'){
             return [
                 (num => (/^\d+$/.test(num) || 'הקלט אינו מספר חיובי')),
                 (num => (parseInt(num) <= MAX_MATERIAL_NUMBER) || 'המספר שהוכנס גדול מדי')
@@ -98,10 +86,9 @@ export class FormInputHelper{
         return []
     }
 
-    get inputType(){
-        if(this.inputHeader == 'number')
+    getInputType(inputHeader){
+        if(inputHeader == 'number')
             return 'number'
         return 'other'
     }
-
 }
