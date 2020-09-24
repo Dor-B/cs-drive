@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-autocomplete
-                v-model="courseId"
+                v-model="outputData.courseId"
                 :items="coursesItems"
                 label="קורס"
                 light
@@ -9,7 +9,7 @@
                 :rules="courseRules"
         ></v-autocomplete>
         <v-autocomplete v-if="isCourseChosen"
-                v-model="directory"
+                v-model="outputData.directory"
                 :items="directories"
                 label="סוג החומר"
                 light
@@ -24,6 +24,8 @@
                 :helperText="header.text"
         >
         </UploadInput>
+                <!-- {{outputData}} -->
+
     </div>
 </template>
 
@@ -39,19 +41,17 @@ export default {
     name: 'FileMetadataEditor',
     components: {UploadInput},
     props: {
-        values: Object,
+        value: Object,
         coursesItems : Array,
         headerNames : Object,
         formDirHelper: FormDirHelper
     },
     data(){
         return {
-            courseId: '',
-            directory: '',
-            outputData : {},
-            fileRules: [
-                v => !!v || 'חובה לבחור קובץ',
-            ],
+            outputData : {
+                courseId: '',
+                directory: ''
+            },
             courseRules: [
                 v => !!v || 'חובה לבחור קורס',
             ],
@@ -61,32 +61,33 @@ export default {
         }
     },
     computed: {
-        isCourseChosen(){return isNonEmptyStr(this.courseId)},
+        isCourseChosen(){return isNonEmptyStr(this.outputData.courseId)},
     },
     watch: {
-        value: function(val){
-            this.outputData=val
-        },
-        outputData: function(val){
-            this.$emit('input', val)
+        value: { 
+            handler: function(val){
+                this.outputData = val
+            },
+            deep: true
         },
         headers: function(newHeaders, oldHeaders){
+            if(oldHeaders == null)
+                return
             /// delete headers which no longer exist
-            let leftBehind = Set.difference(
-                new Set(oldHeaders.map(h => h.value)),
-                new Set(newHeaders.map(h => h.value))
-            )
+            let oldVals = oldHeaders.map(h => h.value)
+            let newVals = newHeaders.map(h => h.value)
+            let leftBehind = oldVals.filter(h => !newVals.includes(h))
             const that = this
             leftBehind.forEach(element => {
-                delete that.headers[element]
+                delete that.outputData[element]
             });
         },
-        courseId: function(val){
-            this.outputData.courseId = val
+        outputData: { 
+            handler: function(val){
+                this.$emit('input', val)
+            },
+            deep: true
         },
-        directory: function(val){
-            this.outputData.directory = val
-        }
     },
     asyncComputed: {
     /**
@@ -96,16 +97,16 @@ export default {
     directories: {
         get(){
             const that = this
-            return getFbCourseDirectories(this.courseId)
+            return getFbCourseDirectories(this.outputData.courseId)
                     .then((dirs) => dirs.map(dir => ({value:dir, text:that.headerNames[dir]})))
         },
         default: []
     },
     headers: {
         get(){
-            if(!isNonEmptyStr(this.directory))
+            if(!isNonEmptyStr(this.outputData.directory))
                 return Promise.resolve([])
-            return fbValue('headers/' + this.directory).then((headers) => headers.filter(h => !EXCLUDED_HEADERS.has(h.value)))
+            return fbValue('headers/' + this.outputData.directory).then((headers) => headers.filter(h => !EXCLUDED_HEADERS.has(h.value)))
         },
         default: []
     }

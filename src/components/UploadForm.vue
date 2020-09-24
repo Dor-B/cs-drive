@@ -23,32 +23,16 @@
             <v-form v-model="isFormValid">
                 <v-file-input outlined dense show-size label="קובץ להעלאה" required
                 :rules="fileRules"
+                @change="selectFile"
                 class="file-input"
                 ></v-file-input>
-                <v-autocomplete
-                        v-model="courseId"
-                        :items="coursesItems"
-                        label="קורס"
-                        light
-                        required
-                        :rules="courseRules"
-                ></v-autocomplete>
-                <v-autocomplete v-if="isCourseChosen"
-                        v-model="directory"
-                        :items="directories"
-                        label="סוג החומר"
-                        light
-                        required
-                        :rules="directoryRules"
-                >
-                </v-autocomplete>
-                <UploadInput v-for="header in headers" :key="header.value"
-                        v-model="outputData[header.value]"
-                        :formInputHelper="formDirHelper"
-                        :header="header.value"
-                        :helperText="header.text"
-                >
-                </UploadInput>
+            <FileMetadataEditor
+                v-model="outputData"
+                :coursesItems="coursesItems"
+                :headerNames="headerNames"
+                :formDirHelper="formDirHelper"
+            >
+            </FileMetadataEditor>
             </v-form>
             <v-btn depressed large color="primary" :disabled="!isFormValid">
                <v-icon left>mdi-upload</v-icon>
@@ -57,7 +41,7 @@
         <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-subtitle>
-        <!-- {{outputData}} -->
+        <!-- {{outputData.fileName}} -->
         </v-card-text>
 
         <v-card-actions>
@@ -78,11 +62,12 @@
 import {fbValue, isNonEmptyStr, getFbCourseDirectories} from '../misc'
 import {FormDirHelper} from '../upload-form-helper'
 import UploadInput from './UploadInput'
+import FileMetadataEditor from './FileMetadataEditor'
 
   export default {
     name: 'UploadForm',
     components: {
-        UploadInput
+        UploadInput, FileMetadataEditor
     },
     props: {
         coursesItems : Array,
@@ -91,71 +76,28 @@ import UploadInput from './UploadInput'
     data() {
         return {
             dialog: false,
-            courseId: '',
-            directory: '',
             isFormValid: false,
-            outputData : {},
+            outputData : {
+                courseId: '',
+                directory: '',
+            },
             fileRules: [
                 v => !!v || 'חובה לבחור קובץ',
             ],
-            courseRules: [
-                v => !!v || 'חובה לבחור קורס',
-            ],
-            directoryRules: [
-                v => !!v || 'חובה לבחור סוג חומר',
-            ]
         }
     },
     computed: {
-        isCourseChosen(){return isNonEmptyStr(this.courseId)},
         formDirHelper(){
-            return new FormDirHelper(this.courseId, this.directory, this.outputData)
+            return new FormDirHelper(this.outputData.courseId, this.outputData.directory, this.outputData)
         }
     },
     methods: {
-
-    },
-    watch: {
-        headers: function(newHeaders){
-            // clean up items that are not in the new headers
-            let resOutputData = {}
-            const that = this
-            newHeaders.map(h => h.value).concat(['courseId', 'directory']).forEach(header => {
-                resOutputData[header] = that.outputData[header]
-            });
-            this.outputData = resOutputData
-        },
-        courseId: function(val){
-            // that's shit but it's too late in the evening
-            this.outputData.courseId = val
-        },
-        directory: function(val){
-            // that's shit but it's too late in the evening
-            this.outputData.directory = val
+        selectFile(newFile){
+            console.log(this.outputData)
+            this.outputData.fileName = newFile.name
+            console.log(this.outputData)
         }
     },
-    asyncComputed: {
-        /**
-         * A list of the directories and their names, e.g [{value:'lectures', text:'הרצאות'}, {...}, ...]
-         * Used for the type of material autocomplete input
-         */
-        directories: {
-            get(){
-                const that = this
-                return getFbCourseDirectories(this.courseId)
-                       .then((dirs) => dirs.map(dir => ({value:dir, text:that.headerNames[dir]})))
-            },
-            default: []
-        },
-        headers: {
-            get(){
-                if(!isNonEmptyStr(this.directory))
-                    return Promise.resolve([])
-                return fbValue('headers/' + this.directory).then((headers) => headers.filter(h => h.value != 'fileName'))
-            },
-            default: []
-        }
-    }
   }
 </script>
 
