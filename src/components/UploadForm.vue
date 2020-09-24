@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import {fbValue, isNonEmptyStr} from '../misc'
+import {fbValue, isNonEmptyStr, getFbCourseDirectories} from '../misc'
 import {FormDirHelper} from '../upload-form-helper'
 import UploadInput from './UploadInput'
 
@@ -142,9 +142,7 @@ import UploadInput from './UploadInput'
         directories: {
             get(){
                 const that = this
-                if(!isNonEmptyStr(this.courseId))
-                    return Promise.resolve([])
-                return fbValue('courses/' + this.courseId + '/info/directories')
+                return getFbCourseDirectories(this.courseId)
                        .then((dirs) => dirs.map(dir => ({value:dir, text:that.headerNames[dir]})))
             },
             default: []

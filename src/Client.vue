@@ -76,11 +76,14 @@
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue } from './misc'
-import { db } from './db'
 
 
 export default {
   name: 'Client',
+
+  props:{
+      coursesItems: Array
+  },
 
   components: {
     FilesDataTable,
@@ -90,7 +93,6 @@ export default {
   data () {
     return {
       coursesIDs : [],
-      coursesItems : [],
       currentCourseId : '234114',
       tab: 0,
       selected: [],
@@ -104,10 +106,12 @@ export default {
       return ((!isEmpty(this.currentCourseInfo)) && (!isEmpty(this.namesMap))) ? 
               this.currentCourseInfo.name + ' - ' + this.currentCourseId + ' \\ ' + this.namesMap[this.currentCourseDir] : ''
     },
+    
     tabs : function(){
         // return this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
       return (isEmpty(this.currentCourseInfo) || !('directories' in this.currentCourseInfo))  ? [] : this.currentCourseInfo.directories.map((name) => {return {name:name, text:this.namesMap[name]}})
     },
+
     currentCourseDir : function(){
       // return 'lectures'
       let res
@@ -157,21 +161,7 @@ export default {
   },
   
   created : function(){
-    // console.log('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
-    // this.$rtdbBind('items', db.ref('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir))
-    // setInterval(()=> {this.x++}, 1000);
-    const that = this;
-    db.ref('/courses').once('value').then(function(snapshot) {
-        let coursesItems = [];
-        snapshot.forEach(function(childSnapshot) {
-          let text = childSnapshot.child('info').child('name').val() + " - " + childSnapshot.key
-          coursesItems.push({value: childSnapshot.key, text:text});
-          console.log(childSnapshot.key)
-        });
-        that.coursesItems = coursesItems;
-    });
-    console.log(this.$router)
-    // this.$router.push({name:'admin'})
+
   } 
 }
 

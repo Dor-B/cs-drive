@@ -22,29 +22,26 @@ import {FormInputHelper} from '../upload-form-helper'
   export default {
     name: 'UploadInput',
     props: {
-        value: String,
         formInputHelper : FormInputHelper,
+        value: String,
         header : String,
         helperText: String
     },
     data() {
         return {
-            output: this.formInputHelper.defaultString 
+            output: this.formInputHelper.defaultString
         }
-    },
-    computed: {
-        
-    },
-    methods: {
-
     },
     watch: {
         output: function(val){
             this.$emit('input', val)
+        },
+        value: function(val){
+            this.output = val
         }
     },
     created: function(){
-        this.$emit('input', this.output)
+        this.$emit('input', this.value)
     }
   }
 </script>

@@ -20,7 +20,16 @@ export class DefaultDict {
     return (str != undefined) && str.length > 1 // works for now
   }
 
+  /**
+   * returns a Promise with database's value in path parameter
+   */
   export function fbValue(path){
     return db.ref(path).once('value').then(snap => snap.val())
+  }
+
+  export function getFbCourseDirectories(courseId){
+    if(!isNonEmptyStr(courseId))
+        return Promise.resolve([])
+    return fbValue('courses/' + courseId + '/info/directories')
   }
 
