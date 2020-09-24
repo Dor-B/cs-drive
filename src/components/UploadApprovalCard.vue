@@ -2,91 +2,78 @@
 <v-card>
     <v-card-title>
         <a target="_blank" rel="noopener noreferrer" :href="fileUrl">
-            {{value.fileName}}
+            {{tdata.fileName}}
         </a>
     </v-card-title>
     <v-form v-model="isFormValid">
     <v-card-text>
-        <v-autocomplete
-                v-model="value.courseId"
-                :items="coursesItems"
-                label="קורס"
-                light
-                required
-                :rules="courseRules"
-        ></v-autocomplete>
-        <v-autocomplete
-                        v-model="value.directory"
-                        :items="directories"
-                        label="סוג החומר"
-                        light
-                        required
-                        :rules="directoryRules"
-        >
-        </v-autocomplete>
-        <UploadInput v-for="header in headers" :key="header"
-                        v-model="value[header]"
-                        :formInputHelper="formDirHelper.getInputHelper(header)"
-                        :header="header"
-                        :helperText="header"
-        >
-        </UploadInput>
+    <FileMetadataEditor
+        v-model="tdata"
+        :coursesItems="coursesItems"
+        :formDirHelper="formDirHelper"
+        :headerNames="namesMap"
+    >
+    </FileMetadataEditor>
     </v-card-text>
     </v-form>
+        <v-card-actions>
+      <v-btn
+        color="primary"
+        text
+        outlined
+      >
+      <v-icon left>mdi-check</v-icon>
+        אשר
+      </v-btn>
+
+      <v-btn
+        color="primary"
+        text
+      >
+        מחק
+      </v-btn>
+    </v-card-actions>
     <!-- {{value}} -->
 </v-card>
 </template>
 
 <script>
-import UploadInput from './UploadInput'
+import FileMetadataEditor from './FileMetadataEditor'
 import {FormDirHelper} from '../upload-form-helper'
-import {getFbCourseDirectories} from '../misc'
 import {GDRIVE_FILE_URL_PREFIX} from '../constants'
 
 export default {
   name: 'UploadApprovalCard',
   props: {
-      value: Object,
-      coursesItems: Array
+      coursesItems: Array,
+      namesMap: Object
   },
   components: {
-      UploadInput
+      FileMetadataEditor
   },
   data () {
     return {
         isFormValid: false,
-        courseRules: [
-            v => !!v || 'חובה לבחור קורס',
-        ],
-        directoryRules: [
-            v => !!v || 'חובה לבחור סוג חומר',
-        ],
+        tdata: {
+            'courseId':'234114',
+            'directory': 'lectures',
+            'driveId': '1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm',
+            'semester': 'אביב',
+            'number': '3',
+            'fileName': 'קובץ בדיקה'
+        }
     }
   },
 
   computed: {
     formDirHelper(){
-            return new FormDirHelper(this.value.courseId, this.value.directory, this.value)
-    },
-    headers(){
-          return Object.keys(this.value).filter(k => !['courseId','directory','driveId', 'fileName'].includes(k))
+            return new FormDirHelper(this.tdata.courseId, this.tdata.directory, this.tdata)
     },
     fileUrl(){
-        return `${GDRIVE_FILE_URL_PREFIX}${this.value.driveId}`
+        return `${GDRIVE_FILE_URL_PREFIX}${this.tdata.driveId}`
     }
   },
 
-  methods: {
-
-  },
-  asyncComputed: {
-    directories: {
-        get(){
-            return getFbCourseDirectories(this.value.courseId)
-        },
-        default: []
-    },
-  },
   
   created : function(){
 
@@ -94,12 +81,3 @@ export default {
 }
 
 </script>
-
-<style>
-.v-text-field__details{
-    display: none;
-}
-.v-card__title{
-    padding-bottom: 0px;
-}
-</style>

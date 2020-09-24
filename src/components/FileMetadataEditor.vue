@@ -19,7 +19,7 @@
         </v-autocomplete>
         <UploadInput v-for="header in headers" :key="header.value"
                 v-model="outputData[header.value]"
-                :formInputHelper="formDirHelper"
+                :formDirHelper="formDirHelper"
                 :header="header.value"
                 :helperText="header.text"
         >
@@ -62,6 +62,9 @@ export default {
     },
     computed: {
         isCourseChosen(){return isNonEmptyStr(this.outputData.courseId)},
+    },
+    created(){
+        this.outputData = this.value
     },
     watch: {
         value: { 

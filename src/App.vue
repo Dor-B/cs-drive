@@ -2,6 +2,7 @@
 <v-app>
   <router-view
     :coursesItems="coursesItems"
+    :namesMap="namesMap"
   >
   </router-view>
 </v-app>
@@ -9,6 +10,7 @@
 
 <script>
 import { db } from './db'
+import { fbValue } from './misc'
 
 
 export default {
@@ -43,6 +45,14 @@ export default {
         that.coursesItems = coursesItems;
         console.log(that.coursesItems)
     });
+  },
+  asyncComputed: {
+    namesMap:{
+      get(){
+        return fbValue('headers/namesMap')
+      },
+      default:{}
+    },
   }
   
 }

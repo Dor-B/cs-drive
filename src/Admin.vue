@@ -17,7 +17,7 @@
   <v-content>
     <v-container fluid class="grey lighten-4">
         <v-row justify="center" align="center">
-            <UploadApprovalCard v-model="tdata" :coursesItems="coursesItems"></UploadApprovalCard>
+            <UploadApprovalCard :coursesItems="coursesItems" :namesMap="namesMap"></UploadApprovalCard>
         </v-row>
     </v-container>
   </v-content>
@@ -35,19 +35,13 @@ export default {
   },
 
   props:{
-      coursesItems: Array
+      coursesItems: Array,
+      namesMap: Object
   },
 
   data () {
     return {
-        tdata: {
-            'courseId':'234114',
-            'directory': 'lectures',
-            'driveId': '1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm',
-            'semester': 'אביב',
-            'number': '3',
-            'fileName': 'קובץ בדיקה'
-        }
+
     }
   },
 
@@ -68,3 +62,12 @@ export default {
 }
 
 </script>
+
+<style>
+.v-text-field__details{
+    display: none;
+}
+.v-card__title{
+    padding-bottom: 0px;
+}
+</style>

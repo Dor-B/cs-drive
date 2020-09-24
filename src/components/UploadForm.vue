@@ -59,15 +59,13 @@
 </template>
 
 <script>
-import {fbValue, isNonEmptyStr, getFbCourseDirectories} from '../misc'
 import {FormDirHelper} from '../upload-form-helper'
-import UploadInput from './UploadInput'
 import FileMetadataEditor from './FileMetadataEditor'
 
   export default {
     name: 'UploadForm',
     components: {
-        UploadInput, FileMetadataEditor
+        FileMetadataEditor
     },
     props: {
         coursesItems : Array,
@@ -93,9 +91,7 @@ import FileMetadataEditor from './FileMetadataEditor'
     },
     methods: {
         selectFile(newFile){
-            console.log(this.outputData)
             this.outputData.fileName = newFile.name
-            console.log(this.outputData)
         }
     },
   }

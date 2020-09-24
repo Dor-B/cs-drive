@@ -1,14 +1,14 @@
 <template>
-    <v-autocomplete v-if="formInputHelper.isAutocomplete(header)"
+    <v-autocomplete v-if="formDirHelper.isAutocomplete(header)"
                     v-model="output"
-                    :items="formInputHelper.getAutocompleteList(header)"
+                    :items="formDirHelper.getAutocompleteList(header)"
                     :label="helperText"
                     light
                     required
     ></v-autocomplete>
     <v-text-field v-else
                     v-model="output"
-                    :rules="formInputHelper.getRulesList(header)"
+                    :rules="formDirHelper.getRulesList(header)"
                     :label="helperText"
                     light
                     required
@@ -17,19 +17,19 @@
 </template>
 
 <script>
-import {FormInputHelper} from '../upload-form-helper'
+import {FormDirHelper} from '../upload-form-helper'
 
   export default {
     name: 'UploadInput',
     props: {
-        formInputHelper : FormInputHelper,
+        formDirHelper : FormDirHelper,
         value: String,
         header : String,
         helperText: String
     },
     data() {
         return {
-            output: this.formInputHelper.getDefaultString(this.header)
+            output: ''
         }
     },
     watch: {
@@ -41,6 +41,7 @@ import {FormInputHelper} from '../upload-form-helper'
         }
     },
     created: function(){
+        this.output = this.value ? this.value : this.formDirHelper.getDefaultString(this.header)
         this.$emit('input', this.output)
     }
   }

@@ -82,7 +82,8 @@ export default {
   name: 'Client',
 
   props:{
-      coursesItems: Array
+      coursesItems: Array,
+      namesMap: Object
   },
 
   components: {
@@ -139,12 +140,6 @@ export default {
           return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
         },
         default:[]
-    },
-    namesMap:{
-      get(){
-        return fbValue('headers/namesMap')
-      },
-      default:{}
     },
     headers:{
         get(){
