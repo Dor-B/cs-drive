@@ -4,6 +4,7 @@
         {{title}}
       <v-spacer></v-spacer>
       <v-text-field
+        v-if="!isMobile"
         v-model="search"
         append-icon="mdi-magnify"
         label="חפש"
@@ -12,6 +13,7 @@
       ></v-text-field>
     </v-card-title>
     <v-data-table
+    v-if="!isMobile"
     v-model="selected"
     :headers="headers"
     :items="filteredItems"
@@ -54,11 +56,23 @@
     </template>
 
     </v-data-table>
+    <div v-else> 
+        <v-list-item two-line v-for="(item, i) in filteredMobileItems" :key="i">
+            <v-list-item-content>
+                <v-list-item-title>
+                    <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(item.driveId)">
+                        {{item.fileName}}
+                    </a>
+                </v-list-item-title>
+                <v-list-item-subtitle>{{displayMobileText(item)}}</v-list-item-subtitle>
+        </v-list-item-content>
+    </v-list-item>
+    </div>
     </v-card>
 </template>
 
 <script>
-import { DefaultDict } from '../misc.js'
+import { DefaultDict, isListMatchingQuery } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
 
 
@@ -88,6 +102,13 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
         filterAble(){
             return this.headers.filter((header) => header['filterType'] == 'multiple')
                         .reduce((ac,a) => ({...ac,[a.value]:''}),{})
+        },
+        isMobile(){
+            return this.$vuetify.breakpoint.name == 'xs'
+        },
+        filteredMobileItems(){
+            if(this.search == '') return this.items
+            return this.items.filter(item => isListMatchingQuery(this.search, this.headerDataList(item)))
         }
     },
     methods: {
@@ -96,6 +117,13 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
         },
         viewUrlFromId(id){
             return `${GDRIVE_FILE_URL_PREFIX}${id}`
+        },
+        headerDataList(item){
+            return this.headers.map(h => h.value).filter(h => h in item).map(h => item[h])
+        },
+        displayMobileText(item){
+            return this.headers.map(h => h.value).filter(h => h != 'fileName' && h in item).map(h => item[h])
+            .join(', ')
         }
     }
   }

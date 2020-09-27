@@ -54,3 +54,18 @@ export function delay(t, v) {
   });
 }
 
+/**
+ * returns whether the queryText (which is a string separated by spaces) matches the list of strings
+ */
+export function isListMatchingQuery(queryText, list){
+  let queryList = queryText.split(' ').sort()
+  let listSorted = list.sort()
+  let len = Math.min(queryList.length, listSorted.length)
+  let matches = 0
+  for (let i = 0; i < len; i++) {
+    if(queryList[i] == listSorted[i])
+      matches++
+  }
+  return matches == len
+}
+
