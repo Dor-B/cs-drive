@@ -45,6 +45,14 @@ export default {
         that.coursesItems = coursesItems;
         console.log(that.coursesItems)
     });
+    // db.ref('/forApproval').push({
+    //         'courseId':'104031',
+    //         'directory': 'hw',
+    //         'driveId': '1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm',
+    //         'semester': 'אביב',
+    //         'number': '3',
+    //         'fileName': ' 2 קובץ בדיקה'
+    // })
   },
   asyncComputed: {
     namesMap:{

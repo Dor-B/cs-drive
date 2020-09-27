@@ -47,7 +47,7 @@
         </tr>
     </template>
     <template v-slot:item.fileName="data">
-        <a target="_blank" rel="noopener noreferrer" :href="data.item.fileUrl">
+        <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(data.item.driveId)">
             {{data.item.fileName}}
         </a>
     
@@ -59,6 +59,9 @@
 
 <script>
 import { DefaultDict } from '../misc.js'
+import { GDRIVE_FILE_URL_PREFIX } from '../constants'
+
+
   export default {
     name: 'FilesDataTable',
     props: {
@@ -90,6 +93,9 @@ import { DefaultDict } from '../misc.js'
     methods: {
         columnValueList(val) {
             return this.items.map(d => d[val])
+        },
+        viewUrlFromId(id){
+            return `${GDRIVE_FILE_URL_PREFIX}${id}`
         }
     }
   }

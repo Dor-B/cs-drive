@@ -33,3 +33,24 @@ export class DefaultDict {
     return fbValue('courses/' + courseId + '/info/directories')
   }
 
+export function filterObject(obj, predicate){
+  let result = {}, key;
+
+  for (key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key) && predicate(obj[key])) {
+          result[key] = obj[key];
+      }
+  }
+
+  return result;
+}
+
+/**
+ * returns a promise after t SECONDS
+ */
+export function delay(t, v) {
+  return new Promise(function(resolve) { 
+      setTimeout(resolve.bind(null, v), t*1000)
+  });
+}
+
