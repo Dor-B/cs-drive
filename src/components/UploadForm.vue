@@ -3,7 +3,6 @@
       v-model="dialog"
       width="500"
     >
-    <!-- <link href="upload-form.css" rel="stylesheet"> -->
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           text
@@ -11,8 +10,8 @@
           v-on="on"
           id="upload-btn"
         >
-        <v-icon left color="white">mdi-upload</v-icon>
-          העלאת חומרים חדשים
+        <v-icon :left="!isMobile" color="white">mdi-upload</v-icon>
+        {{uploadBtnText}}
         </v-btn>
       </template>
 
@@ -21,6 +20,7 @@
         <v-card-text>
             <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
+                <iframe src="https://script.google.com/macros/s/AKfycbzhkE8gwCcmUeZiHW_D2ad2A5xR7XVEnzttyANgoootjE2cieRy/exec" style="border:none;width:100%;height:100%;"></iframe>
                 <v-file-input outlined dense show-size label="קובץ להעלאה" required
                 :rules="fileRules"
                 @change="selectFile"
@@ -87,6 +87,12 @@ import FileMetadataEditor from './FileMetadataEditor'
     computed: {
         formDirHelper(){
             return new FormDirHelper(this.outputData.courseId, this.outputData.directory, this.outputData)
+        },
+        isMobile(){
+            return this.$vuetify.breakpoint.name == 'xs'
+        },
+        uploadBtnText(){
+            return this.isMobile ? '' : 'העלאת חומרים חדשים'
         }
     },
     methods: {
@@ -103,8 +109,14 @@ import FileMetadataEditor from './FileMetadataEditor'
     display: none !important;
 }
 
+.v-card__title{
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
 .v-toolbar__content{
     z-index: 100 !important;
     position: relative;
 }
+
 </style>
