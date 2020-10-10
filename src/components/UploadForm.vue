@@ -20,7 +20,7 @@
         <v-card-text>
             <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
-                <iframe src="https://script.google.com/macros/s/AKfycbzhkE8gwCcmUeZiHW_D2ad2A5xR7XVEnzttyANgoootjE2cieRy/exec" style="border:none;width:100%;height:100%;"></iframe>
+                <iframe id="upload-iframe" :src="iframeUrl" style="border:none;width:100%;height:100%;"></iframe>
                 <v-file-input outlined dense show-size label="קובץ להעלאה" required
                 :rules="fileRules"
                 @change="selectFile"
@@ -41,7 +41,7 @@
         <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-subtitle>
-        <!-- {{outputData.fileName}} -->
+        {{iframeUrl}}
         </v-card-text>
 
         <v-card-actions>
@@ -93,6 +93,13 @@ import FileMetadataEditor from './FileMetadataEditor'
         },
         uploadBtnText(){
             return this.isMobile ? '' : 'העלאת חומרים חדשים'
+        },
+        iframeUrl(){
+          var url = new URL("https://script.google.com/macros/s/AKfycbzhkE8gwCcmUeZiHW_D2ad2A5xR7XVEnzttyANgoootjE2cieRy/exec");
+          // If your expected result is "http://foo.bar/?x=1&y=2&x=42"
+          for(let [key, data] of Object.entries(this.outputData))
+            url.searchParams.append(key, data);
+          return url.href
         }
     },
     methods: {
@@ -100,6 +107,23 @@ import FileMetadataEditor from './FileMetadataEditor'
             this.outputData.fileName = newFile.name
         }
     },
+    watch: {
+      outputData: {
+        handler: function(val){
+          document.querySelector('#upload-iframe').contentWindow.postMessage(JSON.stringify(val), '*');
+          console.log('outputData changed')
+             document.querySelector('#upload-iframe').onload = function(){
+        console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
+      }
+        },
+        deep: true
+      }
+    },
+    created: function(){
+      // document.querySelector('#upload-iframe').onload = function(){
+      //   console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
+      // }
+    }
   }
 </script>
 
