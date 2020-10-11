@@ -58,7 +58,8 @@ export function delay(t, v) {
  * returns whether the queryText (which is a string separated by spaces) matches the list of strings
  */
 export function isListMatchingQuery(queryText, list){
-  let queryList = queryText.split(' ').sort()
+  list = list.map(field => field.toLowerCase())
+  let queryList = queryText.toLowerCase().split(' ')
   let matches = queryList.filter(q => list.some(field => field.includes(q))).length
   return matches >= Math.min(queryList.length, list.length)
 }

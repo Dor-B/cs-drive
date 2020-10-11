@@ -28,7 +28,7 @@
       <v-spacer></v-spacer>
 
       <UploadForm
-       :coursesItems="coursesItems"
+       :coursesItems="coursesItemsByLastSeen"
        :headerNames="namesMap"
       >
       </UploadForm>
@@ -39,7 +39,7 @@
             <v-col cols="12" sm="4">
               <v-autocomplete
               v-model="currentCourseId"
-              :items="coursesItems"
+              :items="coursesItemsByLastSeen"
               label="בחר קורס"
               solo
               light
@@ -57,7 +57,7 @@
         <v-col cols="12" sm="4">
           <v-autocomplete
           v-model="currentCourseId"
-          :items="coursesItems"
+          :items="coursesItemsByLastSeen"
           @change="mobileCourseSearchChange()"
           label="בחר קורס"
           solo
@@ -113,6 +113,7 @@ import { isEmpty, fbValue } from './misc'
 import { db } from './db'
 
 const FILENAME_COL_WIDTH = '200px'
+const NUM_LAST_COURSES = 6
 
 export default {
   name: 'Client',
@@ -136,11 +137,18 @@ export default {
       tmpTitle: 'מדעי המחשב \\ הרצאות',
       search: '',
       iconHover: false,
-      iconClick: false
+      iconClick: false,
+      lastCourses: [],
     }
   },
 
   computed: {
+    coursesItemsByLastSeen: function(){
+      const that = this
+      let lastSeenItems = this.lastCourses.map(id => that.coursesItems.filter(i => i.value == id)[0])
+      let otherItems = this.coursesItems.filter(item => !that.lastCourses.includes(item.value))
+      return [...lastSeenItems, ...otherItems]
+    },
     tableTitle: function(){
       if(isEmpty(this.currentCourseInfo) || isEmpty(this.namesMap) || this.isMobile){
         return ''
@@ -184,6 +192,12 @@ export default {
       document.querySelector('.mobile-course-search input').blur()
     }
   },
+  watch: {
+    currentCourseId: function(newCourse){
+      this.lastCourses = [newCourse, ...this.lastCourses.filter(c => c != newCourse)].slice(0, NUM_LAST_COURSES)
+      localStorage.setItem('lastCourses', JSON.stringify(this.lastCourses))
+    }
+  },
   asyncComputed: {
     items :{
         get(){
@@ -217,7 +231,8 @@ export default {
   },
   
   created : function(){
-
+    let lastCourses = localStorage.getItem('lastCourses')
+    this.lastCourses = lastCourses ? JSON.parse(lastCourses) : []
   } 
 }
 
