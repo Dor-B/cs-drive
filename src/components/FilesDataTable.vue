@@ -15,12 +15,13 @@
     <v-data-table
     v-if="!isMobile"
     v-model="selected"
-    :headers="headers"
+    :headers="headersWithIcon"
     :items="filteredItems"
     :search="search"
     :loading="loading"
+    disable-pagination
+    hide-default-footer
     item-key="name"
-    show-select
     class="elevation-1"
     >
     <template v-slot:body.prepend>
@@ -48,7 +49,13 @@
         </td>
         </tr>
     </template>
+    <template v-slot:header.icon>
+    </template>
+    <template v-slot:item.icon="{item}">
+        <v-icon>{{fileIcon(item.mimeType)}}</v-icon>
+    </template>
     <template v-slot:item.fileName="data">
+        <!-- <v-icon>mdi-check</v-icon> -->
         <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(data.item.driveId)">
             {{data.item.fileName}}
         </a>
@@ -58,6 +65,9 @@
     </v-data-table>
     <div v-else> 
         <v-list-item two-line v-for="(item, i) in filteredMobileItems" :key="i">
+            <v-list-item-icon>
+                <v-icon>{{fileIcon(item.mimeType)}}</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
                 <v-list-item-title>
                     <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(item.driveId)">
@@ -65,7 +75,7 @@
                     </a>
                 </v-list-item-title>
                 <v-list-item-subtitle>{{displayMobileText(item)}}</v-list-item-subtitle>
-        </v-list-item-content>
+            </v-list-item-content>
     </v-list-item>
     </div>
     </v-card>
@@ -109,6 +119,9 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
         filteredMobileItems(){
             if(this.search == '') return this.items
             return this.items.filter(item => isListMatchingQuery(this.search, this.headerDataList(item)))
+        },
+        headersWithIcon(){
+            return [{text:'icon', value:'icon'}, ...this.headers]
         }
     },
     methods: {
@@ -124,6 +137,23 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
         displayMobileText(item){
             return this.headers.map(h => h.value).filter(h => h != 'fileName' && h in item).map(h => item[h])
             .join(', ')
+        },
+        fileIcon(mimeType){
+            const icons = {
+                'application/pdf': 'mdi-pdf-box',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'mdi-file-word-box',
+                'application/msword': 'mdi-file-word-box',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'mdi-file-excel-box',
+                'application/vnd.ms-excel': 'mdi-file-excel-box',
+                'application/vnd.ms-powerpoint': 'mdi-file-powerpoint-box',
+                'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'mdi-file-powerpoint-box',
+                'text/plain': 'mdi-txt-box',
+                'application/vnd.google-apps.spreadsheet': 'mdi-google-spreadsheet',
+                'application/vnd.google-apps.document': 'mdi-file-document',
+            }
+            if(mimeType in icons)
+                return icons[mimeType]
+            return 'mdi-file'
         }
     }
   }
