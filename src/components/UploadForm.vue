@@ -20,12 +20,7 @@
         <v-card-text>
             <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
-                <iframe id="upload-iframe" :src="iframeUrl" style="border:none;width:100%;height:100%;"></iframe>
-                <v-file-input outlined dense show-size label="קובץ להעלאה" required
-                :rules="fileRules"
-                @change="selectFile"
-                class="file-input"
-                ></v-file-input>
+                <iframe id="upload-iframe" :src="iframeUrl"></iframe>
             <FileMetadataEditor
                 v-model="outputData"
                 :coursesItems="coursesItems"
@@ -34,10 +29,6 @@
             >
             </FileMetadataEditor>
             </v-form>
-            <v-btn depressed large color="primary" :disabled="!isFormValid">
-               <v-icon left>mdi-upload</v-icon>
-                העלה
-            </v-btn>
         <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-subtitle>
@@ -96,9 +87,9 @@ import FileMetadataEditor from './FileMetadataEditor'
         },
         iframeUrl(){
           var url = new URL("https://script.google.com/macros/s/AKfycbzhkE8gwCcmUeZiHW_D2ad2A5xR7XVEnzttyANgoootjE2cieRy/exec");
-          // If your expected result is "http://foo.bar/?x=1&y=2&x=42"
           for(let [key, data] of Object.entries(this.outputData))
             url.searchParams.append(key, data);
+          url.searchParams.append('_valid', this.isFormValid)
           return url.href
         }
     },
@@ -141,6 +132,16 @@ import FileMetadataEditor from './FileMetadataEditor'
 .v-toolbar__content{
     z-index: 100 !important;
     position: relative;
+}
+
+</style>
+
+<style scoped>
+#upload-iframe{
+  overflow: hidden;
+  border:none;
+  width:100%;
+  height:100%;
 }
 
 </style>

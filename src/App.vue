@@ -1,5 +1,6 @@
 <template>
 <v-app>
+  <!-- <meta name="theme-color" content="#Afffff"> -->
   <router-view
     :coursesItems="coursesItems"
     :namesMap="namesMap"

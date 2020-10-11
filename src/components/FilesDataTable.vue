@@ -55,7 +55,7 @@
     <template v-slot:item.fileName="data">
         <!-- <v-icon>mdi-check</v-icon> -->
         <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(data.item.driveId)">
-            {{data.item.fileName}}
+            {{shortenFileName(data.item.fileName)}}
         </a>
     
     </template>
@@ -83,6 +83,7 @@
 import { DefaultDict, isListMatchingQuery } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
 
+const MAX_FILENAME_CHARS = 26
 
   export default {
     name: 'FilesDataTable',
@@ -153,6 +154,12 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
             if(mimeType in icons)
                 return icons[mimeType]
             return 'mdi-file'
+        },
+        shortenFileName(filename){
+            const dots = '...'
+            if(filename.length <= MAX_FILENAME_CHARS)
+                return filename
+            return filename.slice(0, MAX_FILENAME_CHARS - dots.length) + dots
         }
     }
   }

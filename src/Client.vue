@@ -11,7 +11,18 @@
     >
       <div class="d-flex align-center">
 
-        <v-toolbar-title>CS Drive</v-toolbar-title>
+        <v-toolbar-title>
+          <img
+           id="logo"
+           src="./graphics/duck-logo.svg"
+           @mousedown="iconClick = true"
+           @mouseup="iconClick = false"
+           @mouseenter="iconHover = true"
+           @mouseleave="iconHover = false; iconClick = false;"
+           :class="{ iconRotate: iconHover, iconSqueeze: iconClick }"
+           />
+          CS Drive 
+        </v-toolbar-title>
       </div>
 
       <v-spacer></v-spacer>
@@ -58,7 +69,7 @@
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <v-expand-transition>
-          <v-card :elevation="isMobile? '1' : '4'">
+          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}">
             <v-tabs
               v-model="tab"
               hide-slider
@@ -101,6 +112,7 @@ import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue } from './misc'
 import { db } from './db'
 
+const FILENAME_COL_WIDTH = '200px'
 
 export default {
   name: 'Client',
@@ -123,13 +135,17 @@ export default {
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
       search: '',
+      iconHover: false,
+      iconClick: false
     }
   },
 
   computed: {
     tableTitle: function(){
-      return ((!isEmpty(this.currentCourseInfo)) && (!isEmpty(this.namesMap))) ? 
-              this.currentCourseInfo.name + ' - ' + this.currentCourseId + ' \\ ' + this.namesMap[this.currentCourseDir] : ''
+      if(isEmpty(this.currentCourseInfo) || isEmpty(this.namesMap) || this.isMobile){
+        return ''
+      }
+      return this.currentCourseInfo.name + ' - ' + this.currentCourseId + ' \\ ' + this.namesMap[this.currentCourseDir]
     },
     
     tabs : function(){
@@ -178,6 +194,7 @@ export default {
     headers:{
         get(){
           return fbValue('headers/' + this.currentCourseDir)
+          .then(hs => hs.map(h => h.value == 'fileName' ? {width:FILENAME_COL_WIDTH, ...h} : h))
         },
         default:[]
     },
@@ -213,5 +230,44 @@ export default {
 
 .desktop-table-row{
   margin-top: 20px;
+}
+</style>
+
+<style scoped>
+
+.fullWidth{
+    width: 100%;
+}
+#logo{
+  position: relative;
+  width: 23px;
+  height: 23px;
+  /* margin-left: -2px; */
+  top: 2px;
+  transition: 1s;
+}
+#logo:hover{
+  /* transform: scaleY(0.8); */
+  transform: rotate(360deg);
+}
+.iconRotate {
+  /* transition: 0.3s !important;
+  transform: scaleY(0.8) !important;
+    transform-origin: bottom !important; */
+    /* animation:spin 1s ease-in-out; */
+}
+
+@keyframes spin { 
+    100% {transform:rotate(360deg); } 
+}
+.iconSqueeze {
+    transform-origin: bottom !important;
+    transform:scaleY(0.8) !important;
+    animation:squeeze 0.3s ease-in-out;
+}
+
+@keyframes squeeze {
+    0% {transform:scaleY(1); transform-origin: bottom;}
+    100% {transform:scaleY(0.8); transform-origin: bottom; } 
 }
 </style>
