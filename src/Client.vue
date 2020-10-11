@@ -171,7 +171,7 @@ export default {
   asyncComputed: {
     items :{
         get(){
-          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir).then(obj => Object.values(obj))
         },
         default:[]
     },
