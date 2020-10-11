@@ -2,9 +2,8 @@
     <v-card flat>
         <v-card-title>
         {{title}}
-      <v-spacer></v-spacer>
+      <v-spacer v-if="!isMobile"></v-spacer>
       <v-text-field
-        v-if="!isMobile"
         v-model="search"
         append-icon="mdi-magnify"
         label="חפש"
@@ -17,7 +16,6 @@
     v-model="selected"
     :headers="headersWithIcon"
     :items="filteredItems"
-    :search="search"
     :loading="loading"
     disable-pagination
     hide-default-footer
@@ -64,7 +62,7 @@
 
     </v-data-table>
     <div v-else> 
-        <v-list-item two-line v-for="(item, i) in filteredMobileItems" :key="i">
+        <v-list-item two-line v-for="(item, i) in filteredItems" :key="i">
             <v-list-item-icon>
                 <v-icon>{{fileIcon(item.mimeType)}}</v-icon>
             </v-list-item-icon>
@@ -103,11 +101,16 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
     },
     computed: {
         filteredItems() {
-            return this.items.filter(d => {
-                return Object.keys(this.filters).every(f => {
-                    return this.filters[f].length < 1 || this.filters[f].includes(d[f])
+            let firstFiltered = this.items
+            if(!this.isMobile){
+                firstFiltered = firstFiltered.filter(d => {
+                    return Object.keys(this.filters).every(f => {
+                        return this.filters[f].length < 1 || this.filters[f].includes(d[f])
+                    })
                 })
-            })
+            }
+            if(this.search == '') return firstFiltered
+            return firstFiltered.filter(item => isListMatchingQuery(this.search, this.headerDataList(item)))
         },
         filterAble(){
             return this.headers.filter((header) => header['filterType'] == 'multiple')
@@ -116,12 +119,8 @@ import { GDRIVE_FILE_URL_PREFIX } from '../constants'
         isMobile(){
             return this.$vuetify.breakpoint.name == 'xs'
         },
-        filteredMobileItems(){
-            if(this.search == '') return this.items
-            return this.items.filter(item => isListMatchingQuery(this.search, this.headerDataList(item)))
-        },
         headersWithIcon(){
-            return [{text:'icon', value:'icon'}, ...this.headers]
+            return [{value:'icon'}, ...this.headers]
         }
     },
     methods: {

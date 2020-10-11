@@ -59,13 +59,7 @@ export function delay(t, v) {
  */
 export function isListMatchingQuery(queryText, list){
   let queryList = queryText.split(' ').sort()
-  let listSorted = list.sort()
-  let len = Math.min(queryList.length, listSorted.length)
-  let matches = 0
-  for (let i = 0; i < len; i++) {
-    if(queryList[i] == listSorted[i])
-      matches++
-  }
-  return matches == len
+  let matches = queryList.filter(q => list.some(field => field.includes(q))).length
+  return matches >= Math.min(queryList.length, list.length)
 }
 
