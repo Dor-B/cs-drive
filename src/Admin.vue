@@ -12,7 +12,15 @@
 
         <v-toolbar-title>CS Drive Admin</v-toolbar-title>
       </div>
-
+      <v-spacer></v-spacer>
+      <v-btn
+        text
+        @click="login()"
+      >
+      <v-icon left>mdi-account</v-icon>
+      התחבר 
+      </v-btn>
+      <h4>{{signedUserText}}</h4>
     </v-app-bar>
   <v-content>
 
@@ -50,6 +58,8 @@
 import UploadApprovalCard from './components/UploadApprovalCard'
 import { fbValue, filterObject } from './misc'
 import { db } from './db'
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 export default {
   name: 'Admin',
@@ -66,7 +76,9 @@ export default {
   data () {
     return {
       byCourse: false,
-      courseId: ''
+      courseId: '',
+      user:null,
+      userError:{message: 'לא מחובר'},
     }
   },
 
@@ -76,11 +88,38 @@ export default {
         return this.filesDataList
       const that = this
       return filterObject(this.filesDataList, (fileData) => fileData.courseId == that.courseId)
+    },
+    signedUserText(){
+      return this.user == null ? this.userError.message : this.user.displayName
     }
   },
 
   methods: {
-
+    login(){
+      const that = this
+      let provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        that.user = user
+        console.log(user);
+        // ...
+      }).catch(function(error) {
+        that.user = null
+        that.userError = error
+        // console.log(error);
+        // Handle Errors here.
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+        // The email of the user's account used.
+        // var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        // var credential = error.credential;
+        // ...
+      });
+    }
   },
   asyncComputed: {
     filesDataList: {
