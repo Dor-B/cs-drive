@@ -49,13 +49,13 @@
     </template>
     <template v-slot:header.icon>
     </template>
-    <template v-slot:item.icon="{item}">
+    <template v-slot:item.icon="{ item }">
         <v-icon>{{fileIcon(item.mimeType)}}</v-icon>
     </template>
-    <template v-slot:item.fileName="data">
+    <template v-slot:item.fileName="{ item }">
         <!-- <v-icon>mdi-check</v-icon> -->
-        <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(data.item.driveId)">
-            {{shortenFileName(data.item.fileName)}}
+        <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(item.driveId)" :title="item.fileName">
+            {{shortenFileName(item.fileName)}}
         </a>
     
     </template>

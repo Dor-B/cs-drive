@@ -21,13 +21,18 @@
             <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
                 <iframe id="upload-iframe" :src="iframeUrl"></iframe>
-            <FileMetadataEditor
-                v-model="outputData"
-                :coursesItems="coursesItems"
-                :headerNames="headerNames"
-                :formDirHelper="formDirHelper"
-            >
-            </FileMetadataEditor>
+                <v-checkbox
+                  v-model="outputData._changeName"
+                  label="צור שם אוטומטי לפי הנתונים"
+                >
+                </v-checkbox>
+                <FileMetadataEditor
+                    v-model="outputData"
+                    :coursesItems="coursesItems"
+                    :headerNames="headerNames"
+                    :formDirHelper="formDirHelper"
+                >
+                </FileMetadataEditor>
             </v-form>
         <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
@@ -69,6 +74,7 @@ import FileMetadataEditor from './FileMetadataEditor'
             outputData : {
                 courseId: '',
                 directory: '',
+                _changeName: true
             },
             fileRules: [
                 v => !!v || 'חובה לבחור קובץ',
@@ -99,16 +105,16 @@ import FileMetadataEditor from './FileMetadataEditor'
         }
     },
     watch: {
-      outputData: {
-        handler: function(val){
-          document.querySelector('#upload-iframe').contentWindow.postMessage(JSON.stringify(val), '*');
-          console.log('outputData changed')
-             document.querySelector('#upload-iframe').onload = function(){
-        console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
-      }
-        },
-        deep: true
-      }
+      // outputData: {
+      //   handler: function(val){
+      //     document.querySelector('#upload-iframe').contentWindow.postMessage(JSON.stringify(val), '*');
+      //     console.log('outputData changed')
+      //        document.querySelector('#upload-iframe').onload = function(){
+      //   console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
+      // }
+      //   },
+      //   deep: true
+      // }
     },
     created: function(){
       // document.querySelector('#upload-iframe').onload = function(){
