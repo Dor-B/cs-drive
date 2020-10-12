@@ -139,12 +139,12 @@ export default {
       search: '',
       iconHover: false,
       iconClick: false,
-      def_lastCourses: new LocalStorage('lastCourses', []),
+      LS_lastCourses: new LocalStorage('lastCourses', []),
     }
   },
 
   computed: {
-    lastCourses: LocalStorage.getComputedField('def_lastCourses'),
+    lastCourses: LocalStorage.getComputedField('LS_lastCourses'),
     coursesItemsByLastSeen: function(){
       const that = this
       let lastSeenItems = this.lastCourses.map(id => that.coursesItems.filter(i => i.value == id)[0])

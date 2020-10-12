@@ -20,12 +20,6 @@
         <v-card-text>
             <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
             <v-form v-model="isFormValid">
-                <iframe id="upload-iframe" :src="iframeUrl"></iframe>
-                <v-checkbox
-                  v-model="outputData._changeName"
-                  label="צור שם אוטומטי לפי הנתונים"
-                >
-                </v-checkbox>
                 <FileMetadataEditor
                     v-model="outputData"
                     :coursesItems="coursesItems"
@@ -33,11 +27,16 @@
                     :formDirHelper="formDirHelper"
                 >
                 </FileMetadataEditor>
+                <!-- <v-checkbox
+                  v-model="outputData._changeName"
+                  label="צור שם אוטומטי לפי הנתונים"
+                >
+                </v-checkbox> -->
+                <iframe id="upload-iframe" :src="iframeUrl"></iframe>
             </v-form>
         <v-card-subtitle>
         *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-subtitle>
-        {{iframeUrl}}
         </v-card-text>
 
         <v-card-actions>
