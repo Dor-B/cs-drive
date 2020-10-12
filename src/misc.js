@@ -64,3 +64,45 @@ export function isListMatchingQuery(queryText, list){
   return matches >= Math.min(queryList.length, list.length)
 }
 
+export class LocalStorage{
+  /**
+   * 
+   * @param {String} field the name of the field in localStorage used to save the value
+   * @param {JSON.stringify compatiable} defaultValue assigned value in case field does not exist in localStorage
+   */
+  constructor(field, defaultValue=null){
+    this.field = field
+    let before = localStorage.getItem(field)
+    if(before){
+      this.value = JSON.parse(before)
+    }else{
+      this.value = defaultValue
+      localStorage.setItem(field, JSON.stringify(this.value))
+    }
+  }
+  get val(){
+    return this.value
+  }
+  set val(newVal){
+    localStorage.setItem(this.field, JSON.stringify(newVal))
+    this.value = newVal
+  }
+  /**
+   * Returns a computed property for vue component that handles localStorage automatically.
+   * You first must set a LocalStorage instance in the component's data,
+   *  e.g
+   * ```javascript
+   * ...
+   *  data: {a: new LocalStorage('myList', [])},
+   * computed: {l: LocalStorage.getComputedField('a')}
+   * ...
+   * ```
+   * @param {String} localStorageInstanceName if l is LocalStorage instance in vue component (this.l) =>> 'l'
+   */
+  static getComputedField(localStorageInstanceName){
+    return {
+      get: function(){return this[localStorageInstanceName].val},
+      set: function(val){this[localStorageInstanceName].val = val}
+    }
+  }
+}

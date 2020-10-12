@@ -109,11 +109,12 @@
 
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
-import { isEmpty, fbValue } from './misc'
+import { isEmpty, fbValue, LocalStorage } from './misc'
 import { db } from './db'
 
 const FILENAME_COL_WIDTH = '200px'
 const NUM_LAST_COURSES = 6
+
 
 export default {
   name: 'Client',
@@ -138,11 +139,12 @@ export default {
       search: '',
       iconHover: false,
       iconClick: false,
-      lastCourses: [],
+      def_lastCourses: new LocalStorage('lastCourses', []),
     }
   },
 
   computed: {
+    lastCourses: LocalStorage.getComputedField('def_lastCourses'),
     coursesItemsByLastSeen: function(){
       const that = this
       let lastSeenItems = this.lastCourses.map(id => that.coursesItems.filter(i => i.value == id)[0])
@@ -194,8 +196,9 @@ export default {
   },
   watch: {
     currentCourseId: function(newCourse){
-      this.lastCourses = [newCourse, ...this.lastCourses.filter(c => c != newCourse)].slice(0, NUM_LAST_COURSES)
-      localStorage.setItem('lastCourses', JSON.stringify(this.lastCourses))
+      if(newCourse != null){
+        this.lastCourses = [newCourse, ...this.lastCourses.filter(c => c != newCourse)].slice(0, NUM_LAST_COURSES)
+      }
     }
   },
   asyncComputed: {
@@ -231,8 +234,9 @@ export default {
   },
   
   created : function(){
-    let lastCourses = localStorage.getItem('lastCourses')
-    this.lastCourses = lastCourses ? JSON.parse(lastCourses) : []
+    if(this.lastCourses.length > 0){
+      this.currentCourseId = this.lastCourses[0]
+    }
   } 
 }
 
