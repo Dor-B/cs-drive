@@ -23,7 +23,9 @@
       <h4>{{signedUserText}}</h4>
     </v-app-bar>
   <v-content>
-
+    <v-btn @click="test()">
+      TEST
+    </v-btn>
     <v-container fluid class="grey lighten-4">
       <v-checkbox 
         v-model="byCourse"
@@ -60,6 +62,9 @@ import { fbValue, filterObject } from './misc'
 import { db } from './db'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/functions'
+
+var functions = firebase.functions();
 
 export default {
   name: 'Admin',
@@ -95,6 +100,12 @@ export default {
   },
 
   methods: {
+    test(){
+      let test = firebase.functions().httpsCallable('test1');
+      test({text: 'messageText'}).then(function(result) {
+        console.log(result)
+      });
+    },
     login(){
       const that = this
       let provider = new firebase.auth.GoogleAuthProvider();
