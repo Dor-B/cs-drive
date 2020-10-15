@@ -14,18 +14,20 @@
       </div>
       <v-spacer></v-spacer>
       <v-btn
+        v-if="!user"
         text
         @click="login()"
       >
       <v-icon left>mdi-account</v-icon>
       התחבר 
       </v-btn>
-      <h4>{{signedUserText}}</h4>
+      <h4 v-if="user">{{user.displayName}}</h4>
+      <v-icon v-if="user" @click="logout()">mdi-logout</v-icon>
     </v-app-bar>
   <v-content>
-    <v-btn @click="test()">
+    <!-- <v-btn @click="test()">
       TEST
-    </v-btn>
+    </v-btn> -->
     <v-container fluid class="grey lighten-4">
       <v-checkbox 
         v-model="byCourse"
@@ -96,20 +98,23 @@ export default {
       return filterObject(this.filesDataList, (fileData) => fileData.courseId == that.courseId)
     },
     signedUserText(){
-      return this.user == null ? this.userError.message : this.user.displayName
+      return this.user == null ? '' : this.user.displayName
     }
   },
 
   methods: {
-    test(){
-      let test = firebase.functions().httpsCallable('test1');
-      test({text: 'messageText'}).then(function(result) {
-        console.log(result)
-      });
-    },
+    // test(){
+    //   let test = firebase.functions().httpsCallable('test1');
+    //   test({text: 'messageText'}).then(function(result) {
+    //     console.log(result)
+    //   });
+    // },
     login(){
       const that = this
       let provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
       firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // var token = result.credential.accessToken;
@@ -131,6 +136,10 @@ export default {
         // var credential = error.credential;
         // ...
       });
+    },
+    logout(){
+      firebase.auth().signOut()
+      this.user = null
     }
   },
   asyncComputed: {
