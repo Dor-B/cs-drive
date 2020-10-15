@@ -19,7 +19,7 @@
         </v-form>
             <v-card-actions>
         <v-btn
-            @click="accept"
+            @click="_accept"
             color="primary"
             text
             outlined
@@ -29,7 +29,7 @@
         </v-btn>
 
         <v-btn
-            @click="remove"
+            @click="_remove"
             color="primary"
             text
         >
@@ -46,6 +46,7 @@
           text
           @click="undo"
         >
+        <iframe :src="iframeUrl" style="display:none;"/>
           בטל
         </v-btn>
     </v-snackbar>
@@ -55,8 +56,8 @@
 <script>
 import FileMetadataEditor from './FileMetadataEditor'
 import {FormDirHelper} from '../upload-form-helper'
-import {GDRIVE_FILE_URL_PREFIX} from '../constants'
-import { delay } from '../misc'
+import {GDRIVE_FILE_URL_PREFIX, ADMIN_APPS_SCRIPT_URL} from '../constants'
+import { delay, getAppsScriptIframeUrl } from '../misc'
 
 /**
  * Number of seconds to wait before removing/accepting file
@@ -70,7 +71,8 @@ export default {
       coursesItems: Array,
       namesMap: Object,
       dbKey: String,
-      fileData: Object
+      fileData: Object,
+      user: Object,
   },
   components: {
       FileMetadataEditor
@@ -82,7 +84,8 @@ export default {
         undoAction: false,
         currentAction: '',
         showUndo: false,
-        undoTimeout: UNDO_PERIOD_SECS
+        undoTimeout: UNDO_PERIOD_SECS,
+        iframeUrl: ''
     }
   },
 
@@ -104,15 +107,35 @@ export default {
   },
 
   methods: {
-      remove(){
+      _remove(){
         this.currentAction = 'remove'
-        const that = this
-        this._delayAction(() => {console.log(`Removing ${that.dbKey}`)}, UNDO_PERIOD_SECS)
+        this._delayAction(this.remove, UNDO_PERIOD_SECS)
+      },
+      _accept(){
+        this.currentAction = 'accept'
+        this._delayAction(this.accept, UNDO_PERIOD_SECS)
+      },
+      remove(){
+          const that = this
+          this.iframeUrl = getAppsScriptIframeUrl(
+            ADMIN_APPS_SCRIPT_URL,
+            this.fileData,
+            {accept: false,
+             key:that.dbKey,
+             id:that.user ? that.user.uid : 'unauthorized'}
+          )
+          console.log(`Removing ${this.dbKey}: ${this.iframeUrl}`)
       },
       accept(){
-        this.currentAction = 'accept'
-        const that = this
-        this._delayAction(() => {console.log(`Accepting ${that.dbKey}`)}, UNDO_PERIOD_SECS)
+          const that = this
+          this.iframeUrl = getAppsScriptIframeUrl(
+            ADMIN_APPS_SCRIPT_URL,
+            this.fileData,
+            {accept: true,
+             key:that.dbKey,
+             id:that.user ? that.user.uid : 'unauthorized'}
+          )
+          console.log(`Accepting ${this.dbKey}: ${this.iframeUrl}`)
       },
       _delayAction(action, delaySecs){
         this.showUndo = true

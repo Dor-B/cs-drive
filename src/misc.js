@@ -64,6 +64,15 @@ export function isListMatchingQuery(queryText, list){
   return matches >= Math.min(queryList.length, list.length)
 }
 
+export function getAppsScriptIframeUrl(baseUrl, paramsObj, metaParamsObj){
+  let url = new URL(baseUrl);
+  for(let [key, data] of Object.entries(paramsObj))
+    url.searchParams.append(key, data);
+  for(let [key, data] of Object.entries(metaParamsObj))
+    url.searchParams.append(`_${key}`, data);
+  return url.href
+}
+
 export class LocalStorage{
   /**
    * 

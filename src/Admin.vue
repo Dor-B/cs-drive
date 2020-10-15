@@ -48,6 +48,7 @@
              :fileData="fileData"
              :coursesItems="coursesItems"
              :namesMap="namesMap"
+             :user="user"
             ></UploadApprovalCard>
         </v-row>
       </template>
@@ -64,7 +65,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/functions'
 
-var functions = firebase.functions();
+// var functions = firebase.functions();
 
 export default {
   name: 'Admin',

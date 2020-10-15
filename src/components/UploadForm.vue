@@ -56,6 +56,8 @@
 <script>
 import {FormDirHelper} from '../upload-form-helper'
 import FileMetadataEditor from './FileMetadataEditor'
+import {getAppsScriptIframeUrl} from '../misc'
+import {UPLOAD_FILE_APPS_SCRIPT_URL} from '../constants'
 
   export default {
     name: 'UploadForm',
@@ -91,11 +93,12 @@ import FileMetadataEditor from './FileMetadataEditor'
             return this.isMobile ? '' : 'העלאת חומרים חדשים'
         },
         iframeUrl(){
-          var url = new URL("https://script.google.com/macros/s/AKfycbzhkE8gwCcmUeZiHW_D2ad2A5xR7XVEnzttyANgoootjE2cieRy/exec");
-          for(let [key, data] of Object.entries(this.outputData))
-            url.searchParams.append(key, data);
-          url.searchParams.append('_valid', this.isFormValid)
-          return url.href
+          const that = this
+          return getAppsScriptIframeUrl(
+            UPLOAD_FILE_APPS_SCRIPT_URL,
+            this.outputData,
+            {valid: that.isFormValid}
+          )
         }
     },
     methods: {
