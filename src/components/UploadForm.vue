@@ -18,7 +18,7 @@
       <v-card>
         <v-card-title>העלאת חומרים פומביים לדרייב</v-card-title>
         <v-card-text>
-            <!-- בחרו קובץ ומלאו כמה פרטים עליו -->
+            שדה חובה*
             <v-form v-model="isFormValid">
                 <FileMetadataEditor
                     v-model="outputData"
@@ -27,15 +27,15 @@
                     :formDirHelper="formDirHelper"
                 >
                 </FileMetadataEditor>
-                <!-- <v-checkbox
+                <v-checkbox
                   v-model="outputData._changeName"
                   label="צור שם אוטומטי לפי הנתונים"
                 >
-                </v-checkbox> -->
+                </v-checkbox>
                 <iframe id="upload-iframe" :src="iframeUrl"></iframe>
             </v-form>
         <v-card-subtitle>
-        *הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
+        **הקובץ יופיע באתר רק לאחר אישור אדמיניסטרטור
         </v-card-subtitle>
         </v-card-text>
 

@@ -28,7 +28,7 @@
             <v-icon>mdi-filter-variant</v-icon>
         </td>
         <td
-            v-for="(header, i) in headers"
+            v-for="(header, i) in nonEmptyHeaders"
             :key="header.text"
         >
             <template v-if="filterAble.hasOwnProperty(header.value)">
@@ -101,6 +101,9 @@ const MAX_FILENAME_CHARS = 26
         }
     },
     computed: {
+        nonEmptyHeaders(){
+            return this.headers.filter(h => this.items.some(item => h.value in item))
+        },
         filteredItems() {
             let firstFiltered = this.items
             if(!this.isMobile){
@@ -121,7 +124,7 @@ const MAX_FILENAME_CHARS = 26
             return this.$vuetify.breakpoint.name == 'xs'
         },
         headersWithIcon(){
-            return [{value:'icon'}, ...this.headers]
+            return [{value:'icon'}, ...this.nonEmptyHeaders]
         }
     },
     methods: {
@@ -139,6 +142,8 @@ const MAX_FILENAME_CHARS = 26
             .join(', ')
         },
         fileIcon(mimeType){
+            if(mimeType && mimeType.startsWith('image'))
+                return 'mdi-image'
             const icons = {
                 'application/pdf': 'mdi-pdf-box',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'mdi-file-word-box',

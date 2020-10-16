@@ -113,19 +113,14 @@ export default {
       const that = this
       let provider = new firebase.auth.GoogleAuthProvider();
       provider.setCustomParameters({
-        prompt: 'select_account'
+        prompt: 'select_account' // always ask for account
       });
-      firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        that.user = user
-        console.log(user);
-        // ...
-      }).catch(function(error) {
+      firebase.auth().signInWithPopup(provider)
+      .then(({user}) => that.user = user)
+      .catch(function(error) {
         that.user = null
         that.userError = error
+        console.log({error})
         // console.log(error);
         // Handle Errors here.
         // var errorCode = error.code;

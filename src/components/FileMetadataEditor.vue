@@ -3,7 +3,7 @@
         <v-autocomplete
                 v-model="outputData.courseId"
                 :items="coursesItems"
-                label="קורס"
+                label="קורס*"
                 light
                 required
                 :rules="courseRules"
@@ -11,7 +11,7 @@
         <v-autocomplete v-if="isCourseChosen"
                 v-model="outputData.directory"
                 :items="directories"
-                label="סוג החומר"
+                label="סוג החומר*"
                 light
                 required
                 :rules="directoryRules"
@@ -22,6 +22,7 @@
                 :formDirHelper="formDirHelper"
                 :header="header.value"
                 :helperText="header.text"
+                :required="header.required"
         >
         </UploadInput>
                 <!-- {{outputData}} -->

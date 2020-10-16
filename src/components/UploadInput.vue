@@ -2,16 +2,16 @@
     <v-autocomplete v-if="formDirHelper.isAutocomplete(header)"
                     v-model="output"
                     :items="formDirHelper.getAutocompleteList(header)"
-                    :label="helperText"
+                    :label="helperTextComputed"
                     light
-                    required
+                    :required="required"
     ></v-autocomplete>
     <v-text-field v-else
                     v-model="output"
                     :rules="formDirHelper.getRulesList(header)"
-                    :label="helperText"
+                    :label="helperTextComputed"
                     light
-                    required
+                    :required="required"
     >
     </v-text-field>
 </template>
@@ -25,11 +25,17 @@ import {FormDirHelper} from '../upload-form-helper'
         formDirHelper : FormDirHelper,
         value: String,
         header : String,
+        required: Boolean,
         helperText: String
     },
     data() {
         return {
             output: ''
+        }
+    },
+    computed: {
+        helperTextComputed(){
+            return this.helperText + (this.required ? '*' : '')
         }
     },
     watch: {
