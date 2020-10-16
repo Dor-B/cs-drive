@@ -36,6 +36,7 @@
             מחק
         </v-btn>
         </v-card-actions>
+        <iframe :src="iframeUrl" style="display:none;"/>
     </v-card>
     <v-snackbar
       v-model="showUndo"
@@ -46,7 +47,6 @@
           text
           @click="undo"
         >
-        <iframe :src="iframeUrl" style="display:none;"/>
           בטל
         </v-btn>
     </v-snackbar>
