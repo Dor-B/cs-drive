@@ -69,7 +69,7 @@
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <v-expand-transition>
-          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}">
+          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="courseHasItems">
             <v-tabs
               v-model="tab"
               hide-slider
@@ -94,6 +94,7 @@
                     </FilesDataTable>
                 </v-card>
           </v-card>
+          <p v-else>אין עדיין קבצים בקורס זה</p>
         </v-expand-transition>
       </v-row>
     </v-container>
@@ -109,7 +110,7 @@
 
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
-import { isEmpty, fbValue, LocalStorage } from './misc'
+import { isEmpty, fbValue, fbPathHasChild, LocalStorage } from './misc'
 import { db } from './db'
 
 const FILENAME_COL_WIDTH = '200px'
@@ -132,7 +133,7 @@ export default {
   data () {
     return {
       coursesIDs : [],
-      currentCourseId : '234114',
+      currentCourseId : '888888',
       tab: 0,
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
@@ -202,6 +203,12 @@ export default {
     }
   },
   asyncComputed: {
+    courseHasItems: {
+      get(){
+          return fbPathHasChild('courses/' + this.currentCourseId, 'directories')
+        },
+        default:true
+    },
     items :{
         get(){
           return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir).then(obj => Object.values(obj))
