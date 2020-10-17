@@ -22,6 +22,19 @@ export default {
       coursesItems: []
     }
   },
+  metaInfo() {
+    return {
+      title: "CS Drive",
+      meta: [
+        {
+          vmid: "description",
+          name: "description",
+          content: "hello world, this is an example of adding a description with vueMeta",
+          // icon: './graphics/pp.jpg'
+        }
+      ]
+    };
+  },
 
   computed: {
     

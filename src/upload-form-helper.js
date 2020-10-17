@@ -76,10 +76,16 @@ export class FormDirHelper{
     }
 
     getRulesList(inputHeader){
+        const MAX_COMMENTS_LENGTH = 35
         if(inputHeader == 'number'){
             return [
                 (num => (/^\d+$/.test(num) || 'הקלט אינו מספר חיובי')),
                 (num => (parseInt(num) <= MAX_MATERIAL_NUMBER) || 'המספר שהוכנס גדול מדי')
+            ]
+        }
+        if(inputHeader == 'comments'){
+            return [
+                (comment => comment.length <= MAX_COMMENTS_LENGTH || `הכנס עד ${MAX_COMMENTS_LENGTH} תווים`),
             ]
         }
         // default is no rule

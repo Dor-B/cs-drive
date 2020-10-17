@@ -94,7 +94,7 @@
                     </FilesDataTable>
                 </v-card>
           </v-card>
-          <p v-else>אין עדיין קבצים בקורס זה</p>
+          <p v-else>אין עדיין קבצים בקורס זה, בואו לתרום ולעלות קבצים דרך הכפתור משמאל למעלה!</p>
         </v-expand-transition>
       </v-row>
     </v-container>
