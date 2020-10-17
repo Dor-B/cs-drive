@@ -29,31 +29,35 @@
       TEST
     </v-btn> -->
     <v-container fluid class="grey lighten-4">
-      <v-checkbox 
-        v-model="byCourse"
-        label="הצג קורס ספציפי"
-      >
-      </v-checkbox>
-      <v-autocomplete
-        v-if="byCourse"
-        id="course-select"
-        v-model="courseId"
-        :items="coursesItems"
-        label="בחר קורס"
-        light
-      ></v-autocomplete>
+      <div v-if="user">
+        {{user.uid}}
+        <v-checkbox 
+          v-model="byCourse"
+          label="הצג קורס ספציפי"
+        >
+        </v-checkbox>
+        <v-autocomplete
+          v-if="byCourse"
+          id="course-select"
+          v-model="courseId"
+          :items="coursesItems"
+          label="בחר קורס"
+          light
+        ></v-autocomplete>
 
-      <template v-for="(fileData, fileKey) in filteredFiles">
-        <v-row dense justify="center" align="center" :key="fileKey" class="card-row">
-            <UploadApprovalCard
-             :dbKey="fileKey"
-             :fileData="fileData"
-             :coursesItems="coursesItems"
-             :namesMap="namesMap"
-             :user="user"
-            ></UploadApprovalCard>
-        </v-row>
-      </template>
+        <template v-for="(fileData, fileKey) in filteredFiles">
+          <v-row dense justify="center" align="center" :key="fileKey" class="card-row">
+              <UploadApprovalCard
+              :dbKey="fileKey"
+              :fileData="fileData"
+              :coursesItems="coursesItems"
+              :namesMap="namesMap"
+              :user="user"
+              ></UploadApprovalCard>
+          </v-row>
+        </template>
+      </div>
+      <p v-else>התחבר תחילה למשתמש אדמין. שים לב שהפעולות לא יעבדו אם אינך אדמין.</p>
     </v-container>
   </v-content>
 </div>

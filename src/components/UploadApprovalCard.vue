@@ -1,5 +1,6 @@
 <template>
 <div>
+    <iframe :src="iframeUrl" style="display:none;"/>
     <v-card v-if="showComponent">
         <v-card-title>
             <a target="_blank" rel="noopener noreferrer" :href="fileUrl">
@@ -36,7 +37,6 @@
             מחק
         </v-btn>
         </v-card-actions>
-        <iframe :src="iframeUrl" style="display:none;"/>
     </v-card>
     <v-snackbar
       v-model="showUndo"
@@ -122,7 +122,7 @@ export default {
             this.fileData,
             {accept: false,
              key:that.dbKey,
-             id:that.user ? that.user.uid : 'unauthorized'}
+             uid:that.user ? that.user.uid : 'unauthorized'}
           )
           console.log(`Removing ${this.dbKey}: ${this.iframeUrl}`)
       },
@@ -133,7 +133,7 @@ export default {
             this.fileData,
             {accept: true,
              key:that.dbKey,
-             id:that.user ? that.user.uid : 'unauthorized'}
+             uid:that.user ? that.user.uid : 'unauthorized'}
           )
           console.log(`Accepting ${this.dbKey}: ${this.iframeUrl}`)
       },
