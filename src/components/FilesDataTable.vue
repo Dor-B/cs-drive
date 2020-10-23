@@ -105,12 +105,18 @@ const MAX_FILENAME_CHARS = 26
             return this.headers.filter(h => this.items.some(item => h.value in item))
         },
         filteredItems() {
+            const filterMatchesItem = ([filterName, filterList], item) => {
+                if(filterList.length == 0)
+                    return true
+                if(this.isCommaSeparatedField(filterName)){
+                    return filterList.every(filter => this.commaSeparatedToList(item[filterName]).includes(filter))
+                }
+                return filterList.includes(item[filterName])
+            }
             let firstFiltered = this.items
             if(!this.isMobile){
-                firstFiltered = firstFiltered.filter(d => {
-                    return Object.keys(this.filters).every(f => {
-                        return this.filters[f].length < 1 || this.filters[f].includes(d[f])
-                    })
+                firstFiltered = firstFiltered.filter(item => {
+                    return Object.entries(this.filters).every(filterPair => filterMatchesItem(filterPair, item))
                 })
             }
             if(this.search == '') return firstFiltered
@@ -128,8 +134,21 @@ const MAX_FILENAME_CHARS = 26
         }
     },
     methods: {
-        columnValueList(val) {
-            return this.items.map(d => d[val])
+        isCommaSeparatedField(fieldName){
+            return ['comments'].includes(fieldName)
+        },
+        commaSeparatedToList(commaSeparatedText){
+            if(!commaSeparatedText) return []
+            return commaSeparatedText.split(',').map(comment => comment.trim())
+        },
+        columnValueList(field) {
+            const fieldValues = this.items.map(item => item[field])
+            if(this.isCommaSeparatedField(field)){
+                return fieldValues
+                .map(commaText => this.commaSeparatedToList(commaText)) // "a, b" --> ["a", "b"]
+                .reduce((acc, newList) => [...acc, ...newList])
+            }
+            return fieldValues
         },
         viewUrlFromId(id){
             return `${GDRIVE_FILE_URL_PREFIX}${id}`
@@ -138,7 +157,11 @@ const MAX_FILENAME_CHARS = 26
             return this.headers.map(h => h.value).filter(h => h in item).map(h => item[h])
         },
         displayMobileText(item){
-            return this.headers.map(h => h.value).filter(h => h != 'fileName' && h in item).map(h => item[h])
+            return this.headers.map(h => h.value).filter(h => h != 'fileName' && h in item)
+            .map(h => {
+                if(h == 'number') return `מס' ${item[h]}`
+                return item[h]
+            })
             .join(', ')
         },
         fileIcon(mimeType){
