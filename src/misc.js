@@ -49,6 +49,20 @@ export function filterObject(obj, predicate){
   return result;
 }
 
+export function sortWithNumbersCmp(a, b){
+  function defaultSortCmp(x, y){
+    if(x == y) return 0
+    if(x < y) return -1
+    if(x > y) return 1
+  }
+  const aNum = parseInt(a)
+  const bNum = parseInt(b)
+  let bothNums = !Number.isNaN(aNum) && !Number.isNaN(bNum)
+  if(bothNums)
+    return defaultSortCmp(aNum, bNum)
+  return defaultSortCmp(a, b)
+}
+
 /**
  * returns a promise after t SECONDS
  */

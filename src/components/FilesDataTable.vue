@@ -22,7 +22,7 @@
     item-key="name"
     class="elevation-1"
     >
-    <template v-slot:body.prepend>
+    <template v-slot:body.prepend v-if="nonEmptyHeaders.length > 1">
         <tr class="grey lighten-3">
         <td>
             <v-icon>mdi-filter-variant</v-icon>
@@ -33,7 +33,7 @@
         >
             <template v-if="filterAble.hasOwnProperty(header.value)">
             <v-select
-              style="max-width: 200px;"
+              style="max-width: 120px;"
               multiple clearable
               :items="columnValueList(header.value)"
               v-model="filters[header.value]"
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { DefaultDict, isListMatchingQuery } from '../misc.js'
+import { DefaultDict, isListMatchingQuery, sortWithNumbersCmp } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
 
 const MAX_FILENAME_CHARS = 26
@@ -124,7 +124,7 @@ const MAX_FILENAME_CHARS = 26
         },
         filterAble(){
             return this.headers.filter((header) => header['filterType'] == 'multiple')
-                        .reduce((ac,a) => ({...ac,[a.value]:''}),{})
+                        .reduce((ac,a) => ({...ac,[a.value]:''}),{}) // to object
         },
         isMobile(){
             return this.$vuetify.breakpoint.name == 'xs'
@@ -142,13 +142,13 @@ const MAX_FILENAME_CHARS = 26
             return commaSeparatedText.split(',').map(comment => comment.trim())
         },
         columnValueList(field) {
-            const fieldValues = this.items.map(item => item[field])
+            let fieldValues = this.items.map(item => item[field])
             if(this.isCommaSeparatedField(field)){
-                return fieldValues
+                fieldValues = fieldValues
                 .map(commaText => this.commaSeparatedToList(commaText)) // "a, b" --> ["a", "b"]
                 .reduce((acc, newList) => [...acc, ...newList])
             }
-            return fieldValues
+            return fieldValues.sort(sortWithNumbersCmp)
         },
         viewUrlFromId(id){
             return `${GDRIVE_FILE_URL_PREFIX}${id}`
