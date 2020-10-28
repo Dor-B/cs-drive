@@ -113,7 +113,11 @@ import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue, fbPathHasChild, LocalStorage } from './misc'
 import { db } from './db'
 
-const FILENAME_COL_WIDTH = '200px'
+const COL_WIDTHS = {
+  'fileName' : '200px',
+  'icon': '200px',
+}
+
 const NUM_LAST_COURSES = 6
 
 
@@ -217,8 +221,11 @@ export default {
     },
     headers:{
         get(){
+          const getWidth = (headerValue) => COL_WIDTHS[headerValue] ? {width: COL_WIDTHS[headerValue]} : {} 
           return fbValue('headers/' + this.currentCourseDir)
-          .then(hs => hs.map(h => h.value == 'fileName' ? {width:FILENAME_COL_WIDTH, ...h} : h))
+          .then(hs =>
+           hs.map(h => ({...getWidth(h.value), ...h}))
+          )
         },
         default:[]
     },

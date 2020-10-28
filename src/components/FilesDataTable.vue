@@ -13,7 +13,6 @@
     </v-card-title>
     <v-data-table
     v-if="!isMobile"
-    v-model="selected"
     :headers="headersWithIcon"
     :items="filteredItems"
     :loading="loading"
@@ -80,7 +79,7 @@
 </template>
 
 <script>
-import { DefaultDict, isListMatchingQuery, sortWithNumbersCmp } from '../misc.js'
+import { isListMatchingQuery, sortWithNumbersCmp } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
 
 const MAX_FILENAME_CHARS = 26
@@ -95,9 +94,8 @@ const MAX_FILENAME_CHARS = 26
     },
     data() {
         return {
-            selected : [],
             search: '',
-            filters: {...(new DefaultDict(Array))}
+            filters: {}
         }
     },
     computed: {
@@ -130,7 +128,12 @@ const MAX_FILENAME_CHARS = 26
             return this.$vuetify.breakpoint.name == 'xs'
         },
         headersWithIcon(){
-            return [{value:'icon'}, ...this.nonEmptyHeaders]
+            return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders]
+        }
+    },
+    watch: {
+        headers: function(){
+            this.filters = {}
         }
     },
     methods: {
