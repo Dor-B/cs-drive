@@ -30,6 +30,7 @@
                 <v-checkbox
                   v-model="outputData._changeName"
                   label="צור שם אוטומטי לפי הנתונים"
+                  :disabled="outputData.directory=='auxiliary'"
                 >
                 </v-checkbox>
                 <iframe id="upload-iframe" :src="iframeUrl"></iframe>
@@ -75,7 +76,7 @@ import {UPLOAD_FILE_APPS_SCRIPT_URL} from '../constants'
             outputData : {
                 courseId: '',
                 directory: '',
-                _changeName: true
+                _changeName: false
             },
             fileRules: [
                 v => !!v || 'חובה לבחור קובץ',

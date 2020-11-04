@@ -31,6 +31,11 @@
     <v-container fluid class="grey lighten-4">
       <div v-if="user">
         {{user.uid}}
+        <AdminFileEditor
+              :coursesItems="coursesItems"
+              :namesMap="namesMap"
+              :user="user"
+        ></AdminFileEditor>
         <v-checkbox 
           v-model="byCourse"
           label="הצג קורס ספציפי"
@@ -65,6 +70,7 @@
 
 <script>
 import UploadApprovalCard from './components/UploadApprovalCard'
+import AdminFileEditor from './components/AdminFileEditor'
 import { fbValue, filterObject } from './misc'
 import { db } from './db'
 import * as firebase from 'firebase/app';
@@ -77,7 +83,8 @@ export default {
   name: 'Admin',
 
   components:{
-      UploadApprovalCard
+      UploadApprovalCard,
+      AdminFileEditor
   },
 
   props:{
@@ -154,6 +161,9 @@ export default {
     const that = this
     db.ref('/forApproval').on('child_removed', function(childSnapshot){
       delete that.filesDataList[childSnapshot.key]
+    })
+    db.ref('/forApproval').on('child_added', function(childSnapshot){
+      that.filesDataList[childSnapshot.key] = childSnapshot.val()
     })
   } 
 }

@@ -114,7 +114,7 @@ import { isEmpty, fbValue, fbPathHasChild, LocalStorage } from './misc'
 import { db } from './db'
 
 const COL_WIDTHS = {
-  'fileName' : '200px',
+  'fileName' : '250px',
   'icon': '200px',
 }
 
@@ -152,7 +152,7 @@ export default {
     lastCourses: LocalStorage.getComputedField('LS_lastCourses'),
     coursesItemsByLastSeen: function(){
       const that = this
-      let lastSeenItems = this.lastCourses.map(id => that.coursesItems.filter(i => i.value == id)[0])
+      let lastSeenItems = [...this.lastCourses].sort().map(id => that.coursesItems.filter(i => i.value == id)[0])
       let otherItems = this.coursesItems.filter(item => !that.lastCourses.includes(item.value))
       return [...lastSeenItems, ...otherItems]
     },

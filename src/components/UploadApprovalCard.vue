@@ -1,7 +1,7 @@
 <template>
 <div>
     <iframe :src="iframeUrl" style="display:none;"/>
-    <v-card v-if="showComponent">
+    <v-card v-if="showComponent || !hideOnFinish">
         <v-card-title>
             <a target="_blank" rel="noopener noreferrer" :href="fileUrl">
                 {{fileData.fileName}}
@@ -9,6 +9,12 @@
         </v-card-title>
         <v-form v-model="isFormValid">
         <v-card-text>
+        <v-text-field
+            v-model="fileData.fileName"
+            label="שם הקובץ"
+            light
+        >
+            </v-text-field>
         <FileMetadataEditor
             v-model="fileData"
             :coursesItems="coursesItems"
@@ -73,6 +79,14 @@ export default {
       dbKey: String,
       fileData: Object,
       user: Object,
+      appsScriptUrl: {
+          default: ADMIN_APPS_SCRIPT_URL,
+          type: String
+      },
+      hideOnFinish: {
+          default: true,
+          type: Boolean
+      },
   },
   components: {
       FileMetadataEditor
@@ -118,7 +132,7 @@ export default {
       remove(){
           const that = this
           this.iframeUrl = getAppsScriptIframeUrl(
-            ADMIN_APPS_SCRIPT_URL,
+            this.appsScriptUrl,
             this.fileData,
             {accept: false,
              key:that.dbKey,
@@ -129,7 +143,7 @@ export default {
       accept(){
           const that = this
           this.iframeUrl = getAppsScriptIframeUrl(
-            ADMIN_APPS_SCRIPT_URL,
+            this.appsScriptUrl,
             this.fileData,
             {accept: true,
              key:that.dbKey,
