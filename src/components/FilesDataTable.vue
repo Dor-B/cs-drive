@@ -10,12 +10,14 @@
         single-line
         hide-details
       ></v-text-field>
+      <!-- {{items.length}} items -->
     </v-card-title>
     <v-data-table
     v-if="!isMobile"
     :headers="headersWithIcon"
     :items="filteredItems"
     :loading="loading"
+    :sort-by.sync="sortBy"
     disable-pagination
     hide-default-footer
     item-key="name"
@@ -82,7 +84,8 @@
 import { isListMatchingQuery, sortWithNumbersCmp } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
 
-const MAX_FILENAME_CHARS = 26
+const MAX_FILENAME_CHARS = 40
+const REVERSE_SORTED_FILTERS = ['year']
 
   export default {
     name: 'FilesDataTable',
@@ -95,7 +98,8 @@ const MAX_FILENAME_CHARS = 26
     data() {
         return {
             search: '',
-            filters: {}
+            filters: {},
+            sortBy: 'fileName',
         }
     },
     computed: {
@@ -132,11 +136,22 @@ const MAX_FILENAME_CHARS = 26
         }
     },
     watch: {
-        headers: function(){
+        headers: function(newHs){
             this.filters = {}
+            this.setDefaultSort(newHs)
         }
     },
+    created: function(){
+        this.setDefaultSort(this.headers)
+    },
     methods: {
+        setDefaultSort(headers){
+            if(headers.map(h=>h.value).includes('number')){
+                this.sortBy = 'number'
+            }else{
+                this.sortBy = 'fileName'
+            }
+        },
         isCommaSeparatedField(fieldName){
             return ['comments'].includes(fieldName)
         },
@@ -151,7 +166,10 @@ const MAX_FILENAME_CHARS = 26
                 .map(commaText => this.commaSeparatedToList(commaText)) // "a, b" --> ["a", "b"]
                 .reduce((acc, newList) => [...acc, ...newList])
             }
-            return fieldValues.sort(sortWithNumbersCmp)
+            let sorted =  fieldValues.sort(sortWithNumbersCmp)
+            if(REVERSE_SORTED_FILTERS.includes(field))
+                sorted = sorted.reverse()
+            return sorted
         },
         viewUrlFromId(id){
             return `${GDRIVE_FILE_URL_PREFIX}${id}`
