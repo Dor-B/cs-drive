@@ -22,7 +22,7 @@
                 :formDirHelper="formDirHelper"
                 :header="header.value"
                 :helperText="header.text"
-                :required="header.required"
+                :required="header.required && (!disableRequired)"
         >
         </UploadInput>
                 <!-- {{outputData}} -->
@@ -45,7 +45,11 @@ export default {
         value: Object,
         coursesItems : Array,
         headerNames : Object,
-        formDirHelper: FormDirHelper
+        formDirHelper: FormDirHelper,
+        disableRequired: {
+            default: false,
+            type:Boolean
+        }
     },
     data(){
         return {

@@ -20,6 +20,7 @@
             :coursesItems="coursesItems"
             :formDirHelper="formDirHelper"
             :headerNames="namesMap"
+            :disableRequired="disableRequired"
         >
         </FileMetadataEditor>
         </v-card-text>
@@ -87,6 +88,14 @@ export default {
           default: true,
           type: Boolean
       },
+      disableRequired: {
+          default: false,
+          type:Boolean
+      },
+      disableGuessing: {
+          default: false,
+          type:Boolean
+      }
   },
   components: {
       FileMetadataEditor
@@ -105,7 +114,7 @@ export default {
 
   computed: {
     formDirHelper(){
-            return new FormDirHelper(this.fileData.courseId, this.fileData.directory, this.fileData)
+            return new FormDirHelper(this.fileData.courseId, this.fileData.directory, this.fileData, !this.disableGuessing)
     },
     fileUrl(){
         return `${GDRIVE_FILE_URL_PREFIX}${this.fileData.driveId}`

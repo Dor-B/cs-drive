@@ -26,7 +26,11 @@ import {FormDirHelper} from '../upload-form-helper'
         value: String,
         header : String,
         required: Boolean,
-        helperText: String
+        helperText: String,
+        autoFillIfEmpty: {
+            default:true,
+            type:Boolean
+        },
     },
     data() {
         return {
@@ -47,7 +51,8 @@ import {FormDirHelper} from '../upload-form-helper'
         }
     },
     created: function(){
-        this.output = this.value ? this.value : this.formDirHelper.getDefaultString(this.header)
+        if(this.autoFillIfEmpty)
+            this.output = this.value ? this.value : this.formDirHelper.getDefaultString(this.header)
         this.$emit('input', this.output)
     }
   }

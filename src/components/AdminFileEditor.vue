@@ -25,6 +25,8 @@
                 :user="user"
                 :appsScriptUrl="fileChangeAppsScriptUrl"
                 :hideOnFinish="false"
+                :disableRequired="true"
+                :disableGuessing="true"
             ></UploadApprovalCard>
             <p v-else>קובץ לא נמצא בקורס \ הכנס מידע תקין</p>        
         </v-expansion-panel-content>
@@ -33,7 +35,6 @@
 </template>
 
 <script>
-import {FormDirHelper} from '../upload-form-helper'
 import UploadApprovalCard from './UploadApprovalCard'
 // import {getAppsScriptIframeUrl} from '../misc'
 import {ADMIN_CHANGE_FILE_APPS_SCRIPT_URL} from '../constants'
@@ -66,9 +67,6 @@ export default {
         }
     },
     computed: {
-        formDirHelper(){
-            return new FormDirHelper(this.fileMetadata.courseId, this.fileMetadata.directory, this.fileMetadata)
-        },
         driveIdToSearch(){
             const idMatches = [...this.driveLink.matchAll(driveLinkReg)].map(x => x.groups)
             if(idMatches.length > 0)
