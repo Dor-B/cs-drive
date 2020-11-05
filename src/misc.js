@@ -84,8 +84,10 @@ export function isListMatchingQuery(queryText, list){
 
 export function getAppsScriptIframeUrl(baseUrl, paramsObj, metaParamsObj){
   let url = new URL(baseUrl);
-  for(let [key, data] of Object.entries(paramsObj))
-    url.searchParams.append(key, data);
+  for(let [key, data] of Object.entries(paramsObj)){
+    if(data)
+      url.searchParams.append(key, data);
+  }
   for(let [key, data] of Object.entries(metaParamsObj))
     url.searchParams.append(`_${key}`, data);
   return url.href
