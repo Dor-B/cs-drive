@@ -32,6 +32,30 @@
        :headerNames="namesMap"
       >
       </UploadForm>
+      <v-menu
+          bottom
+          left
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              dark
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list dense>
+            <!-- <a :href="feedbackUrl"> -->
+              <v-list-item id="feedback-menu-item" @click="openFeedback()">
+                <v-list-item-icon><v-icon>mdi-comment-alert</v-icon></v-list-item-icon>
+                <v-list-item-title>פידבק</v-list-item-title>
+              </v-list-item>
+            <!-- </a> -->
+          </v-list>
+      </v-menu>
       <!-- Desktop course search inside toolbar -->
       <template v-slot:extension v-if="!isMobile">
         <v-container fluid>
@@ -112,6 +136,7 @@ import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue, fbPathHasChild, LocalStorage } from './misc'
 import { db } from './db'
+import { FEEDBACK_URL } from './constants'
 
 const COL_WIDTHS = {
   'fileName' : '250px',
@@ -145,6 +170,7 @@ export default {
       iconHover: false,
       iconClick: false,
       LS_lastCourses: new LocalStorage('lastCourses', []),
+      feedbackUrl: FEEDBACK_URL,
     }
   },
 
@@ -197,6 +223,9 @@ export default {
     },
     mobileCourseSearchChange(){
       document.querySelector('.mobile-course-search input').blur()
+    },
+    openFeedback(){
+      window.open(this.feedbackUrl)
     }
   },
   watch: {
@@ -271,6 +300,12 @@ export default {
 .fullWidth{
     width: 100%;
 }
+
+a #feedback-menu-item{
+  font-weight:normal !important;
+  text-decoration:none !important;
+}
+
 #logo{
   position: relative;
   width: 23px;
