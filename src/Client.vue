@@ -238,7 +238,8 @@ export default {
     },
     items :{
         get(){
-          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir).then(obj => Object.values(obj))
+          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+          .then(obj => Object.entries(obj).map(([key, item]) => ({...item, key})))
         },
         default:[]
     },

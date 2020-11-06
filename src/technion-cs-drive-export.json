@@ -1,262 +1,1419 @@
 {
   "courses" : {
-    "104031" : {
+    "044145" : {
       "directories" : {
-        "auxiliary" : {
-          "-MJM0JALTSX6TGycccoN" : {
-            "fileName" : "אינפי סיכום",
-            "fileUrl" : "https://technionmail-my.sharepoint.com/personal/cs_info_asat_technion_ac_il/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fcs%5Finfo%5Fasat%5Ftechnion%5Fac%5Fil%2FDocuments%2FCsDriveNew%2F%D7%90%D7%99%D7%A0%D7%A4%D7%991%20%D7%9EId104031%2FHwSolution%2FSOLUTION%20Number%201%20Semester%20B%20Year%202020%20Version%201%20%20%2Epdf&parent=%2Fpersonal%2Fcs%5Finfo%5Fasat%5Ftechnion%5Fac%5Fil%2FDocuments%2FCsDriveNew%2F%D7%90%D7%99%D7%A0%D7%A4%D7%991%20%D7%9EId104031%2FHwSolution",
-            "semester" : "אביב",
-            "type" : "סיכום",
-            "year" : "2019"
-          },
-          "-MJM0JAMPcZEoc9ZgQ1n" : {
-            "fileName" : "אינפי דף נוסחאות",
-            "fileUrl" : "",
-            "semester" : "אביב",
-            "type" : "דף נוסחאות",
-            "year" : "2020"
-          }
-        },
         "hw" : {
-          "-MJM0JANsn2gKRcO39th" : {
-            "fileName" : "אינפי תרגיל 1",
-            "fileUrl" : "",
-            "number" : "1",
-            "semester" : "אביב",
-            "year" : "2019"
-          },
-          "-MJM0JAOZxuCq3asqpmR" : {
-            "fileName" : "אינפי 1 תרגיל 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "חורף",
+          "-MJrJm_0fyQ08Yxsl1cj" : {
+            "courseId" : "044145",
+            "fileName" : "newfile",
+            "number" : "5",
+            "semster" : "קיץ",
             "year" : "2020"
           },
-          "-MJM0JAPGrxrjEQEkWs8" : {
-            "fileName" : "אינפי תרגיל 3",
-            "fileUrl" : "",
-            "number" : "3",
-            "semester" : "קיץ",
-            "year" : "2019"
-          }
-        },
-        "lectures" : {
-          "-MJM0JAQWPYcfc-OHiqI" : {
-            "fileName" : "אינפי הרצאה 1",
-            "fileUrl" : "",
-            "mimeType" : "application/pdf",
-            "number" : "1",
-            "semester" : "אביב",
-            "year" : "2019"
-          },
-          "-MJM0JAUW4cwT8OnhCaK" : {
-            "fileName" : "אינפי הרצאה 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "חורף",
+          "-MJrJxqdHG-YDdbrV1xR" : {
+            "courseId" : "044145",
+            "fileName" : "newfile",
+            "number" : "5",
+            "semster" : "קיץ",
             "year" : "2020"
           },
-          "-MJM0JAV-0yGDooP5Juq" : {
-            "fileName" : "אינפי הרצאה 3",
-            "fileUrl" : "",
-            "number" : "3",
-            "semester" : "חורף",
-            "year" : "2020"
-          }
-        },
-        "practices" : {
-          "-MJM0JAW44wnLJw-t-PY" : {
-            "fileName" : "אינפי תרגול 1",
-            "fileUrl" : "",
-            "number" : "1",
-            "semester" : "אביב",
-            "year" : "2019"
-          },
-          "-MJM0JAXdID_NMxXeSb-" : {
-            "fileName" : "אינפי תרגול 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "חורף",
+          "-MJrKCPndVZUTPbBIjEy" : {
+            "courseId" : "044145",
+            "fileName" : "newfile",
+            "number" : "5",
+            "semster" : "קיץ",
             "year" : "2020"
           },
-          "-MJM0JAYO-rgMw5Ga4CP" : {
-            "fileName" : "אינפי 1 תרגול 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "קיץ",
-            "year" : "2019"
+          "-MJrKOysaTX21azYwK66" : {
+            "courseId" : "044145",
+            "fileName" : "newfile",
+            "number" : "5",
+            "semster" : "קיץ",
+            "year" : "2020"
           }
         }
       },
       "info" : {
         "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
-        "name" : "חשבון אינפיטיסימלי 1מ"
+        "directoryToFolderId" : {
+          "auxiliary" : "1qvFtp2l2TH1oy07cFAKmFX-_IIdsEy5K",
+          "hw" : "1a66ut_27SdrxgEDys_IdGVzMzRjXMz_W",
+          "lectures" : "13F24V83iQYSL_a1V2QB4am7J1eqnc2vJ",
+          "practices" : "1vd3WzLXLkDvcAWm_nw-snK4Tf5WHNoBr"
+        },
+        "driveId" : "1LZpJf0FW4vu7QXClup-i2OaGjnJAdhr1",
+        "name" : "מערכות ספרתיות"
       }
     },
-    "234114" : {
+    "094412" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1k-To3Gov4pSpFXdqOzjb0y3OoVOfodSq",
+          "hw" : "1JOKjQ8RY4T8-ne3jyWfWZURSw2bqVbki",
+          "lectures" : "1dfYQd8mFznett5rqoyZ2jS-IKzxlXXba",
+          "practices" : "1BkzlNBHQw4Md4PkfSUIKS_ePM6Fihb5D"
+        },
+        "driveId" : "1jGxdnQxi97AiEY3IUDCylOe-h9fua_jm",
+        "name" : "הסתברות מ"
+      }
+    },
+    "104012" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1KKUr2ZkTpdCrJi7Q2HWSWwLiHSpvspPu",
+          "hw" : "1GJg0b8_5VVuiyIyp5J4IfdaUYILbSUYN",
+          "lectures" : "1_0Ty7HB1QadgdkWk7muejzkY1XtK4KDo",
+          "practices" : "1RiHX-UvYXGbev6uDXhVS9U3cEyMBAtTN"
+        },
+        "driveId" : "1KnU78ZHwJX1kUSd7LTjCVlam48wFDbQx",
+        "name" : "חדוא 1ת"
+      }
+    },
+    "104013" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1xQShZcBYrXbp5BPsBdJGXRvW7XMjAmuJ",
+          "hw" : "1U50jANiW0H9d-tjsRq6Z8eHBKu4IlNVW",
+          "lectures" : "1_d-Ij0utiIVznBqLurWOSv4doY5-MdqA",
+          "practices" : "1JgWLDdgkBvh9nuNQ2Z52oY4U052j5w31"
+        },
+        "driveId" : "18uEvRZiVyYG1_q1C7gna7BP_jgMr3IWL",
+        "name" : "חדוא 2ת"
+      }
+    },
+    "104031" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1Mlcc1TLsYVgcxY1M4SNl2BWVC9UM9Q9z",
+          "hw" : "1UtpaPQGt7jxm2RhcdQkj2WfePjVc7EJo",
+          "lectures" : "1w4ddTJ4JiaJFaqiGszahfKB54PzX4TOi",
+          "practices" : "19cISOyW6zZMfZrqoxbggBpMkX5GEcGHA"
+        },
+        "driveId" : "1_QxFScmi0RCL4ZwC1YM-BKZKZT_p6Hlk",
+        "name" : "חשבון אינפיניטיסימלי 1מ"
+      }
+    },
+    "104032" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1j9SbZKDxtSI7pMfkU3DY5h2uCP_uFFL0",
+          "hw" : "10fAWz08Q5Ggn5RHqk6zJLiMHajoWNiFq",
+          "lectures" : "1zYoG0_ReH8cyHBnkunaOdbsGoNlhFLK3",
+          "practices" : "17DhkjnJR8wnIKJ_SiC8DaLgU_3P29-ti"
+        },
+        "driveId" : "1kBAyt_kRA4GQM9I6JZpUD8Cb_4Xai8Nd",
+        "name" : "חשבון אינפיניטיסימלי 2מ"
+      }
+    },
+    "104033" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "15WMy4vOeDHLC-yYjgp6yI3ge_9fHZBhb",
+          "hw" : "1XZdPFhdZ9ZrrHVQHx29SDDSoHY19oNfM",
+          "lectures" : "1Anu6hnouSq4T9QP5S9nrbcz2JiAkhUR8",
+          "practices" : "1102m_7DvX46hAFpXLnfVelzcGeUmjX2O"
+        },
+        "driveId" : "11HwPLdHmF6n_3hfbT8_6rvadEJ5hcy2W",
+        "name" : "אנליזה ווקטורית"
+      }
+    },
+    "104134" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1emaU_bQqIEnsp7SBqwnBOLDyPnmxCdUe",
+          "hw" : "12s6Ze1GQf-mD69N39K4f5z3kMkzpaE2o",
+          "lectures" : "1yOV8yOhKk_BWgPTBqnrBVcmOggs1s5su",
+          "practices" : "1-399J-YKa6iOYnXvmRqfGpIkYuE7VT5E"
+        },
+        "driveId" : "18YxBQHMn7x_-G2_JJuDFwBzondXZiA3x",
+        "name" : "אלגברה מודרנית ח"
+      }
+    },
+    "104167" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1K8zIuU-F0ei1g_e5B1E2RLep6JSRUiWg",
+          "hw" : "1t1QzfKQhvF7wex6tLuxK4mve_eE9fNxs",
+          "lectures" : "1dSJh2W5ZYR8aZhekahdP48ms3f64bKF5",
+          "practices" : "1V1Hi35BA0zFPofbi8gwM84du6S3K9HOB"
+        },
+        "driveId" : "1JqD892_WIWWT9exFoUgJlpfAbzXS2U8Q",
+        "name" : "אלגברה א"
+      }
+    },
+    "104174" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1GbHw11ByupeUFg1U2AMaajQ89Yw3Wt6f",
+          "hw" : "1K2D3LAG3f6hDc3YYlqoF_wuvVtkMSnEh",
+          "lectures" : "1qSi_pf2Ro9ioGZ8kuA75XM3zzl884h6W",
+          "practices" : "1vHMhIIFjXXg-Vj8PFVGY-Q6wW06EeAIm"
+        },
+        "driveId" : "19F26SnPXkvE8Ggis5z4qgdmEIG6rjk1y",
+        "name" : "אלגברה לינארית במ"
+      }
+    },
+    "114010" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1spyms7VOJM9f5HPRbfn7DbZ8xJ-CvGc0",
+          "hw" : "1xebK0fVG-FwGSXDcRXOPcK6lNhE1KlFu",
+          "lectures" : "1UV3eq81ep2LRsTlxkEQ5ztdsWmPefdxG",
+          "practices" : "1ZRuPrRuCQfHan3JesmNBAakmTVttNmYJ"
+        },
+        "driveId" : "1sFE1ifSfP9cTSQH4CkHhgtWpqNFlUXFP",
+        "name" : "תגליות מדעיות"
+      }
+    },
+    "114052" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1xjM8yFqdswwYYNIblpNKPx93QBr3Qv3C",
+          "hw" : "1aXjFsApaG_B1MjOzYFnO7B0spmNpr4Hy",
+          "lectures" : "15-V_4UznuVKfNDWSpkFmKT1-3t77NunE",
+          "practices" : "1BTuYeYXchqj8FQ2UNULSvSFmqqDB5ybl"
+        },
+        "driveId" : "1-r3EkxGS0htf0YtRymNm04x2hbPvHhXj",
+        "name" : "פיסיקה 2"
+      }
+    },
+    "114054" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1Z6ZvaJ8KLu0zMoA1XRhY_W2U7uh4nLT8",
+          "hw" : "1Bowv08cJb0i1HznNZT0bTgMxVdluUiLI",
+          "lectures" : "18wrOe4Ehp6Hbog2D30mOueHB_YYvSr7p",
+          "practices" : "1thU65ZHtu5UbKs0L7BPsZXiyzGo05W7a"
+        },
+        "driveId" : "17FM5Ff-wxG0wYrMsl9rvuy1jSgvZ_hNE",
+        "name" : "פיסיקה 3"
+      }
+    },
+    "114071" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1zERDQsEXDB6uXozwr-wjuPa9U7Xv2rI3",
+          "hw" : "1Q21M1yzPOWY-T9jxCe7cTimdg3GurJOn",
+          "lectures" : "1xs_sf88UmP5m0vWlhW87U9K09X9C866d",
+          "practices" : "1VVf3hS9fWI-ZPWTHPvNT9JHUhVvH-V4b"
+        },
+        "driveId" : "1xPbeX8lQ-bu1Tur80NrEJXhPWEbz-sx4",
+        "name" : "פיסיקה 1מ"
+      }
+    },
+    "125001" : {
       "directories" : {
-        "auxiliary" : {
-          "-MJM0JAYO-rgMw5Ga4CQ" : {
-            "fileName" : "מבוא למדמ\"ח סיכום",
-            "fileUrl" : "",
-            "semester" : "אביב",
-            "type" : "סיכום",
-            "year" : "2019"
-          },
-          "-MJM0JAZzo0eVWL7HG0u" : {
-            "fileName" : "מבוא למדמ\"ח נוסחאות סיבוכיות",
-            "fileUrl" : "",
-            "semester" : "חורף",
-            "type" : "דף נוסחאות",
-            "year" : "2020"
-          }
-        },
-        "hw" : {
-          "-MJM0JA_OnFYtOP70Rnw" : {
-            "fileName" : "מבוא למדמ\"ח תרגיל 1",
-            "fileUrl" : "",
-            "number" : "1",
-            "semester" : "אביב",
-            "year" : "2019"
-          },
-          "-MJM0JAaYAxOAvkIL3Hy" : {
-            "fileName" : "מבוא למדמ\"ח תרגיל 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "חורף",
-            "year" : "2020"
-          },
-          "-MJM0JAbWAVTwLcxRsd7" : {
-            "fileName" : "מבוא למדמ\"ח תרגיל 3",
-            "fileUrl" : "",
-            "number" : "3",
-            "semester" : "קיץ",
-            "year" : "2019"
-          }
-        },
         "lectures" : {
-          "-MJM0JAczkAkKjuR0Ltm" : {
-            "fileName" : "מבוא למדמ\"ח הרצאה 1",
-            "fileUrl" : "",
-            "number" : "1",
-            "semester" : "אביב",
-            "year" : "2019"
-          },
-          "-MJM0JAczkAkKjuR0Ltn" : {
-            "fileName" : "מבוא למדמ\"ח הרצאה 2",
-            "fileUrl" : "",
-            "number" : "2",
-            "semester" : "חורף",
+          "-MJrQlbqHukQfJuXnm86" : {
+            "courseId" : "125001",
+            "driveId" : "1Bn0fjC7VNFGgi6GZQ4bF6RGsML-qofw3",
+            "fileName" : "trie.js",
+            "mimeType" : "text/javascript",
+            "number" : "7",
+            "semester" : "קיץ",
             "year" : "2020"
           },
-          "-MJM0JAd_TF0iqtg8FZ_" : {
-            "fileName" : "מבוא למדמ\"ח הרצאה 3",
-            "fileUrl" : "",
-            "number" : "3",
+          "-MJrS8zvtbT1ejohpW_S" : {
+            "courseId" : "125001",
+            "driveId" : "12Ca-R3wFHykb2iIv0tYpefDzajgENk_n",
+            "fileName" : "guesser.js",
+            "mimeType" : "text/javascript",
+            "number" : "4",
             "semester" : "קיץ",
-            "year" : "2019"
+            "year" : "2020"
+          },
+          "-MJrUKISrZO7nUrCZV_L" : {
+            "courseId" : "125001",
+            "driveId" : "1CuduMdtPFSkofN59XrhE2p0JLn90oZg0",
+            "fileName" : "pp.jpg",
+            "mimeType" : "image/jpeg",
+            "number" : "4",
+            "semester" : "קיץ",
+            "year" : "2020"
           }
         }
       },
       "info" : {
-        "directories" : [ "lectures", "hw", "auxiliary" ],
-        "name" : "מבוא למדעי המחשב מ'"
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1mr9Muvsu1VnNlEtWKQdSMwjeSnb964Td",
+          "hw" : "1bs9h2qxUrk0wgibTMavWgOSHVh6B35tV",
+          "lectures" : "18PE9VTlaXyiZ8x_iVTKGRn_auHCrUIWU",
+          "practices" : "1Y1c0SsTd3FH2i-wCBQt1c8RzSAKaBLDD"
+        },
+        "driveId" : "1o8DB3WgdvTFtjMQLUQgGZTgqeQVcgEUh",
+        "name" : "כימיה כללית"
       }
-    }
-  },
-  "forApproval" : {
-    "-MI9zL8IzXHhz066GTk9" : {
-      "courseId" : "234114",
-      "directory" : "lectures",
-      "driveId" : "1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm",
-      "fileName" : "קובץ בדיקה",
-      "number" : "3",
-      "semester" : "אביב"
     },
-    "-MI9z_0ohB-x84rTh1wu" : {
-      "courseId" : "104031",
-      "directory" : "hw",
-      "driveId" : "1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm",
-      "fileName" : " 2 קובץ בדיקה",
-      "number" : "3",
-      "semester" : "אביב"
+    "134020" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1rIaD-FQKa8DHlswpiIRpIDBVuS3O6efH",
+          "hw" : "1pJe5a75F0V4LmYGC2uag2o4LACgVMcC8",
+          "lectures" : "1cKJ1BczeegKvqIxeA9bB7Swwq4q9SA2x",
+          "practices" : "1X1gk_E1-i-lBBlPiFHP5fpysxyXMqD7T"
+        },
+        "driveId" : "1-1FXPoi18gNkWzd6KcWJ1lnIXgYKp0Hv",
+        "name" : "גנטיקה"
+      }
+    },
+    "134058" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1MOFXeJGS62do7X1X_K82GWkyzTPOpcxq",
+          "hw" : "188W83LLnFPkxaToF2zNjmRvf3fpuof6D",
+          "lectures" : "1waCvEkDOevP-10Dn7D3uuAKDFpN-3uf4",
+          "practices" : "1idl8WUwnsFBx793Rj0ckRpiZrg_OHMpo"
+        },
+        "driveId" : "1BHVh58FAb69UbtLplhpEXCXaxcHwUZO0",
+        "name" : "ביולוגיה 1"
+      }
+    },
+    "234107" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1MF2UJas-GHZs57QmogS6EoTpoJj7e0UY",
+          "hw" : "1Mq0qaraEGiC0VfGjgUn2kVizkUbSSds0",
+          "lectures" : "1yrEN47WuMcG3ZVwSbTTCTeUaFm1yGK8_",
+          "practices" : "1Q2-RH3PAgm4qA1UbUhgEAIDg70bsZYNY"
+        },
+        "driveId" : "1BHcF1iKiBorMLevx0onBbQX_yTjiFwfI",
+        "name" : "אנליזה נומרית 1"
+      }
+    },
+    "234114" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1h9wMx_BBjyqMMmbmGmWyjGb8Dd4VahWz",
+          "hw" : "10y7LfkbkahPkbE3njCdSz6bp-HLJ2UJd",
+          "lectures" : "1b3Yarzs7kMPoASlY6NUY5cp9XD3aUqfc",
+          "practices" : "1540Yt0BOKc6xfUJhtq_OTVu9O5D9Z9Kx"
+        },
+        "driveId" : "1hz22kOVJ_VivCLDqRvDdjzdz6zL1ebVy",
+        "name" : "מבוא למדעי המחשב מ׳"
+      }
+    },
+    "234118" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "11eW6LlSErcGbJaB8y--jr5U18iLuMfEa",
+          "hw" : "1h_VhwY_QDvKOPJ0j61Gzw77sgU4ZMibd",
+          "lectures" : "1MJ7pVOj052hk2pFkgAXarbhgtXvJsFdD",
+          "practices" : "1WK4GyJHxn0Yygnnr8NZngaCLYM6xyV6b"
+        },
+        "driveId" : "12vB4KxJrRfd0GQ4Cas21d26y-hK2U95-",
+        "name" : "ארגון ותכנות המחשב"
+      }
+    },
+    "234123" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1qtmc68mK21VqpoP7D5FXSrgj_2LyX-bg",
+          "hw" : "1USwJrQgS6xJBF6VxHMqcJy8Xf4XkBNf6",
+          "lectures" : "1pYoWEhIT_0lRZb1ADDO-kfTb5DBtnFwz",
+          "practices" : "1ou6py10b2WFk26Jv47ONcd4gnpZ41ill"
+        },
+        "driveId" : "1DaNGCQvaBY8ibZ8UJWtpoyXMelO5-dZE",
+        "name" : "מערכות הפעלה"
+      }
+    },
+    "234124" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1HoHO6RH_iZXWbny8nSac2iGXJi70T8-M",
+          "hw" : "1RgzM3a4WjCmsStAKDKFA0dJMmI-9ERHO",
+          "lectures" : "1VyRt2aardscUy3b9Yq2Dp62hJphwbveN",
+          "practices" : "1eo2BOf97OJYSYvWTryFGDVZqxAr1Uuyl"
+        },
+        "driveId" : "1-w5fY5StpBMLa6Z2C4q-znOfwfZbf9PR",
+        "name" : "מבוא לתכנות מערכות"
+      }
+    },
+    "234125" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1H0Jz2NmoLbueYkRwJsR2CrtLZoc4Nrwd",
+          "hw" : "1a3gReS0rrqhRrHXQs6ENWs2-63fCPD7F",
+          "lectures" : "1t3X7df3beiZn824NqaShSjCNJDaoH6e4",
+          "practices" : "1W3QuBb9308FjUBuOqFTclRv-uktS6S3-"
+        },
+        "driveId" : "1mpclou5Dszph_rfz4KXextK6-Cgu3qU6",
+        "name" : "אלגוריתמים נומריים"
+      }
+    },
+    "234129" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1zyJhU7jm9dEUR4jcEG7B1MaRNny8Za2t",
+          "hw" : "1tDOTUPClVsRkZwBLxwMaD9px5OsCxekN",
+          "lectures" : "18-10YW_U0YVa6lGuA7vd94enxYXhQlFh",
+          "practices" : "1Kr_yZ1j1hcfwP3SjLiOoTpVKpF8AZdRa"
+        },
+        "driveId" : "1oy9dZ7uz0kh3BD_RLjCSJgixee-nrbRq",
+        "name" : "מבוא לתורת הקבוצות ואוטומטים"
+      }
+    },
+    "234141" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1vGRLBLrKWjq_AQLxiDklhtQ64hwrSjr_",
+          "hw" : "1-2wClX6RlIdMG8IWsXAaQS-golWDtqoC",
+          "lectures" : "16j7fv8HUo-1h-EhtUmqMX2GFsWwzWcWS",
+          "practices" : "1RSHcoUx7xJJS8oxQO1wEzUHD3B98NELF"
+        },
+        "driveId" : "1nvmo18CDqA3KK1lY1fK9XtPyVrr6PDjA",
+        "name" : "קומבינטוריקה למדעי המחשב"
+      }
+    },
+    "234218" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1MQXxoXJPXzTNJ5jBYQL0tQ0NAVU9dQ90",
+          "hw" : "10_sZP_AjcVR_7DXSqy336EEkQ5dAeHMI",
+          "lectures" : "17X7Wdf1TTPkMZs-SrtI1MFLEO51rt76Z",
+          "practices" : "1aHnA51sY6MmeRUbQgn6pnkkuDYQ2ONrb"
+        },
+        "driveId" : "1b-T37YMceLGcH7Xg5TUXGfAzNoMDNx4M",
+        "name" : "מבני נתונים"
+      }
+    },
+    "234247" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1GGE62WwseZuY9K4sh0u75ZuS1EMK7ii1",
+          "hw" : "1AqkdJSk-2UpWiwY_L3PqcKArzXOQvAwn",
+          "lectures" : "1TK36OJ5M_yzEggyUY1l_AlnRI3OGh3J5",
+          "practices" : "1XYPLlmqN8AcpryzqRZ5FkDuzRVx8VlVm"
+        },
+        "driveId" : "1PXtoIWRGQ3nOc3eItx756xrLTClYeQ18",
+        "name" : "אלגוריתמים 1"
+      }
+    },
+    "234262" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1p85VN_a1ErF1EQjk2Q3xTKktEN10KQZk",
+          "hw" : "1fr2B2MNI5Q-BT-o7KaaxmB2NYRBH05mx",
+          "lectures" : "1StdUFvVqzkChmhO9MB9l9_pfu0gt9Xog",
+          "practices" : "1p2qht8X8K0kdCGzPpeAHhJLMt3jf0i3C"
+        },
+        "driveId" : "1PqfPnxmiimUINAaqA01XNDyurLdm2sYu",
+        "name" : "תכן לוגי"
+      }
+    },
+    "234267" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1rlRmL2vRu3BO36qlCjk87iAOJdtz1Kxb",
+          "hw" : "1UZv0QtyFdYkYPxVincQBB_x_wR4HQ5BG",
+          "lectures" : "1d8e3qQDFmsmXbMQ__ikJgpYRFwrBtV_l",
+          "practices" : "17mAuoH7LX-jTNkneWgmACb7sA7A9IdQE"
+        },
+        "driveId" : "1-Bxnl_U1-TJMvRpT_OeBkeoyOLc5jIad",
+        "name" : "מבנה מחשבים ספרתיים"
+      }
+    },
+    "234270" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1esC83Trj39zIoLKKR9NCYSqTmE-a2g7Q",
+          "hw" : "1nT2drSQIC9FohvAfWGYMCwWTlJpDqtgl",
+          "lectures" : "1tB7uAWANvo5m7XGgwC7uREFeUwJo_hTY",
+          "practices" : "1mS425NJUmnQU-ZLiqLqEmXngoZbTLyy7"
+        },
+        "driveId" : "1sh8l7il2xMMAmq-WvE8DsixXCAdmbDyp",
+        "name" : "ניהול פרוייקטי תוכנה"
+      }
+    },
+    "234292" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1KjD_52hYBzrukxuGtlpPeMpJf3QvY3aM",
+          "hw" : "121SMiARUx1tgPicVHovmBoZWGE_6MPxz",
+          "lectures" : "1sTsKTTZhIm41C1CFexHq-UJLBLh2Vlmy",
+          "practices" : "1HNewt7O7NAMukGqpZP8SdXjN9FbeGQKb"
+        },
+        "driveId" : "1zoKb4pAs05R_67Elwpr3ifZVtwNvQs2K",
+        "name" : "לוגיקה למדעי המחשב"
+      }
+    },
+    "234293" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "129yOF-ZI3iHhbO-usCtY-5V-fNt56e-Q",
+          "hw" : "1vaLAhCucsgVc_-XJmQmp6JpiUC5PzoIE",
+          "lectures" : "1A4O4Svdy3JfU7pOgy5g0GGWOrZHByE8M",
+          "practices" : "1PmwjuZ6MUgv1h4W-rMkmqLLM9SGw4A9G"
+        },
+        "driveId" : "1oj3twNBUI_A57hXd3WYV4nkhuiUjDfuY",
+        "name" : "לוגיקה ותורת הקבוצות"
+      }
+    },
+    "234322" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1rM1DYn-bHADiJtrUqDsujpZpPuWiN-CW",
+          "hw" : "1w8c4fHhW-0FWaKawD6fAghCNnKR5tXZf",
+          "lectures" : "1kO8suhl49iWpQoIHNMExw5A0M2mACs3u",
+          "practices" : "17jYZ3cKN3gUG7ygnhpNg-pnV73rMsuCK"
+        },
+        "driveId" : "14flhv5_jO3KsyMMuTyDShyob8G9qSNCQ",
+        "name" : "מערכות אחסון מידע"
+      }
+    },
+    "236200" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1xhw9NP2rmEl2Bv_OR-cHz_Zl_vm_anVV",
+          "hw" : "13uftR1Waxy6sWx6KS5_xCnEi_tf03W6X",
+          "lectures" : "1u449DgVl1gXZdiz3WhGft9WhVFF8tK41",
+          "practices" : "1exgZqOgpg4IZaw-3m_Zcev-gA8K_0d7u"
+        },
+        "driveId" : "1damLzolbBbMi0aP6iqM6SQk9hbVmDovV",
+        "name" : "עיבוד אותות, תמונות ומידע"
+      }
+    },
+    "236315" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1MeB1wf8Dff3t1n-RqzJ0pRk8RHOIvb7a",
+          "hw" : "1BiKcRCV3p3rZUoXiPGZlgcv-zi62Mhkh",
+          "lectures" : "1poTylZRyBRSqx_T1-KWSOfOVSDWl8wDt",
+          "practices" : "16m54ZJRbtD_CzLEB-TxMwJDOAS04MTim"
+        },
+        "driveId" : "1J6yjRJtBJdy3XAlFiMnFiSznR91Dhk7r",
+        "name" : "שיטות אלגבריות במדעי המחשב"
+      }
+    },
+    "236319" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1k9XlFaAMJAhVTKd3T5IVe9FSg-44_t1z",
+          "hw" : "1BetVVfpAEukp-GPioNoYMksvsSWnzJhH",
+          "lectures" : "1-3klXISe0Gr6aD4GPN1VE7ZBijxy0dHS",
+          "practices" : "1bnh3wWYNTpgW2q3yYBhZKh716yiBxoGM"
+        },
+        "driveId" : "1OAkc_XTbl2OZGjIJAlwH3JioIGKmMU_t",
+        "name" : "שפות תכנות"
+      }
+    },
+    "236334" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "14kd8SdZ79hVtDzZtUopJYjYY9lXGQJTp",
+          "hw" : "1Io-m3y0duaLKd6LZ3dYeBdBwq9z6Z5yp",
+          "lectures" : "158a4T_x1Fhdqs5LMVlh6FHlIUd6qj069",
+          "practices" : "13gUcxuJy5Z6xouJwmPZ4K88_w0pkpQEa"
+        },
+        "driveId" : "1iZTptrJ7vpFX8tGVgJJwS_VMa2HzvWF-",
+        "name" : "מבוא לרשתות מחשבים"
+      }
+    },
+    "236342" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "14x_ssl0lFac0um3EvrnKPPyLS29PJYt8",
+          "hw" : "1TYiMJ27QgB-ZpAbHT5ixzlnuiRzTDL61",
+          "lectures" : "1B6pHvJkYQGxhZ4cuwkIRomD0UUNbZRoo",
+          "practices" : "1N7fEFENT0KMPA063_mlQQ7bhMvh1D3UN"
+        },
+        "driveId" : "1k5JRTvRlYMCDVPBf1spOy9y7qwNEosP5",
+        "name" : "מבוא לאימות תוכנה"
+      }
+    },
+    "236343" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1d8I5UkwbtE3EOcPAoZVMKjlHCo4YH838",
+          "hw" : "1fOF-2HmxVRWfBKz7M0hEV9pybiT31Vtq",
+          "lectures" : "1bKpbZVk01pKBTr2MBWtZ_4fNvBjJZyEx",
+          "practices" : "1XrMCR8-CJ5XncOOr9LFh6Y8nzAf7RNHp"
+        },
+        "driveId" : "1fq_ssmpB0HvKONYNGgwATdw7lTmGvrQx",
+        "name" : "תורת החישוביות"
+      }
+    },
+    "236350" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1reDdC6ymFw38LgFnFlEs8FDbUDWPPCPj",
+          "hw" : "1cX0yHkZJRSAy9lKPrcLBhRSdXmoWRVjX",
+          "lectures" : "1N7CLQoPdurawoYgkOAQJoNO9JJDFOoAW",
+          "practices" : "14K2GMINaNR7gnkx4McR8X18OSaCGoumH"
+        },
+        "driveId" : "1YxxQe_Yq-hrQ5TMqzsoVT7r8IBjCTv25",
+        "name" : "הגנה במערכות מתוכנתות"
+      }
+    },
+    "236353" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1cCqwBH_qZKgumf4KwLO4f5izeovWR9cU",
+          "hw" : "1jX2N_Y6iy9_1y75_0aBzQhGyMwhDCwX8",
+          "lectures" : "1-rOPhgEIMIbgXeGi1DwY0w5-ICG2ZSs2",
+          "practices" : "1jgRUbQH5_KyEmUDgRboohZqSwHEqw8pt"
+        },
+        "driveId" : "1W1sjRzfFvzPRKDMM3wsyUjhJYQOvDOY7",
+        "name" : "אוטומטים ושפות פורמליות"
+      }
+    },
+    "236360" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1kK_mtj0ldBzPuDsLwccAWVG_HpcjXUjS",
+          "hw" : "1tGnr_rnurJ-4bMd1GvZ3NztxlRn86STV",
+          "lectures" : "1b7x5_A63Z-MZQSYqp-_c7jmbbsvZLVcI",
+          "practices" : "1vznB-gpk3uHVXGS6_VnsXN_fvrPKVyVI"
+        },
+        "driveId" : "178Voa_V1vWkwKL_RTl2FDsewG5vXTPRS",
+        "name" : "תורת הקומפילציה"
+      }
+    },
+    "236363" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1GsabMPM4U-x17rhFdvxrxmGzt-irKuop",
+          "hw" : "1-Q19_JsU6Y1ueVvwI5l6-zfM22dB56Bn",
+          "lectures" : "1IreOeBeg3FH6j2YDhnG16yFFk74FjAhO",
+          "practices" : "1VMYGRR6h5jIkGY1wXeyWZ5kX8VLIJCG_"
+        },
+        "driveId" : "1F7H_GLwWk5_lXMPO-NRiAJwfeyJvjgK1",
+        "name" : "מערכות מסדי נתונים"
+      }
+    },
+    "236501" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1J7xqJ3U1hPY5_DIE3ANKTjaW8-H1ueaG",
+          "hw" : "1QU5keQZSE6OJhysSu9Yjm8NjyITIrjYM",
+          "lectures" : "1aHiUHh9bGzr2TRUziID0DSNS6YvUo7kA",
+          "practices" : "1lGCtWnR4CVoJQfazMOlLNx3Zg_nWM9XG"
+        },
+        "driveId" : "1KnpJswiQuJ_EhV8AyQ4nmC4KMjaI5KPO",
+        "name" : "מבוא לבינה מלאכותית"
+      }
+    },
+    "236506" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1e3ZZyChxd0XzyLOHS7AVRW9yOCXvXCGo",
+          "hw" : "1c9qrCUJ36e74T1Vyo3y8_guI09qCayf3",
+          "lectures" : "1CXfkoPrXn0blv01shiaLbnFAZFrJE_Ju",
+          "practices" : "1ppBPcATf-SYr4wEhQrO_4C945vwIYvON"
+        },
+        "driveId" : "1srybzsL_QDD01FvQC9KAVE6beW5_1Ivc",
+        "name" : "קריפטולוגיה מודרנית"
+      }
+    },
+    "236522" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "17eyE_C8YTHvh46ORZ30_do24RIVZl7A2",
+          "hw" : "1BAtMBbvLrEUJt0YHpVSIW4HPXHWXnAMs",
+          "lectures" : "1l290RKXjcibXqdCZwgdDGI38yukf_Q6n",
+          "practices" : "1ZwBAqO59hY9mRtj840o5nC08lsi6pfyy"
+        },
+        "driveId" : "1oaeItxZCgNIPHcbLZ30yBv18oXjF80f5",
+        "name" : "אלגוריתמים בביולוגיה חישובית"
+      }
+    },
+    "236607" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1a867XJRnjYL03HmdkQrXQOXknnLWQqZY",
+          "hw" : "1irq529FXG8IgryMVMQVBUkbblfKvDKjn",
+          "lectures" : "1VgD6F6JZggseF0xL45XYpVVRwE5tuKxc",
+          "practices" : "1TlDsiZCL9fxoMUzTHuqNybiypg5SrOb-"
+        },
+        "driveId" : "1E5yjapaOXh17x0BqlDiFQpFR9p7Pwd__",
+        "name" : "אבטחת מחשבים"
+      }
+    },
+    "236653" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "13c95EPWJQR4QqhlAddSMx4M7qekNAEAa",
+          "hw" : "1W3hSHfQHXwvIWvgjR0RvV8UKNIPlNSQ2",
+          "lectures" : "1jLoucQOXkhm78mMFhv83fA_UtpdtSU_L",
+          "practices" : "1xsJUZUpjvxW33cigIJ6ATVzRn1GpK7ON"
+        },
+        "driveId" : "1v9o_VojR8jD8XhwNMe1TNxCyEyd58Uj3",
+        "name" : "הנדסה לאחור"
+      }
+    },
+    "236703" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1uz33PCxJGdCC6ALEtQj0SpFsdO5nGzMo",
+          "hw" : "1NF_BUgOPlcFB8zp31k_P9Q6ayG4cinTl",
+          "lectures" : "1UbUI8xUFeLSnPGm5YdBa27zG2zOVd-qA",
+          "practices" : "1GVvm1e1AOVviK4u5ZALDfRXPvVcpG8cZ"
+        },
+        "driveId" : "1r8K1K8M8CQbgHviUYFGHYDmJAx7fQn40",
+        "name" : "תכנות מונחה עצמים"
+      }
+    },
+    "324033" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1rdvVi1i0OUBi-mHzJgw2BpeDsJTQKbaI",
+          "hw" : "19oMprfI6egdXrPJWxyTEonsjHRxc-9tm",
+          "lectures" : "1szc0jm-eNH1BydbLHYz766xOdoyvYPZ4",
+          "practices" : "1aqwr3Fb3VYLJDx_INY3T-mQG8iuM18vu"
+        },
+        "driveId" : "1Sozb_bauzHYL65jqNh1KDM7pFwfNWiFu",
+        "name" : "אנגלית טכנית - מתקדמים ב׳"
+      }
+    },
+    "324134" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1wLjIVSVVgWLAjfsal0VlW-424vF0OlLC",
+          "hw" : "1cHYhKh-ogtGsFdKt1ae9ARBA9PcB-Rh1",
+          "lectures" : "1A0omsqAtZO0x7IGm3fXGXee8i5AH3j9o",
+          "practices" : "17eLKRwsu-kftEueWdBblzeVz-z66mHhU"
+        },
+        "driveId" : "1nMjyNUrwBIEm7F3stYVOKzFECo5a3gn2",
+        "name" : "הספרות היהודית בעת העתיקה"
+      }
+    },
+    "324290" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1O5ckKXenWG_B1HvTK2SacOrqFuhPCTvV",
+          "hw" : "15Y-Wxy__0vFJ_L_5MZk-jIFouzpfZt-2",
+          "lectures" : "1YoXK_ohOmKCZRiLroUw6otZbOOjsVMRU",
+          "practices" : "1pfvGq-2eCyYtNXbtEGVNE4OevGuL8p7M"
+        },
+        "driveId" : "1LrlRv6D6XugbFrUpapqFI-5xDh6DcPlZ",
+        "name" : "היסטוריה של רפואה וחומרי מרפא"
+      }
+    },
+    "324291" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1UiEsY8aaK9l14V3nfmGBfmhbyUIYdblp",
+          "hw" : "16Sq3QezzlVVT9xlSfI9RtxsVASy0uBuO",
+          "lectures" : "17_j1y4hfMMK4bvRED_R6ZvdNGmS2eTJE",
+          "practices" : "1fTXRZrcuIpo_PkanA0Q7-9Fs7H5xa-_1"
+        },
+        "driveId" : "1p2ti3slEcyn47iR9P_pDTmqYnwI_Pbiu",
+        "name" : "חיי היהודים באגן הים התיכון בימי הביניים"
+      }
+    },
+    "324292" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1t7E-5pdwb6KJHU7rlPBqkMG5oCS96OfF",
+          "hw" : "1vT1LoHInLxf3bJcnNRz6aaIuJAw4Mo9q",
+          "lectures" : "1eB2W2-3E8klu6-PcWuMgwcS5vN9bh1kS",
+          "practices" : "1_nE1Rag8dlgZfV5FYZ5UwC8UPab21Yip"
+        },
+        "driveId" : "1QPTI7AgRQ-5yr0xyOJgSbNQsrrjqTdVm",
+        "name" : "משפט שיוויון וצדק חברתי"
+      }
+    },
+    "324294" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1KQkZNMdMcVlSncX-RkhxkNm9FOS9NnIh",
+          "hw" : "1RoivvLAiu69TrphcNDgCF7w1NNkl_2ar",
+          "lectures" : "1ZDc3v9FNWtedHZ1JLsBdmMjopvtiJG_W",
+          "practices" : "1XuC-yG98odw0EFkafL_EMSDStIEvz852"
+        },
+        "driveId" : "1bc2cNopf7E2zr_kR2WpVpive8eSn0b_Y",
+        "name" : "יסודות ההגות היהודית בעת החדשה"
+      }
+    },
+    "324297" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1j72jIl5m3ptiKcuoc0MEKtBgkgjrfFXF",
+          "hw" : "1fFuu9Zca6C5cUjWVr8VMFxTCLrvROldN",
+          "lectures" : "1cLYIv1PClRQidTUmSYdKHRT4ahw8Fo2v",
+          "practices" : "16pz8bC7Phmm0wrhckDWEvLmZhxCDb_YI"
+        },
+        "driveId" : "1rOFWIIAmuKDcmDbC8InXktYED8Bt9gwF",
+        "name" : "אישים בתנך לאורך זמננו"
+      }
+    },
+    "324298" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1hcdwUnIcMZpyOzqzi1M_0EPl6bbtYIEf",
+          "hw" : "13QXH7qpK2Ug68sEdwZ4m4QYSeaggbqZg",
+          "lectures" : "1RhkmM4K2TphC52d6Tbjz81i8kR5gJ5mO",
+          "practices" : "1Pe5LUEcGeOsYb4sarH8rM_MMhzfUk2FJ"
+        },
+        "driveId" : "1KG5Y-sdMJYVwqkpHyQQZQeAHjvskUlgP",
+        "name" : "מן התנ_ך ועד למשפט הישראלי המודרני"
+      }
+    },
+    "324426" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1ja4ChqNz0wtv3m1bK-cqWhrVgpKY7oYr",
+          "hw" : "1xOBAxC4-mfCM_4_JhjoNkdEpygFmmyJi",
+          "lectures" : "1wuUXwAFbgZ6cidrOHsJwO-bjBfdABIhv",
+          "practices" : "1QTYSe8gV2h4F8alp9LdSK6UKo6DqrOIX"
+        },
+        "driveId" : "1MrAnHVsCk6P0_LJywYWNtQ_Gig0ss0RM",
+        "name" : "מחורבן ליצירה"
+      }
+    },
+    "324427" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1iQDVPokHZ7HcuUDuNQkKJ6-ENrVZfNay",
+          "hw" : "1193zTVZV-bBMPsM1WWi6wh4y8k5V_LyV",
+          "lectures" : "1uEqPDMLUOw_ONdXDRBgEfNEkCKVcB962",
+          "practices" : "1jTgWaJNo6ZwkRfB3KpA2p40EvP_Me-OO"
+        },
+        "driveId" : "17kgIW9Ts1abTCz-TK6st4XYxTbWFJZo9",
+        "name" : "שבר האחדות"
+      }
+    },
+    "324430" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1-T46Y-TbIPWTOPunj3UFeFoqaWhSHXnU",
+          "hw" : "1L6o6YfXWqEQpU9ZDtTYXXoZ-5a_BtLUn",
+          "lectures" : "1i3HyLY4X52QjcucDWMFApHazaZUueu3H",
+          "practices" : "1sk8ZaNDiXo0lwqKc4RoXiFRM6W8oEIR0"
+        },
+        "driveId" : "12aZK9f-o9HUA5LD1FwbaFaehc-jAyADP",
+        "name" : "נשים יהודיות בימי הביניים"
+      }
+    },
+    "324433" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1NVgMaY-O6as5PgXkb3Ie5r1GTW_MxFC4",
+          "hw" : "17k6p9aZ4ACMygo_7D6MLWCXpdXS-kwUa",
+          "lectures" : "12cAID96Lbp4jz2SbYKtOOLe7Netd-DYP",
+          "practices" : "1x9R4byykcKfaH2oTQGDSRfRavt5XHoOS"
+        },
+        "driveId" : "1LGDYZx5M5netzVAFuDwn86ygXnIL5gGS",
+        "name" : "השואה בראי הקולנוע"
+      }
+    },
+    "324442" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1F49wzYz4supuOjZQXUps-Q19bClrBX8N",
+          "hw" : "1u9p0YArnyeda5b0Y_9HXm7gU88ERJmxB",
+          "lectures" : "1ETLYHxcxPI88An3USSXBRvDTncwK2bSz",
+          "practices" : "1Wp4b_4cyNz5LQC38-vgKF5bujYP-zMWp"
+        },
+        "driveId" : "1ESqTeLROk-UKqf7LkbnE6qwEovbtmDBA",
+        "name" : "משפט העבודה בישראל"
+      }
+    },
+    "324444" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "11hyqvQIxRPmv5-OnXrDEXrnRFv2aM3Tl",
+          "hw" : "138cejHYp24WHNRlScbKsUJ23pAgxSG3p",
+          "lectures" : "1XmdM9x1pJSFIBD-CX2Vyhy7RGcZ9KKl9",
+          "practices" : "1Mjt9wIvv7pCBd38lo5c-DVKtP8eKjdZq"
+        },
+        "driveId" : "1QaM2HNKP7G4cByZgAAJmQYKO4-B8QKTE",
+        "name" : "לוחמה פסיכולוגית"
+      }
+    },
+    "324494" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1x5I876mb2eCJONHpLsxaX7emTqc7TXV7",
+          "hw" : "1w_kD_8smkVes-aUj5JzQNq9M41gQVUXn",
+          "lectures" : "1S4S6LqtPhsFhfDlHQAF1eXgSlG9ftNeS",
+          "practices" : "1HxEbOl7HmtW0as6Ae62eic3ukPZFFK7u"
+        },
+        "driveId" : "1x6BiCGgm5vVtRhheuYv7ueOO-vlMNEAv",
+        "name" : "מבוא היסטורי למוסיקה 2"
+      }
+    },
+    "324792" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1DCaXm0Z3ifjjNqI-taWLdxc4QnPyeSd_",
+          "hw" : "1sI3cuo3evxuxiLJ6Wc4HNfB3pwbFpuzf",
+          "lectures" : "1RwxCxOM-XMCE5C--6Pea19YzRetWLmGw",
+          "practices" : "1Z0XrKEriDi1yW66DnOjHOFA-oBurzy5l"
+        },
+        "driveId" : "1jFPV0ybr0kB_w9n1toO0EOCGa8rOa6q4",
+        "name" : "תולדות האיסלאם"
+      }
+    },
+    "324903" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1q-Pa1Dfyafnygjr7Ws3lJgHFU_Kup6rD",
+          "hw" : "1XpZBJ0tiOVn-tNGYZkX0mOAc4QAottLu",
+          "lectures" : "18WrGyHgaRCGni1dB_gbpvy97_6dh0xKu",
+          "practices" : "12HPAz_JQlCoZkXKgwYb3TTG_vfPCNqBo"
+        },
+        "driveId" : "11_bvKY_LMYdhA-2DlOfM1o0LZuaQoofB",
+        "name" : "מוסיקה של העיר הגדולה"
+      }
+    },
+    "324904" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "180P-hjhEhhWG2TDlkmoT4_yxuuplWnkr",
+          "hw" : "1qjlnXOLBG0WOZEo4ahGbt8yQqOB0GeWL",
+          "lectures" : "1kKPIa9sW4Pj-WhAaRKim87vzNUGfAyPb",
+          "practices" : "14Lq0e1Ukkz8pFt7zADUeLW4-L0qqG6Ee"
+        },
+        "driveId" : "1hB2XToD3GLMOJrrKNDshRv8x2V-vYiCc",
+        "name" : "מזרח תיכון חדש תמורות ושינויים"
+      }
+    },
+    "324905" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1aYxIihisiwVPecqS0I8MMZi3qA39bQGj",
+          "hw" : "1WbQJz-joU2KpaXIjxIcm7oVQeVuK_WdL",
+          "lectures" : "1XhW6liseku0d5TZPisVn3FWdCbAOJwEL",
+          "practices" : "1p-yQRTkWiyQiMgXE0a4E1Yrylj-LI3ie"
+        },
+        "driveId" : "1-a_FtmbkDSfjxuvxB5OiLXd58PiSFqj0",
+        "name" : "הדת הנוצרית והכנסייה הקתולית"
+      }
+    },
+    "324907" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1tdBcgP4ZF-1E664guo1Sz145PlRGTnyO",
+          "hw" : "1ZiIjEgxfs65evIJbnRg5EcN9VSWXlcaX",
+          "lectures" : "1Itq5biB3CjIF1Vwfak9G-U7ADM4tzdh2",
+          "practices" : "1EO9-VTXp_tSyeBKjXWbOX8fqaNvLiWiE"
+        },
+        "driveId" : "1wLEW01TTDGp_HoC4pxtoymH-AXYkLwWQ",
+        "name" : "סיפורי בריאה ומיתוסים במצרים העתיקה"
+      }
+    },
+    "324912" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1XSasOaqUqxxxayS5qhfdm0WYH593OfBH",
+          "hw" : "1f2Dcoi_6J_kLLDqhroldUS5Dgg4muOm9",
+          "lectures" : "1298oy8w7yG8zUyv8sImX791AGCectiDf",
+          "practices" : "1C2Ak8uATcefirBKgop6h6aUyYnG0Ak5U"
+        },
+        "driveId" : "14xdeOjjPlto26G0p-j5kcf8FkvTuJ6BV",
+        "name" : "מקורותיה של תרבות המערב"
+      }
+    },
+    "324915" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1_GayMQO4MwP8loXXlnpcbk0Km37Khstd",
+          "hw" : "1b_G2CEUCgZx-sywGnVugyjiVNDl2555C",
+          "lectures" : "1PY7_2vQMl27JGQgcpknBMr4KmhoS7yvt",
+          "practices" : "1gNzyFaoNtKFTBZy5mCjSSGzPG4ZN4gbb"
+        },
+        "driveId" : "10-VRy_VDYKYxD96JrxHUuvCo1E-jYGV2",
+        "name" : "האדם וחיות הבית"
+      }
+    },
+    "324918" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1liHOLJy_qH5UQyF1RpEOZlYuf1DwoXwF",
+          "hw" : "1bOhvKrcOAguMJRMk78V7eent_1mYW1bu",
+          "lectures" : "1gaD2gmjIVoFqpYp67sqaQeitQHE4Xk5S",
+          "practices" : "1JcP_63EKbQIh-gzoHWWbP6F0QVhj7Kru"
+        },
+        "driveId" : "1nvcepKs8Fqyyfmucxni_7nBHNlCmFRqf",
+        "name" : "ספרות ערבית מודרנית ופוליטיקה"
+      }
+    },
+    "324919" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1NthP1sgHKkoP9AZmM-feitubeG3OA-zV",
+          "hw" : "1Ihw-I1ajYCMJi4O-CHegFfNQSymMRXAp",
+          "lectures" : "1fAySUEnhL-1uKO8-sIDEwlXF9PR0BCa8",
+          "practices" : "1T8y-ejN_ozdSsMBZALgc3m3-g18T988t"
+        },
+        "driveId" : "1s1rpWpMXk2J7vC--UZZIg3IfDO79oT3u",
+        "name" : "הולדת תרבות המערב-מהמבול עד מוחמד"
+      }
+    },
+    "324920" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1Eh8u6t3hzu5pA3M2ZQY1_yWNuDkY3HSu",
+          "hw" : "1L9SK7MpClxKNqX8QdFURHBirxCjhI1B8",
+          "lectures" : "125_fZD5U35lwbYSq526dG47UfQshsT1n",
+          "practices" : "1s2rLNCAoL66sJSyNu9_t4cAzMLzyRaQk"
+        },
+        "driveId" : "1Cqz-D6jbB7UaDHngwSt0jpU0fr619cTD",
+        "name" : "יחסי מדינות ערב ובינם לבין ישראל"
+      }
+    },
+    "324930" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1XJnvKrj9bJTKXkFWYE74vETlX4n2Ioc2",
+          "hw" : "1k9S2E_6275d1jUvZA4ywjacbo1lQHp4W",
+          "lectures" : "1WUj1rhg5s3ZoZIh2WhqpF37S_FVo4PLY",
+          "practices" : "1YYh9LcSi8QaxCvQ2Hp85TyOhxGMFZ3Ob"
+        },
+        "driveId" : "1BBQuj8uDO7P_wQlId29tzZ0Mt6BbLUgs",
+        "name" : "אלוהי הפילוסופים"
+      }
+    },
+    "324931" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1tGOudQd3bP3d3TITOxpcWbMMJUwQyBkO",
+          "hw" : "1DXBsaO0QWLX1Rb9aaLrRVjR_3ys9fDLB",
+          "lectures" : "103Xl2WBlBkkGlGmj-cadFBMFZBweWL3Y",
+          "practices" : "17jo-jNrxxITVPK-kFtQ6ZX6ze3CUtfSK"
+        },
+        "driveId" : "1i66-kZy1xssHu1B3zjF5GdwFg9pJGsrR",
+        "name" : "עלייתו ונפילתו של האימפריאליזם"
+      }
+    },
+    "324932" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1joJjPQA-azkrbUu8efv04Ze8jUm9ydn2",
+          "hw" : "1p1ac3hbvjPN0qrlNoVLX-h_D_AzSBarL",
+          "lectures" : "1CigaADXr1ftZdoj2f06UVkOdcnHwY2WY",
+          "practices" : "12s0R6XbhVR3Q9mbse-UU62VcodTsXwsF"
+        },
+        "driveId" : "1CQ2jXJezi-nV6_upwhG9_S0b3Dp2ghaF",
+        "name" : "הבית הים תיכוני במבט היסטורי"
+      }
+    },
+    "324937" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1047tDWRjbU323B9eUSiOhM6AVlqQafac",
+          "hw" : "1XPmkbUOEcVI-rdNKwXKSPdQwnW5XNT_A",
+          "lectures" : "1rrCIHlWZ54qKnoI3Id_H8BQVoMW31Zgi",
+          "practices" : "1-A9QQYxSzc7Hnbquup42QbOq1tDYS07e"
+        },
+        "driveId" : "1mWULlvPDS25qeUS99WydwWp0wLdgmrPh",
+        "name" : "משמעות החיים"
+      }
+    },
+    "324944" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1cKvJsHurVH6mNwLlibndG-VGCYrYrBQA",
+          "hw" : "1cgvwGRKtz8z1n_1heMK8q2WOrOeeLcY5",
+          "lectures" : "1NtFxbmDYPso6m2Zj4HDnuKasbZWBxH_V",
+          "practices" : "1yxcdM2ho1gBnUWbqht1Rmc_11W7d0sgC"
+        },
+        "driveId" : "1stTTAITEVWwiq6oNBPRV_KtZ9Zx4u_oy",
+        "name" : "תקשורת בעידן המידע"
+      }
+    },
+    "324946" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "14XsxPrHnHBQsOqnF2DCUK_B0_o3bBAxP",
+          "hw" : "1adCh79xM608Ud3_81OOq-laOGAUxnt9b",
+          "lectures" : "1HC1I8VpPEzmBKpHUW7prmy4koUgfeR3R",
+          "practices" : "1KT_VSWETvPgEMdQxBcYoB8jupKtLg-3b"
+        },
+        "driveId" : "1W4CVhTu30Fc4GrCfdY9F2YDxtoMANt4i",
+        "name" : "הרנסנס באיטליה-מסע תרבותי ואומנותי"
+      }
+    },
+    "324948" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1D3XjkgKUJdP9O5yIs72gASad4aalhCUK",
+          "hw" : "10_a2gTgFt67suHYNtM5A6w70Sxcm2Vb9",
+          "lectures" : "1V57gma7co-vJ38tkyflzK8ArTLAiE9WC",
+          "practices" : "1gjQ6DHxPUST4K6VWSjcSLtmxaKt-IyLo"
+        },
+        "driveId" : "1uSLOYlHrKXzOZK5BVSoeZa7uhLUMJA_p",
+        "name" : "משחקי גבורה - מלחמה בקולנוע"
+      }
+    },
+    "324949" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "11z3PBTDadNjCy69SkvcrBNtD3FSj5D9a",
+          "hw" : "1Rx-CZigXXIv39ZZVpLT6pvk9zq66T77Y",
+          "lectures" : "1lT-biuCWE5FB3tt7ZI7-P8ezyfqDbtDM",
+          "practices" : "1LacEY7oRyYDdBWCnch2Z3lKvbccykIbC"
+        },
+        "driveId" : "12j0K4Q_U76_DgRMtUUeTSFMEpdhmDX9d",
+        "name" : "הקולנוע האירופאי של המאה העשרים"
+      }
+    },
+    "324952" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1nxJeqVWkXvCnOsI-gOz2OaI3abk_sabM",
+          "hw" : "17iVKrJYy3FlOLWtDUMkaK7eXCHOd6xFB",
+          "lectures" : "1psJ-xEx7-FP5Ckfvo_yn1k2JFsCQLLoq",
+          "practices" : "143kPjQULkJhKTN-wPSvKKYibkKT9j5En"
+        },
+        "driveId" : "1Vhq1ciIZBdxAnRx_Ad9tCU3-QR1FcSkj",
+        "name" : "גוף, בריאות וחולי"
+      }
+    },
+    "324957" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1N0SW9ewstkQzCQPsYVFQY_3IxxnS-i2u",
+          "hw" : "1VoJMv0tLMQscNNzkrHlbARhJt-AzTiq9",
+          "lectures" : "1Al7YhcuIgIN04bWS-pQDdO6g87_5dDrs",
+          "practices" : "19diZtQXbi6LlgC4iUNwMdSme3aVRDQDE"
+        },
+        "driveId" : "1Nf6ecFWz2vpP5Xs-l2s2EatTcR8Z7i37",
+        "name" : "מערכת פוליטית ישראלית"
+      }
+    },
+    "324959" : {
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "directoryToFolderId" : {
+          "auxiliary" : "1NBys3rurNZiIEfB7ZoMHuDMdrkzZgHaN",
+          "hw" : "1OZ12jL3tPOHwzbOg9B0rLl8YpHS10jmb",
+          "lectures" : "1syzEBU4m8WOjVRLmiz3qRx-HhO1Lq73W",
+          "practices" : "19CBzK3kSCVMR7myQPRezKEPyLG__OC-E"
+        },
+        "driveId" : "182CoNEo3D3qr4eEUKzt98zR3qd8oknWV",
+        "name" : "פרט ומשפחה בראי חברתי"
+      }
+    },
+    "888888" : {
+      "directories" : {
+        "hw" : [ {
+          "fileName" : "אינפי תרגיל 1",
+          "fileUrl" : "",
+          "number" : "1",
+          "semester" : "אביב",
+          "year" : "2019"
+        }, {
+          "fileName" : "אינפי 1 תרגיל 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "חורף",
+          "year" : "2020"
+        }, {
+          "fileName" : "אינפי תרגיל 3",
+          "fileUrl" : "",
+          "number" : "3",
+          "semester" : "קיץ",
+          "year" : "2019"
+        } ],
+        "lectures" : [ {
+          "fileName" : "אינפי הרצאה 1",
+          "fileUrl" : "",
+          "number" : "1",
+          "semester" : "אביב",
+          "year" : "2019"
+        }, {
+          "fileName" : "אינפי הרצאה 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "חורף",
+          "year" : "2020"
+        }, {
+          "fileName" : "אינפי הרצאה 3",
+          "fileUrl" : "",
+          "number" : "3",
+          "semester" : "חורף",
+          "year" : "2020"
+        } ],
+        "practices" : [ {
+          "fileName" : "אינפי תרגול 1",
+          "fileUrl" : "",
+          "number" : "1",
+          "semester" : "אביב",
+          "year" : "2019"
+        }, {
+          "fileName" : "אינפי תרגול 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "חורף",
+          "year" : "2020"
+        }, {
+          "fileName" : "אינפי 1 תרגול 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "קיץ",
+          "year" : "2019"
+        } ]
+      },
+      "info" : {
+        "directories" : [ "lectures", "hw", "practices", "auxiliary" ],
+        "name" : "אינפי דמה"
+      }
+    },
+    "999999" : {
+      "directories" : {
+        "auxiliary" : [ {
+          "fileName" : "מבוא למדמ\"ח סיכום",
+          "fileUrl" : "",
+          "semester" : "אביב",
+          "type" : "סיכום",
+          "year" : "2019"
+        }, {
+          "fileName" : "מבוא למדמ\"ח נוסחאות סיבוכיות",
+          "fileUrl" : "",
+          "semester" : "חורף",
+          "type" : "דף נוסחאות",
+          "year" : "2020"
+        } ],
+        "hw" : [ {
+          "fileName" : "מבוא למדמ\"ח תרגיל 1",
+          "fileUrl" : "",
+          "number" : "1",
+          "semester" : "אביב",
+          "year" : "2019"
+        }, {
+          "fileName" : "מבוא למדמ\"ח תרגיל 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "חורף",
+          "year" : "2020"
+        }, {
+          "fileName" : "מבוא למדמ\"ח תרגיל 3",
+          "fileUrl" : "",
+          "number" : "3",
+          "semester" : "קיץ",
+          "year" : "2019"
+        } ],
+        "lectures" : [ {
+          "fileName" : "מבוא למדמ\"ח הרצאה 1",
+          "fileUrl" : "",
+          "number" : "1",
+          "semester" : "אביב",
+          "year" : "2019"
+        }, {
+          "fileName" : "מבוא למדמ\"ח הרצאה 2",
+          "fileUrl" : "",
+          "number" : "2",
+          "semester" : "חורף",
+          "year" : "2020"
+        }, {
+          "fileName" : "מבוא למדמ\"ח הרצאה 3",
+          "fileUrl" : "",
+          "number" : "3",
+          "semester" : "קיץ",
+          "year" : "2019"
+        } ]
+      },
+      "info" : {
+        "directories" : [ "lectures", "hw", "auxiliary" ],
+        "name" : "מדמח דמה"
+      }
     }
   },
   "headers" : {
     "auxiliary" : [ {
       "filterType" : "no-filter",
       "text" : "שם הקובץ",
-      "value" : "fileName"
+      "value" : "fileName",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "סמסטר",
-      "value" : "semester"
+      "value" : "semester",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "שנה",
-      "value" : "year"
+      "value" : "year",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "סוג חומר",
-      "value" : "type"
+      "value" : "type",
+      "required" : false
+    },{
+      "filterType" : "multiple",
+      "text" : "הערות",
+      "value" : "comments",
+      "required" : false
     } ],
     "hw" : [ {
       "filterType" : "no-filter",
       "text" : "שם הקובץ",
-      "value" : "fileName"
+      "value" : "fileName",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "מס' תרגיל",
-      "value" : "number"
+      "value" : "number",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "סמסטר",
-      "value" : "semester"
+      "value" : "semester",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "שנה",
-      "value" : "year"
+      "value" : "year",
+      "required" : true
+    },{
+      "filterType" : "multiple",
+      "text" : "הערות",
+      "value" : "comments",
+      "required" : false
     } ],
     "lectures" : [ {
       "filterType" : "no-filter",
       "text" : "שם הקובץ",
-      "value" : "fileName"
+      "value" : "fileName",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "מס' הרצאה",
-      "value" : "number"
+      "value" : "number",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "סמסטר",
-      "value" : "semester"
+      "value" : "semester",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "שנה",
-      "value" : "year"
+      "value" : "year",
+      "required" : true
+    }, {
+      "filterType" : "multiple",
+      "text" : "מרצה",
+      "value" : "tutor",
+      "required" : false
+    },{
+      "filterType" : "multiple",
+      "text" : "הערות",
+      "value" : "comments",
+      "required" : false
     } ],
     "namesMap" : {
       "auxiliary" : "חומרי עזר",
       "hw" : "תרגילי בית",
       "lectures" : "הרצאות",
-      "practices" : "תרגולים"
+      "practices" : "תרגולים",
+      "required" : true
     },
     "practices" : [ {
       "filterType" : "no-filter",
       "text" : "שם הקובץ",
-      "value" : "fileName"
+      "value" : "fileName",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "מס' תרגול",
-      "value" : "number"
+      "value" : "number",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "סמסטר",
-      "value" : "semester"
+      "value" : "semester",
+      "required" : true
     }, {
       "filterType" : "multiple",
       "text" : "שנה",
-      "value" : "year"
+      "value" : "year",
+      "required" : true
+    }, {
+      "filterType" : "multiple",
+      "text" : "מתרגל",
+      "value" : "tutor",
+      "required" : false
+    },{
+      "filterType" : "multiple",
+      "text" : "הערות",
+      "value" : "comments",
+      "required" : false
     } ]
   }
 }
