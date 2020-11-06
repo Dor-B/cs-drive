@@ -48,12 +48,13 @@
           </template>
 
           <v-list dense>
-            <!-- <a :href="feedbackUrl"> -->
               <v-list-item id="feedback-menu-item" @click="openFeedback()">
                 <v-list-item-icon><v-icon>mdi-comment-alert</v-icon></v-list-item-icon>
                 <v-list-item-title>פידבק</v-list-item-title>
               </v-list-item>
-            <!-- </a> -->
+              <v-list-item>
+                <v-list-item-title> - ועד מדעי המחשב בטכניון - </v-list-item-title>
+              </v-list-item>
           </v-list>
       </v-menu>
       <!-- Desktop course search inside toolbar -->
@@ -214,13 +215,6 @@ export default {
   },
 
   methods: {
-    toggleAll () {
-      if (this.selected.length) this.selected = []
-      else this.selected = this.desserts.slice()
-    },
-    columnValueList(val) {
-      return this.desserts.map(d => d[val])
-    },
     mobileCourseSearchChange(){
       document.querySelector('.mobile-course-search input').blur()
     },
