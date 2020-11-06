@@ -9,19 +9,23 @@ const MAX_MATERIAL_NUMBER = 50
 const someYear = 1990
 const startOfWinter = new Date(someYear, monthNames.indexOf('October'), 21)
 const startOfSpring = new Date(someYear, monthNames.indexOf('March'), 18)
+const startOfSpringNextYear = new Date(someYear+1, monthNames.indexOf('March'), 18)
 const startOfSummer = new Date(someYear, monthNames.indexOf('August'), 1)
 
 
 export class FormDirHelper{
-    constructor(courseId, directory, outputData){
+    constructor(courseId, directory, outputData, guessDefault=true){
         this.courseId = courseId
         this.directory = directory
         this.outputData = outputData
+        this.guessDefault = guessDefault
     }
     /**
      * Returns a default string which is a guess for the input
      */
     getDefaultString(inputHeader){
+        if(!this.guessDefault)
+            return ''
         const month = date.getMonth()
         const monthName = monthNames[month]
         const dayOfMonth = date.getDate()
@@ -39,7 +43,7 @@ export class FormDirHelper{
             case 'semester': {
                 // return current semester
                 let now = new Date(someYear, month, dayOfMonth)
-                if(now >= startOfWinter && now < startOfSpring)
+                if(now >= startOfWinter && now < startOfSpringNextYear)
                     return 'חורף'
                 if(now >= startOfSpring && now < startOfSummer)
                     return 'אביב'
