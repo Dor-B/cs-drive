@@ -94,7 +94,7 @@
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <v-expand-transition>
-          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="courseHasItems">
+          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items">
             <v-tabs
               v-model="tab"
               hide-slider
@@ -135,7 +135,7 @@
 
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
-import { isEmpty, fbValue, fbPathHasChild, LocalStorage } from './misc'
+import { isEmpty, fbValue, LocalStorage } from './misc'
 import { db } from './db'
 import { FEEDBACK_URL } from './constants'
 
@@ -232,16 +232,14 @@ export default {
     }
   },
   asyncComputed: {
-    courseHasItems: {
-      get(){
-          return fbPathHasChild('courses/' + this.currentCourseId, 'directories')
-        },
-        default:true
-    },
     items :{
         get(){
           return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
-          .then(obj => Object.entries(obj).map(([key, item]) => ({...item, key})))
+          .then(obj => {
+            if(!obj)
+              return []
+            return Object.entries(obj).map(([key, item]) => ({...item, key}))
+          })
         },
         default:[]
     },

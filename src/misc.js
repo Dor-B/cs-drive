@@ -24,11 +24,21 @@ export class DefaultDict {
    * returns a Promise with database's value in path parameter
    */
   export function fbValue(path){
-    return db.ref(path).once('value').then(snap => snap.val())
+    if ( typeof fbValue.cache == 'undefined' ) {
+      // It has not... perform the initialization
+      fbValue.cache = {};
+    }
+    if(path in fbValue.cache){
+      return Promise.resolve(fbValue.cache[path])
+    }
+    return db.ref(path).once('value').then(snap =>{
+      fbValue.cache[path] = snap.val()
+      return fbValue.cache[path]
+    })
   }
 
   export function fbPathHasChild(path, childPath){
-    return db.ref(path).child(childPath).once('value').then(snap => !(snap.val === null))
+    return fbValue(path+'/'+childPath).then(val => !(val === null))
   }
 
   export function getFbCourseDirectories(courseId){
