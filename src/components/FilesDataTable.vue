@@ -139,7 +139,7 @@ const REVERSE_SORTED_FILTERS = ['year']
         headers: function(newHs){
             this.filters = {}
             this.setDefaultSort(newHs)
-        }
+        },
     },
     created: function(){
         this.setDefaultSort(this.headers)
@@ -160,7 +160,7 @@ const REVERSE_SORTED_FILTERS = ['year']
             return commaSeparatedText.split(',').map(comment => comment.trim())
         },
         columnValueList(field) {
-            let fieldValues = this.items.map(item => item[field])
+            let fieldValues = this.items.filter(item => field in item).map(item => item[field])
             if(this.isCommaSeparatedField(field)){
                 fieldValues = fieldValues
                 .map(commaText => this.commaSeparatedToList(commaText)) // "a, b" --> ["a", "b"]
