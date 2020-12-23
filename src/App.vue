@@ -44,28 +44,25 @@ export default {
     
   },
 
-  created: function(){
-    const that = this;
-    db.ref('/courses').once('value').then(function(snapshot) {
-        let coursesItems = [];
-        snapshot.forEach(function(childSnapshot) {
-          let name = childSnapshot.child('info').child('name').val()
-          let id = childSnapshot.key
+  created: async function(){
+    let ids = await db.ref('/coursesIds').once('value').then(snap => snap.val())
+    let coursesItems = []
+    let namesGetters = []
+    for(const id of ids){
+      namesGetters.push(
+        db.ref(`/courses/${id}/info/name`).once('value')
+        .then(snap => snap.val())
+        .then(name => {
           coursesItems.push({
             value: id,
             text:`${name} - ${id}`
           });
-        });
-        that.coursesItems = coursesItems;
-    });
-    // db.ref('/forApproval').push({
-    //         'courseId':'104031',
-    //         'directory': 'hw',
-    //         'driveId': '1th1myHph72HdZ2GLGPr-t0Kb6Zn2dLQm',
-    //         'semester': 'אביב',
-    //         'number': '3',
-    //         'fileName': ' 2 קובץ בדיקה'
-    // })
+        })
+      )
+    }
+    await Promise.all(namesGetters)
+    this.coursesItems = coursesItems
+    // console.log(await db.ref(`/courses/nkjcndkvd`).once('value').then(s=>s.val()) === null)
   },
   asyncComputed: {
     namesMap:{

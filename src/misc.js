@@ -28,7 +28,7 @@ export class DefaultDict {
   }
 
   export function fbPathHasChild(path, childPath){
-    return db.ref(path).once('value').then(snap => snap.child(childPath).exists())
+    return db.ref(path).child(childPath).once('value').then(snap => !(snap.val === null))
   }
 
   export function getFbCourseDirectories(courseId){

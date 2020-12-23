@@ -75,7 +75,7 @@
       </template>
     </v-app-bar>
 <!-- <v-main> -->
-  <v-content>
+  <v-main>
     <v-container fill-height fluid class="grey lighten-4">
       <!-- Mobile course search at top of content -->
       <v-row justify="center" align="center" v-if="isMobile" class="mobile-course-search">
@@ -123,7 +123,7 @@
         </v-expand-transition>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
   <!-- </v-main>
   <v-footer app>
     HEECCE
@@ -178,6 +178,8 @@ export default {
   computed: {
     lastCourses: LocalStorage.getComputedField('LS_lastCourses'),
     coursesItemsByLastSeen: function(){
+      if(this.coursesItems.length == 0)
+        return [...this.lastCourses].sort()
       const that = this
       let lastSeenItems = [...this.lastCourses].sort().map(id => that.coursesItems.filter(i => i.value == id)[0])
       let otherItems = this.coursesItems.filter(item => !that.lastCourses.includes(item.value))
