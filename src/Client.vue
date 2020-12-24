@@ -235,9 +235,15 @@ export default {
   asyncComputed: {
     items :{
         get(){
-          return fbValue('courses/' + this.currentCourseId + '/directories/' + this.currentCourseDir)
+          const dir = this.currentCourseDir
+          return fbValue('courses/' + this.currentCourseId + '/directories')
+          .then(dirs => {
+             if(!dirs || (dirs === null))
+              return []
+              return dirs[dir]
+            })
           .then(obj => {
-            if(!obj)
+            if(!obj || (obj === null))
               return []
             return Object.entries(obj).map(([key, item]) => ({...item, key}))
           })
@@ -274,7 +280,6 @@ export default {
             let ret = Object.fromEntries(
               Object.entries(dir).map(([key, data]) => [key, Object.keys(data).length])
             )
-            console.log(dir)
             return ret
           })
         },
