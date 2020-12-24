@@ -94,7 +94,7 @@
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <v-expand-transition>
-          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items">
+          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items.length > 0">
             <v-tabs
               v-model="tab"
               hide-slider
@@ -122,12 +122,14 @@
           <p v-else>אין עדיין קבצים בקורס זה, בואו לתרום ולעלות קבצים דרך הכפתור משמאל למעלה!</p>
         </v-expand-transition>
       </v-row>
+      
     </v-container>
   </v-main>
   <!-- </v-main>
   <v-footer app>
     HEECCE
   </v-footer> -->
+  
 </div>
 </template>
 
@@ -136,7 +138,6 @@
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue, LocalStorage } from './misc'
-import { db } from './db'
 import { FEEDBACK_URL } from './constants'
 
 const COL_WIDTHS = {
@@ -163,7 +164,7 @@ export default {
   data () {
     return {
       coursesIDs : [],
-      currentCourseId : '888888',
+      currentCourseId : '',
       tab: 0,
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
@@ -261,11 +262,21 @@ export default {
     },
     dirsNumChildren: {
         get(){
-          return db.ref('courses/' + this.currentCourseId + '/directories').once('value').then(snap => {
-            let activeDirs = []
-            snap.forEach(childSnap => {activeDirs.push([childSnap.key, childSnap.numChildren()])})
-            return Promise.all(activeDirs)
-          }).then(listActive => Object.fromEntries(listActive))
+          // return db.ref('courses/' + this.currentCourseId + '/directories').once('value').then(snap => {
+          //   let activeDirs = []
+          //   snap.forEach(childSnap => {activeDirs.push([childSnap.key, childSnap.numChildren()])})
+          //   return Promise.all(activeDirs)
+          // }).then(listActive => Object.fromEntries(listActive))
+          return fbValue('courses/' + this.currentCourseId + '/directories/')
+          .then(dir => {
+            if(!dir)
+              return {}
+            let ret = Object.fromEntries(
+              Object.entries(dir).map(([key, data]) => [key, Object.keys(data).length])
+            )
+            console.log(dir)
+            return ret
+          })
         },
         default: {}
     }
