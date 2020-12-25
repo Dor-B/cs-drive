@@ -52,6 +52,14 @@
                 <v-list-item-icon><v-icon>mdi-comment-alert</v-icon></v-list-item-icon>
                 <v-list-item-title>פידבק</v-list-item-title>
               </v-list-item>
+              <v-list-item id="google-drive-menu-item" @click="openGoogleDrive()">
+                <v-list-item-icon><v-icon>mdi-google-drive</v-icon></v-list-item-icon>
+                <v-list-item-title>גוגל דרייב</v-list-item-title>
+              </v-list-item>
+              <v-list-item id="old-exams-menu-item" @click="openOldDrive()">
+                <v-list-item-icon><v-icon>mdi-google-drive</v-icon></v-list-item-icon>
+                <v-list-item-title>מבחנים ישנים</v-list-item-title>
+              </v-list-item>
               <v-list-item>
                 <v-list-item-title> - ועד מדעי המחשב בטכניון - </v-list-item-title>
               </v-list-item>
@@ -138,7 +146,7 @@
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue, LocalStorage } from './misc'
-import { FEEDBACK_URL } from './constants'
+import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL} from './constants'
 
 const COL_WIDTHS = {
   'fileName' : '250px',
@@ -173,6 +181,8 @@ export default {
       iconClick: false,
       LS_lastCourses: new LocalStorage('lastCourses', []),
       feedbackUrl: FEEDBACK_URL,
+      oldDriveUrl: OLD_DRIVE_URL,
+      googleDriveUrl: GOOGLE_DRIVE_URL,
     }
   },
 
@@ -223,6 +233,12 @@ export default {
     },
     openFeedback(){
       window.open(this.feedbackUrl)
+    },
+    openOldDrive(){
+      window.open(this.oldDriveUrl)
+    },
+    openGoogleDrive(){
+      window.open(this.googleDriveUrl)
     }
   },
   watch: {

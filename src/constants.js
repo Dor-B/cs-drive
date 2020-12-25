@@ -3,3 +3,5 @@ export const UPLOAD_FILE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/A
 export const ADMIN_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqozd6ENmmycCZJAIhG1CD99kKajdMpVjC40vl0M2VKkYipMZj/exec'
 export const ADMIN_CHANGE_FILE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEsoon3s1FCeiJFu6t62bAl4MnnBHcwUVmABY1Tsgdd3UAZSs/exec'
 export const FEEDBACK_URL = 'https://forms.gle/6ffKJi8ydXiFfK7d6'
+export const OLD_DRIVE_URL = 'https://drive.google.com/drive/folders/1xlu4bteqX0QuIoBMBnnw3kz2Q2rk1rlI'
+export const GOOGLE_DRIVE_URL = 'https://drive.google.com/drive/folders/1se47Kt060R0j3zt7n9Bx-TsSfF34ko93'
