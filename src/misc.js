@@ -29,7 +29,7 @@ export class DefaultDict {
       fbValue.cache = {};
     }
     if(path in fbValue.cache){
-      return Promise.resolve(fbValue.cache[path])
+      return new Promise((res) => res(fbValue.cache[path]))
     }
     return db.ref(path).once('value').then(snap =>{
       fbValue.cache[path] = snap.val()

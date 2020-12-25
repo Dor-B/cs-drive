@@ -172,7 +172,7 @@ export default {
   data () {
     return {
       coursesIDs : [],
-      currentCourseId : '',
+      currentCourseId : '234114', // IMPORTANT: do not change to '' !!!
       tab: 0,
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
