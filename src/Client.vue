@@ -320,6 +320,10 @@ export default {
 .desktop-table-row{
   margin-top: 20px;
 }
+
+.v-input__icon--append{
+  cursor: pointer;
+}
 </style>
 
 <style scoped>
