@@ -21,7 +21,7 @@
                 v-model="outputData[header.value]"
                 :formDirHelper="formDirHelper"
                 :header="header.value"
-                :helperText="header.text"
+                :helperText="helperText(header)"
                 :required="header.required && (!disableRequired)"
         >
         </UploadInput>
@@ -63,6 +63,13 @@ export default {
             directoryRules: [
                 v => !!v || 'חובה לבחור סוג חומר',
             ]
+        }
+    },
+    methods: {
+        helperText(header){
+            if(header.value == 'comments')
+                return 'הערות/תיוגים (מופרדים בפסיק)'
+            return header.text
         }
     },
     computed: {
