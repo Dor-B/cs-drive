@@ -10,7 +10,7 @@
         single-line
         hide-details
       ></v-text-field>
-      <!-- {{items.length}} items -->
+      <!-- {{filters}} -->
     </v-card-title>
     <v-data-table
     v-if="!isMobile"
@@ -46,6 +46,9 @@
             <span class="subtitle-2">סנן:</span>
             </template>
         </td>
+        <td>
+            <v-icon :style="{opacity: emptyFilters ? '0' : '1'}" @click="removeFilters()">mdi-close</v-icon>
+        </td> <!-- gray space for the more of this button -->
         </tr>
     </template>
     <template v-slot:header.icon>
@@ -59,6 +62,21 @@
             {{shortenFileName(item.fileName)}}
         </a>
     
+    </template>
+    <template v-slot:item.moreOfThisButton="{ item }">
+        <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon class="moreOfThisButton" @click="showMoreOfThis(item)"
+         color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+            mdi-chevron-left
+        </v-icon>
+      </template>
+      <span>{{moreOfThisHint(item)}}</span>
+    </v-tooltip>
     </template>
 
     </v-data-table>
@@ -132,7 +150,18 @@ const REVERSE_SORTED_FILTERS = ['year']
             return this.$vuetify.breakpoint.name == 'xs'
         },
         headersWithIcon(){
-            return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders]
+            // return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders]
+            return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders, {value: 'moreOfThisButton'}]
+        },
+        emptyFilters(){
+            if(Object.keys(this.filters).length == 0){
+                return true
+            }
+            for(const val of Object.values(this.filters)){
+                if(val.length > 0)
+                    return false
+            }
+            return true
         }
     },
     watch: {
@@ -209,7 +238,38 @@ const REVERSE_SORTED_FILTERS = ['year']
             if(filename.length <= MAX_FILENAME_CHARS)
                 return filename
             return filename.slice(0, MAX_FILENAME_CHARS - dots.length) + dots
+        },
+        showMoreOfThis(item){
+            let filters = {}
+            let unfiltered = ['number', 'fileName']
+            for(const {value} of this.nonEmptyHeaders){
+                if(value in item && !unfiltered.includes(value) && item[value] != '')
+                    filters[value] = [item[value]]
+            }
+            this.filters = filters
+        },
+        moreOfThisHint(item){
+            let dont_show = ['number', 'fileName']
+            let headers = this.nonEmptyHeaders.map(({value}) => value)
+            // console.log(headers)
+            let info = Object.entries(item)
+                    .filter(([key,]) => headers.includes(key) && !dont_show.includes(key))
+                    .map(([, value]) => value).join(' ')
+            return "כל " + info
+        },
+        removeFilters(){
+            this.filters = {}
         }
     }
   }
 </script>
+
+<style scoped>
+.moreOfThisButton{
+    opacity: 0;
+    transition: none;
+}
+tr:hover .moreOfThisButton{
+    opacity: 1;
+}
+</style>
