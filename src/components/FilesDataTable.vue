@@ -64,19 +64,19 @@
     
     </template>
     <template v-slot:item.moreOfThisButton="{ item }">
-        <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon class="moreOfThisButton" @click="showMoreOfThis(item)"
-         color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-            mdi-chevron-left
-        </v-icon>
-      </template>
-      <span>{{moreOfThisHint(item)}}</span>
-    </v-tooltip>
+      <v-tooltip bottom v-if="isMoreOfThisRelevant(item)">
+        <template v-slot:activator="{ on, attrs }">
+            <v-icon class="moreOfThisButton" @click="showMoreOfThis(item)"
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+            >
+                mdi-chevron-left
+            </v-icon>
+        </template>
+        <span>{{moreOfThisHint(item)}}</span>
+      </v-tooltip>
     </template>
 
     </v-data-table>
@@ -248,14 +248,19 @@ const REVERSE_SORTED_FILTERS = ['year']
             }
             this.filters = filters
         },
-        moreOfThisHint(item){
+        getItemMoreOfThisValues(item){
             let dont_show = ['number', 'fileName']
             let headers = this.nonEmptyHeaders.map(({value}) => value)
-            // console.log(headers)
-            let info = Object.entries(item)
+            return Object.entries(item)
                     .filter(([key,]) => headers.includes(key) && !dont_show.includes(key))
-                    .map(([, value]) => value).join(' ')
+                    .map(([, value]) => value)
+        },
+        moreOfThisHint(item){
+            let info = this.getItemMoreOfThisValues(item).join(' ')
             return "כל " + info
+        },
+        isMoreOfThisRelevant(item){
+            return this.getItemMoreOfThisValues(item).length > 0
         },
         removeFilters(){
             this.filters = {}
