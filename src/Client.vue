@@ -76,6 +76,7 @@
               label="בחר קורס"
               solo
               light
+              :loading="coursesItemsByLastSeen.length == 0"
             ></v-autocomplete>
             </v-col>
           </v-row>
@@ -96,6 +97,7 @@
           solo
           light
           flat
+          :loading="coursesItemsByLastSeen.length == 0"
         ></v-autocomplete>
         </v-col>
       </v-row>
@@ -154,7 +156,7 @@ const COL_WIDTHS = {
 }
 
 const NUM_LAST_COURSES = 6
-
+const LAST_COURSES_DIVIDER = 'קורסים אחרונים'
 
 export default {
   name: 'Client',
@@ -190,11 +192,12 @@ export default {
     lastCourses: LocalStorage.getComputedField('LS_lastCourses'),
     coursesItemsByLastSeen: function(){
       if(this.coursesItems.length == 0)
-        return [...this.lastCourses].sort()
+        return []
       const that = this
       let lastSeenItems = [...this.lastCourses].sort().map(id => that.coursesItems.filter(i => i.value == id)[0])
       let otherItems = this.coursesItems.filter(item => !that.lastCourses.includes(item.value))
-      return [...lastSeenItems, ...otherItems]
+
+      return [{ header: LAST_COURSES_DIVIDER }, ...lastSeenItems, { divider: true }, ...otherItems]
     },
     tableTitle: function(){
       if(isEmpty(this.currentCourseInfo) || isEmpty(this.namesMap) || this.isMobile){
