@@ -77,6 +77,7 @@
               solo
               light
               :loading="coursesItemsByLastSeen.length == 0"
+              :menu-props="{maxHeight: 355}"
             ></v-autocomplete>
             </v-col>
           </v-row>
@@ -100,10 +101,11 @@
           :loading="coursesItemsByLastSeen.length == 0"
         ></v-autocomplete>
         </v-col>
-      </v-row>
+      </v-row> 
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <v-expand-transition>
+          <div>
           <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items.length > 0">
             <v-tabs
               v-model="tab"
@@ -130,6 +132,7 @@
                 </v-card>
           </v-card>
           <p v-else>אין עדיין קבצים בקורס זה, בואו לתרום ולעלות קבצים דרך הכפתור משמאל למעלה!</p>
+          </div>
         </v-expand-transition>
       </v-row>
       
