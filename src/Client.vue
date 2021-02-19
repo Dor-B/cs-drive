@@ -104,36 +104,51 @@
       </v-row> 
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
-        <v-expand-transition>
+        <!-- <v-expand-transition> -->
           <div>
           <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items.length > 0">
-            <v-tabs
-              v-model="tab"
-              hide-slider
-              show-arrows
-              center-active
-            >
-              <v-tab
-                v-for="item in tabs"
-                :key="item.tab"
+            <!-- {{tab}} -->
+            <div id="tabs-container">
+              <v-tabs
+                v-model="tab_"
+                hide-slider
+                show-arrows
+                center-active
               >
-                {{ item.text }}
-              </v-tab>
-            </v-tabs>
+                <v-tab
+                  v-for="(item, i) in tabs"
+                  :key="i"
+                >
+                  {{ item.text }}
+                </v-tab>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-tab key="examsTab" :href="tscans_url" target="_blank"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <v-icon left>mdi-open-in-new</v-icon>
+                      סריקות
+                    </v-tab>
+                  </template>
+                  <span>אתר tscans</span>
+                </v-tooltip>
+              </v-tabs>
+            </div>
                 <v-card flat>
                       <FilesDataTable
-                      id="table"
-                      :headers="headers"
-                      :items="items"
-                      :title="tableTitle"
-                      :loading="$asyncComputed.items.updating"
+                        v-if="tab < tabs.length"
+                        id="table"
+                        :headers="headers"
+                        :items="items"
+                        :title="tableTitle"
+                        :loading="$asyncComputed.items.updating"
                       >
-                    </FilesDataTable>
+                      </FilesDataTable>
                 </v-card>
           </v-card>
           <p v-else>אין עדיין קבצים בקורס זה, בואו לתרום ולעלות קבצים דרך הכפתור משמאל למעלה!</p>
           </div>
-        </v-expand-transition>
       </v-row>
       
     </v-container>
@@ -151,7 +166,7 @@
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import { isEmpty, fbValue, LocalStorage } from './misc'
-import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL} from './constants'
+import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE} from './constants'
 
 const COL_WIDTHS = {
   'fileName' : '250px',
@@ -179,6 +194,7 @@ export default {
       coursesIDs : [],
       currentCourseId : '234114', // IMPORTANT: do not change to '' !!!
       tab: 0,
+      tab_: 0, // might be exams (out of range of tabs)
       selected: [],
       tmpTitle: 'מדעי המחשב \\ הרצאות',
       search: '',
@@ -217,7 +233,9 @@ export default {
       return this.currentCourseInfo.directories.filter(name => name in that.dirsNumChildren && that.dirsNumChildren[name] > 0)
       .map((name) => {return {name:name, text:this.namesMap[name]}})
     },
-
+    tscans_url: function(){
+      return TSCANS_URL_COURSE + this.currentCourseId
+    },
     currentCourseDir : function(){
       // return 'lectures'
       let res
@@ -252,6 +270,10 @@ export default {
       if(newCourse != null){
         this.lastCourses = [newCourse, ...this.lastCourses.filter(c => c != newCourse)].slice(0, NUM_LAST_COURSES)
       }
+    },
+    tab_: function(newTab){
+      if (newTab < this.tabs.length)
+        this.tab = newTab
     }
   },
   asyncComputed: {
@@ -336,6 +358,10 @@ export default {
 
 .fullWidth{
     width: 100%;
+}
+
+#tabs-container{
+  display: flex;
 }
 
 a #feedback-menu-item{

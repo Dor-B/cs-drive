@@ -5,3 +5,5 @@ export const ADMIN_CHANGE_FILE_APPS_SCRIPT_URL = 'https://script.google.com/macr
 export const FEEDBACK_URL = 'https://forms.gle/6ffKJi8ydXiFfK7d6'
 export const OLD_DRIVE_URL = 'https://drive.google.com/drive/folders/1xlu4bteqX0QuIoBMBnnw3kz2Q2rk1rlI'
 export const GOOGLE_DRIVE_URL = 'https://drive.google.com/drive/folders/1se47Kt060R0j3zt7n9Bx-TsSfF34ko93'
+export const TSCANS_URL = 'https://tscans.cf/'
+export const TSCANS_URL_COURSE = TSCANS_URL + '?course='
