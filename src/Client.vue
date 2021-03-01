@@ -122,23 +122,29 @@
                   {{ item.text }}
                 </v-tab>
               </v-tabs>
-              <v-tooltip bottom>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn :href="tscans_url" target="_blank"
-                      depressed
-                      large
-                      color="white"
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      <v-icon left>mdi-open-in-new</v-icon>
-                      סריקות
-                    </v-btn>
-                  </template>
-                  <span>אתר tscans</span>
-                </v-tooltip>
+              <v-tooltip bottom v-if="!isMobile">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn :href="tscans_url" target="_blank"
+                    depressed
+                    large
+                    color="white"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <v-icon left>mdi-open-in-new</v-icon>
+                    סריקות
+                  </v-btn>
+                </template>
+                <span>אתר tscans</span>
+              </v-tooltip>
             </div>
                 <v-card flat>
+                      <div style="display: flex; justify-content: flex-end; padding:2px;">
+                        <v-btn rounded depressed small v-if="isMobile" :href="tscans_url" target="_blank">
+                          <v-icon left small>mdi-open-in-new</v-icon>
+                          סריקות
+                        </v-btn>
+                      </div>
                       <FilesDataTable
                         v-if="tab < tabs.length"
                         id="table"
@@ -358,6 +364,10 @@ export default {
 </style>
 
 <style scoped>
+#mobile-tscans-link{
+  margin-left: auto; 
+  margin-right: 0;
+}
 
 .fullWidth{
     width: 100%;
