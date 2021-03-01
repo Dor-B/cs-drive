@@ -121,19 +121,22 @@
                 >
                   {{ item.text }}
                 </v-tab>
-                <v-tooltip bottom>
+              </v-tabs>
+              <v-tooltip bottom>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-tab key="examsTab" :href="tscans_url" target="_blank"
+                    <v-btn :href="tscans_url" target="_blank"
+                      depressed
+                      large
+                      color="white"
                       v-bind="attrs"
                       v-on="on"
                     >
                       <v-icon left>mdi-open-in-new</v-icon>
                       סריקות
-                    </v-tab>
+                    </v-btn>
                   </template>
                   <span>אתר tscans</span>
                 </v-tooltip>
-              </v-tabs>
             </div>
                 <v-card flat>
                       <FilesDataTable
