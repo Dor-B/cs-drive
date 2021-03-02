@@ -35,6 +35,8 @@
       <v-menu
           bottom
           left
+          transition="scale-transition"
+          origin="top left"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
