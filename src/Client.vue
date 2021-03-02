@@ -105,8 +105,8 @@
 
       <v-row justify="center" align="center" :class="{'desktop-table-row': !isMobile}">
         <!-- <v-expand-transition> -->
-          <div>
-          <v-card :elevation="isMobile? '1' : '4'" :class="{fullWidth: isMobile}" v-if="items.length > 0">
+        <div :class="{fullWidth: isMobile}">
+          <v-card :elevation="isMobile? '1' : '4'" v-if="items.length > 0">
             <!-- {{tab}} -->
             <div id="tabs-container">
               <v-tabs
@@ -157,7 +157,7 @@
                 </v-card>
           </v-card>
           <p v-else>אין עדיין קבצים בקורס זה, בואו לתרום ולעלות קבצים דרך הכפתור משמאל למעלה!</p>
-          </div>
+        </div>
       </v-row>
       
     </v-container>
@@ -371,6 +371,7 @@ export default {
 
 .fullWidth{
     width: 100%;
+    max-width: 100%;
 }
 
 #tabs-container{
