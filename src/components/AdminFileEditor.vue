@@ -41,7 +41,7 @@ import {ADMIN_CHANGE_FILE_APPS_SCRIPT_URL} from '../constants'
 import { db } from '../db'
 
 
-const driveLinkReg = /file\/d\/(?<id>.+)(?:\/|$)/g
+const driveLinkReg = /d\/(?<id>[^/]+)(?:\/|$)/g
 
 export default {
     name: 'AdminFileEditor',
