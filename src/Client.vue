@@ -35,6 +35,7 @@
       <TutorialDialog
        :coursesItems="coursesItemsByLastSeen"
        :headerNames="namesMap"
+       :defaultVisibillity="isFirstTimeVisit"
       >
       </TutorialDialog>
       <v-menu
@@ -219,6 +220,7 @@ export default {
       iconHover: false,
       iconClick: false,
       LS_lastCourses: new LocalStorage('lastCourses', []),
+      LS_isFirstTimeVisit: new LocalStorage('isFirstTimeVisit', false),
       feedbackUrl: FEEDBACK_URL,
       oldDriveUrl: OLD_DRIVE_URL,
       googleDriveUrl: GOOGLE_DRIVE_URL,
@@ -226,6 +228,7 @@ export default {
   },
 
   computed: {
+    isFirstTimeVisit: LocalStorage.getComputedField('LS_isFirstTimeVisit'),
     lastCourses: LocalStorage.getComputedField('LS_lastCourses'),
     coursesItemsByLastSeen: function(){
       if(this.coursesItems.length == 0)
@@ -350,10 +353,14 @@ export default {
   },
   
   created : function(){
-    if(this.lastCourses.length > 0){
+    if(this.lastCourses.length == 0){
+      this.isFirstTimeVisit = true
+      this.lastCourses = [this.currentCourseId]
+    }else{
+      this.isFirstTimeVisit = false
       this.currentCourseId = this.lastCourses[0]
     }
-  } 
+  }
 }
 
 </script>

@@ -41,10 +41,14 @@
     props: {
         coursesItems : Array,
         headerNames : Object,
+        defaultVisibillity: {
+            type: Boolean,
+            default: false,
+        }
     },
     data() {
         return {
-            dialog: false,
+            dialog: this.defaultVisibillity,
         }
     },
     computed: {
