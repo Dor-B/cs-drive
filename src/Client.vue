@@ -32,6 +32,11 @@
        :headerNames="namesMap"
       >
       </UploadForm>
+      <TutorialDialog
+       :coursesItems="coursesItemsByLastSeen"
+       :headerNames="namesMap"
+      >
+      </TutorialDialog>
       <v-menu
           bottom
           left
@@ -176,6 +181,7 @@
 
 import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
+import TutorialDialog from './components/TutorialDialog'
 import { isEmpty, fbValue, LocalStorage } from './misc'
 import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE} from './constants'
 
@@ -197,7 +203,8 @@ export default {
 
   components: {
     FilesDataTable,
-    UploadForm
+    UploadForm,
+    TutorialDialog
   },
 
   data () {
