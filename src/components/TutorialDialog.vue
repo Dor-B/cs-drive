@@ -17,7 +17,7 @@
       <v-card>
         <v-card-title>איך משתמשים בדרייב</v-card-title>
         <v-card-text>
-          <video autoplay muted loop width="850px" :key="videoSrc">
+          <video autoplay muted loop width="850px" :key="videoSrc" id="videoElement">
             <source v-if="dialog" src="../assets/tutorialVideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>        
@@ -62,21 +62,17 @@
         
     },
     watch: {
-      // outputData: {
-      //   handler: function(val){
-      //     document.querySelector('#upload-iframe').contentWindow.postMessage(JSON.stringify(val), '*');
-      //     console.log('outputData changed')
-      //        document.querySelector('#upload-iframe').onload = function(){
-      //   console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
-      // }
-      //   },
-      //   deep: true
-      // }
+      dialog: function(newDialogVal){
+        if(newDialogVal){
+          let video = document.getElementById("videoElement")
+          video.pause()
+          video.currentTime = 0
+          video.play()
+        }
+      }
     },
     created: function(){
-      // document.querySelector('#upload-iframe').onload = function(){
-      //   console.log('loaded!', document.querySelector('#upload-iframe').contentDocument.dispatchEvent)
-      // }
+    
     }
   }
 </script>
