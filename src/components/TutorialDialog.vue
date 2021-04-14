@@ -17,7 +17,7 @@
       <v-card>
         <v-card-title>איך משתמשים בדרייב</v-card-title>
         <v-card-text>
-          <video autoplay muted loop width="850px" :key="videoSrc" id="videoElement">
+          <video autoplay muted loop width="850px" id="videoElement">
             <source v-if="dialog" src="../assets/tutorialVideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>        
@@ -65,9 +65,11 @@
       dialog: function(newDialogVal){
         if(newDialogVal){
           let video = document.getElementById("videoElement")
-          video.pause()
-          video.currentTime = 0
-          video.play()
+          if(video){
+            video.pause()
+            video.currentTime = 0
+            video.play()
+          }
         }
       }
     },
