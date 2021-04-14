@@ -33,6 +33,7 @@
       >
       </UploadForm>
       <TutorialDialog
+       v-if="!isMobile"
        :coursesItems="coursesItemsByLastSeen"
        :headerNames="namesMap"
        :defaultVisibillity="isFirstTimeVisit"
