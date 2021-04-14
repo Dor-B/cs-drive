@@ -1,7 +1,7 @@
 <template>
     <v-dialog
       v-model="dialog"
-      width="500"
+      width="900px"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -15,9 +15,12 @@
       </template>
 
       <v-card>
-        <v-card-title>איך משתמשים בדרייב?</v-card-title>
+        <v-card-title>איך משתמשים בדרייב</v-card-title>
         <v-card-text>
-            בקרוב תיהיה פה תמונה
+          <video autoplay muted loop width="850px" :key="videoSrc">
+            <source v-if="dialog" src="../assets/tutorialVideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>        
         </v-card-text>
 
         <v-card-actions>
@@ -44,11 +47,12 @@
         defaultVisibillity: {
             type: Boolean,
             default: false,
-        }
+        },
     },
     data() {
         return {
             dialog: this.defaultVisibillity,
+            videoURL: "../assets/tutorialVideo.mp4",
         }
     },
     computed: {
