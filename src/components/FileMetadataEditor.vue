@@ -34,6 +34,7 @@
 import {FormDirHelper} from '../upload-form-helper'
 import UploadInput from './UploadInput'
 import {fbValue, isNonEmptyStr, getFbCourseDirectories} from '../misc'
+import {HEADER_TEXT_OVERRIDES} from '../constants'
 
 
 const EXCLUDED_HEADERS = new Set(['fileName'])
@@ -67,8 +68,8 @@ export default {
     },
     methods: {
         helperText(header){
-            if(header.value == 'comments')
-                return 'הערות/תיוגים (מופרדים בפסיק)'
+            if(header.value in HEADER_TEXT_OVERRIDES)
+                return HEADER_TEXT_OVERRIDES[header.value]
             return header.text
         }
     },
