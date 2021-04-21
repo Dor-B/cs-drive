@@ -8,6 +8,8 @@ export const GOOGLE_DRIVE_URL = 'https://drive.google.com/drive/folders/1se47Kt0
 export const TSCANS_URL = 'https://tscans.cf/'
 export const TSCANS_URL_COURSE = TSCANS_URL + '?course='
 
+export const DEFAULT_COURSE_ID = '234114'
+
 export const HEADER_TEXT_OVERRIDES = {
     comments: 'שם מסכם / תיוגים (מופרדים בפסיק)'
 }

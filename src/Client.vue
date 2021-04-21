@@ -185,7 +185,7 @@ import FilesDataTable from './components/FilesDataTable'
 import UploadForm from './components/UploadForm'
 import TutorialDialog from './components/TutorialDialog'
 import { isEmpty, fbValue, LocalStorage } from './misc'
-import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE} from './constants'
+import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE, DEFAULT_COURSE_ID} from './constants'
 
 const COL_WIDTHS = {
   'fileName' : '250px',
@@ -212,7 +212,7 @@ export default {
   data () {
     return {
       coursesIDs : [],
-      currentCourseId : '234114', // IMPORTANT: do not change to '' !!!
+      currentCourseId : DEFAULT_COURSE_ID, // IMPORTANT: do not change to '' !!!
       tab: 0,
       tab_: 0, // might be exams (out of range of tabs)
       selected: [],
@@ -296,6 +296,16 @@ export default {
     tab_: function(newTab){
       if (newTab < this.tabs.length)
         this.tab = newTab
+    },
+    coursesItems: function(newCoursesItems){
+      // remove lastCourses which do not exist
+      const knownCourses = newCoursesItems.map(item => item.value)
+      if(knownCourses.length > 0){
+        this.lastCourses = this.lastCourses.filter(courseId => knownCourses.includes(courseId))
+        if(!knownCourses.includes(this.currentCourseId)){
+          this.currentCourseId = this.lastCourses[0] || DEFAULT_COURSE_ID
+        }
+      }
     }
   },
   asyncComputed: {
@@ -354,6 +364,9 @@ export default {
   },
   
   created : function(){
+    // const knownCourses = this.coursesItems.map(item => item.value)
+    // console.log('last courses', this.lastCourses)
+    
     if(this.lastCourses.length == 0){
       this.isFirstTimeVisit = true
       this.lastCourses = [this.currentCourseId]
