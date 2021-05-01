@@ -46,6 +46,7 @@ export default {
 
   created: async function(){
     let ids = await db.ref('/coursesIds').once('value').then(snap => snap.val())
+    ids = Object.values(ids)
     let coursesItems = []
     let namesGetters = []
     for(const id of ids){
@@ -62,7 +63,6 @@ export default {
     }
     await Promise.all(namesGetters)
     this.coursesItems = coursesItems
-    // console.log(await db.ref(`/courses/nkjcndkvd`).once('value').then(s=>s.val()) === null)
   },
   asyncComputed: {
     namesMap:{
