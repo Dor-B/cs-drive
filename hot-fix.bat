@@ -10,4 +10,5 @@ git branch | find "* master" > NUL & IF ERRORLEVEL 1 (
     git push
     npm run build
     firebase deploy --only hosting -m %1
+    git checkout master
 )
