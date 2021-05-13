@@ -14,7 +14,7 @@
         {{uploadBtnText}}
         </v-btn>
       </template>
-
+      
       <v-card>
         <v-card-title>העלאת חומרים פומביים לדרייב</v-card-title>
         <v-card-text>
