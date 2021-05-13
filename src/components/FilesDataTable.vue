@@ -339,7 +339,7 @@ const REVERSE_SORTED_FILTERS = ['year']
             downloadMultipleFilesOnBrowser(downloadUrls)
         },
         downloadSelectedFiles(){
-            this.downloadMultipleFilesOnBrowser(this.selected.map(item => item.driveId))
+            this.downloadFiles(this.selected.map(item => item.driveId))
         },
         downloadSingleFile(driveId){
             this.downloadFiles([driveId])
