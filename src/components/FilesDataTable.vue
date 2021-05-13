@@ -14,56 +14,111 @@
     </v-card-title>
     <v-data-table
     v-if="!isMobile"
-    :headers="headersWithIcon"
+    v-model="selected"
+    :show-select="selectionMode"
+    :headers="displayHeaders"
     :items="filteredItems"
     :loading="loading"
     :sort-by.sync="sortBy"
     disable-pagination
     hide-default-footer
-    item-key="name"
+    item-key="key"
     class="elevation-1"
     >
     <template v-slot:body.prepend v-if="nonEmptyHeaders.length > 1">
-        <tr class="grey lighten-3">
-        <td>
-            <v-icon>mdi-filter-variant</v-icon>
-        </td>
-        <td
-            v-for="(header, i) in nonEmptyHeaders"
-            :key="header.text"
-        >
-            <template v-if="filterAble.hasOwnProperty(header.value)">
-            <v-select
-              style="max-width: 120px;"
-              multiple clearable
-              :items="columnValueList(header.value)"
-              v-model="filters[header.value]"
-              :menu-props="{ top: true, offsetY: true }"
-            >   
-            </v-select>
-            </template>
-            <template v-if="i == 0">
-            <span class="subtitle-2">סנן:</span>
-            </template>
-        </td>
-        <td>
-            <v-icon :style="{opacity: emptyFilters ? '0' : '1'}" @click="removeFilters()">mdi-close</v-icon>
-        </td> <!-- gray space for the more of this button -->
-        </tr>
+        <template v-if="!selectionMode">
+            <tr class="grey lighten-3">
+            <td>
+                <v-icon>mdi-filter-variant</v-icon>
+            </td>
+            <td
+                v-for="(header, i) in nonEmptyHeaders"
+                :key="header.text"
+            >
+                <template v-if="filterAble.hasOwnProperty(header.value)">
+                <v-select
+                style="max-width: 120px;"
+                multiple clearable
+                :items="columnValueList(header.value)"
+                v-model="filters[header.value]"
+                :menu-props="{ top: true, offsetY: true }"
+                >   
+                </v-select>
+                </template>
+                <template v-if="i == 0">
+                <span class="subtitle-2">סנן:</span>
+                </template>
+            </td>
+            <td>
+                <v-icon :style="{opacity: emptyFilters ? '0' : '1'}" @click="removeFilters()">mdi-close</v-icon>
+            </td> <!-- gray space for the more of this button -->
+            </tr>
+        </template>
+        <template v-else>
+            <tr>
+                <td>
+                    <v-btn icon color="primary" @click="selectionMode=false; selected=[]">
+                        <v-icon>mdi-arrow-right</v-icon>
+                    </v-btn>
+                </td>
+                <td :colspan="displayHeaders.length - 1">
+                    {{selectionText}}
+                </td>
+                <td>
+                    <v-btn color="primary" :disabled="selected.length==0">
+                        <v-icon left>mdi-download</v-icon>
+                        הורד
+                        ({{selected.length}})
+                    </v-btn>
+                </td>
+            </tr>
+        </template>
     </template>
-    <template v-slot:header.icon>
-    </template>
+
     <template v-slot:item.icon="{ item }">
-        <v-icon>{{fileIcon(item.mimeType)}}</v-icon>
+        <v-icon
+        >
+        {{fileIcon(item.mimeType)}}
+        </v-icon>
     </template>
     <template v-slot:item.fileName="{ item }">
         <!-- <v-icon>mdi-check</v-icon> -->
         <a target="_blank" rel="noopener noreferrer" :href="viewUrlFromId(item.driveId)" :title="item.fileName">
             {{shortenFileName(item.fileName)}}
         </a>
-    
     </template>
     <template v-slot:item.moreOfThisButton="{ item }">
+        <v-menu
+          transition="scale-transition"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              small
+              dark
+              color="primary"
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list dense>
+              <v-list-item @click="selectionMode=true; addSelectedItem(item)">
+                <v-list-item-icon><v-icon>mdi-select</v-icon></v-list-item-icon>
+                <v-list-item-title>בחירה</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="null">
+                <v-list-item-icon><v-icon>mdi-download</v-icon></v-list-item-icon>
+                <v-list-item-title>הורד</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="null">
+                <v-list-item-icon><v-icon>mdi-clipboard</v-icon></v-list-item-icon>
+                <v-list-item-title>העתק קישור</v-list-item-title>
+              </v-list-item>
+          </v-list>
+      </v-menu>  
       <v-tooltip bottom v-if="isMoreOfThisRelevant(item)">
         <template v-slot:activator="{ on, attrs }">
             <v-icon class="moreOfThisButton" @click="showMoreOfThis(item)"
@@ -76,7 +131,7 @@
             </v-icon>
         </template>
         <span>{{moreOfThisHint(item)}}</span>
-      </v-tooltip>
+      </v-tooltip> 
     </template>
 
     </v-data-table>
@@ -118,6 +173,8 @@ const REVERSE_SORTED_FILTERS = ['year']
             search: '',
             filters: {},
             sortBy: 'fileName',
+            selected: [],
+            selectionMode: false,
         }
     },
     computed: {
@@ -149,9 +206,12 @@ const REVERSE_SORTED_FILTERS = ['year']
         isMobile(){
             return this.$vuetify.breakpoint.name == 'xs'
         },
-        headersWithIcon(){
-            // return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders]
-            return [{value:'icon', width:'5px'}, ...this.nonEmptyHeaders, {value: 'moreOfThisButton'}]
+        displayHeaders(){
+            if(this.selectionMode)
+                return this.nonEmptyHeaders
+            const optionalIconHeader = {value:'icon', width:'5px'}
+            const moreOfThisHeader = {value: 'moreOfThisButton'}
+            return [optionalIconHeader, ...this.nonEmptyHeaders, moreOfThisHeader]
         },
         emptyFilters(){
             if(Object.keys(this.filters).length == 0){
@@ -162,6 +222,9 @@ const REVERSE_SORTED_FILTERS = ['year']
                     return false
             }
             return true
+        },
+        selectionText(){
+            return `נבחרו ${this.selected.length} קבצים`
         }
     },
     watch: {
@@ -264,6 +327,11 @@ const REVERSE_SORTED_FILTERS = ['year']
         },
         removeFilters(){
             this.filters = {}
+        },
+        addSelectedItem(item){
+            if(this.selected.indexOf(item) === -1){
+                this.selected.push(item)
+            }
         }
     }
   }
