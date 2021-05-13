@@ -65,7 +65,7 @@
                     {{selectionText}}
                 </td>
                 <td>
-                    <v-btn color="primary" :disabled="selected.length==0">
+                    <v-btn color="primary" :disabled="selected.length==0" @click="downloadSelectedFiles()">
                         <v-icon left>mdi-download</v-icon>
                         הורד
                         ({{selected.length}})
@@ -109,14 +109,14 @@
                 <v-list-item-icon><v-icon>mdi-select</v-icon></v-list-item-icon>
                 <v-list-item-title>בחירה</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="null">
+              <v-list-item @click="downloadSingleFile(item.driveId)">
                 <v-list-item-icon><v-icon>mdi-download</v-icon></v-list-item-icon>
                 <v-list-item-title>הורד</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="null">
+              <!-- <v-list-item @click="null">
                 <v-list-item-icon><v-icon>mdi-clipboard</v-icon></v-list-item-icon>
                 <v-list-item-title>העתק קישור</v-list-item-title>
-              </v-list-item>
+              </v-list-item> -->
           </v-list>
       </v-menu>  
       <v-tooltip bottom v-if="isMoreOfThisRelevant(item)">
@@ -156,6 +156,7 @@
 <script>
 import { isListMatchingQuery, sortWithNumbersCmp } from '../misc.js'
 import { GDRIVE_FILE_URL_PREFIX } from '../constants'
+import { downloadMultipleFilesOnBrowser, driveIdToDownloadURL } from '../downloader.js'
 
 const MAX_FILENAME_CHARS = 40
 const REVERSE_SORTED_FILTERS = ['year']
@@ -332,6 +333,16 @@ const REVERSE_SORTED_FILTERS = ['year']
             if(this.selected.indexOf(item) === -1){
                 this.selected.push(item)
             }
+        },
+        downloadFiles(driveIds){
+            let downloadUrls = driveIds.map(driveIdToDownloadURL)
+            downloadMultipleFilesOnBrowser(downloadUrls)
+        },
+        downloadSelectedFiles(){
+            this.downloadMultipleFilesOnBrowser(this.selected.map(item => item.driveId))
+        },
+        downloadSingleFile(driveId){
+            this.downloadFiles([driveId])
         }
     }
   }
