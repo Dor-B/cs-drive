@@ -27,12 +27,19 @@
 
       <v-spacer></v-spacer>
 
-      <UploadForm
+      <!-- <UploadForm
        :coursesItems="coursesItemsByLastSeen"
        :headerNames="namesMap"
       >
-      </UploadForm>
-      <TutorialDialog
+      </UploadForm> -->
+      <v-btn
+          text
+          @click="openUrl(forms_upload_url)"
+      >
+        <v-icon :left="!isMobile" color="white">mdi-upload</v-icon>
+        העלאת חומרים חדשים
+      </v-btn>
+      <!-- <TutorialDialog
        v-if="!isMobile"
        :coursesItems="coursesItemsByLastSeen"
        :headerNames="namesMap"
@@ -73,7 +80,7 @@
                 <v-list-item-title> - ועד מדעי המחשב בטכניון - </v-list-item-title>
               </v-list-item>
           </v-list>
-      </v-menu>
+      </v-menu> -->
       <!-- Desktop course search inside toolbar -->
       <template v-slot:extension v-if="!isMobile">
         <v-container fluid>
@@ -171,21 +178,16 @@
       
     </v-container>
   </v-main>
-  <!-- </v-main>
-  <v-footer app>
-    HEECCE
-  </v-footer> -->
-  
 </div>
 </template>
 
 <script>
 
 import FilesDataTable from './components/FilesDataTable'
-import UploadForm from './components/UploadForm'
-import TutorialDialog from './components/TutorialDialog'
+// import UploadForm from './components/UploadForm'
+// import TutorialDialog from './components/TutorialDialog'
 import { isEmpty, fbValue, LocalStorage } from './misc'
-import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE, DEFAULT_COURSE_ID} from './constants'
+import { FEEDBACK_URL, OLD_DRIVE_URL, GOOGLE_DRIVE_URL, TSCANS_URL_COURSE, DEFAULT_COURSE_ID, FORMS_UPLOAD_URL} from './constants'
 
 const COL_WIDTHS = {
   'fileName' : '250px',
@@ -205,8 +207,8 @@ export default {
 
   components: {
     FilesDataTable,
-    UploadForm,
-    TutorialDialog
+    // UploadForm,
+    // TutorialDialog
   },
 
   data () {
@@ -225,6 +227,7 @@ export default {
       feedbackUrl: FEEDBACK_URL,
       oldDriveUrl: OLD_DRIVE_URL,
       googleDriveUrl: GOOGLE_DRIVE_URL,
+      forms_upload_url: FORMS_UPLOAD_URL,
     }
   },
 
@@ -277,14 +280,17 @@ export default {
     mobileCourseSearchChange(){
       document.querySelector('.mobile-course-search input').blur()
     },
+    openUrl(url){
+      window.open(url)
+    },
     openFeedback(){
-      window.open(this.feedbackUrl)
+      this.openUrl(this.feedbackUrl)
     },
     openOldDrive(){
-      window.open(this.oldDriveUrl)
+      this.openUrl(this.oldDriveUrl)
     },
     openGoogleDrive(){
-      window.open(this.googleDriveUrl)
+      this.openUrl(this.googleDriveUrl)
     }
   },
   watch: {

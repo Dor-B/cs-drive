@@ -40,7 +40,7 @@ import UploadApprovalCard from './UploadApprovalCard'
 import {ADMIN_CHANGE_FILE_APPS_SCRIPT_URL} from '../constants'
 import { db } from '../db'
 
-
+        
 const driveLinkReg = /d\/(?<id>[^/]+)(?:\/|$)/g
 
 export default {
